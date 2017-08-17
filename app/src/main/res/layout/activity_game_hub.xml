@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context="com.hotyi.hotyi.activity.GameHubActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:background="@color/darkblue"
+        android:orientation="horizontal">
+        <ImageButton
+            android:layout_width="40dip"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dip"
+            android:layout_marginBottom="5dip"
+            android:background="@mipmap/back_bai_3x"
+            />
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_marginLeft="45dip"
+            android:layout_height="45dip"
+            android:layout_marginTop="10dip"
+            android:gravity="center"
+            android:text="游戏圈"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+        <ImageButton
+            android:layout_width="30dip"
+            android:layout_marginTop="20dip"
+            android:layout_marginBottom="15dip"
+            android:layout_marginRight="15dip"
+            android:layout_height="match_parent"
+            android:background="@mipmap/circle_newmessage_3x"/>
+        <ImageButton
+            android:layout_width="30dip"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginBottom="15dip"
+            android:background="@mipmap/edit_bai_3x"/>
+
+    </LinearLayout>
+    <ListView
+        android:id="@+id/game_hub"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+</LinearLayout>

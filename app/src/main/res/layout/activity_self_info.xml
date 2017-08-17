@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.hotyi.hotyi.activity.SelfInfoActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:background="@color/darkblue"
+        android:orientation="horizontal">
+        <ImageButton
+            android:layout_width="40dip"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dip"
+            android:layout_marginBottom="5dip"
+            android:background="@mipmap/back_bai_3x"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            android:layout_marginTop="10dip"
+            android:layout_marginRight="40dip"
+            android:gravity="center"
+            android:text="logo"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>

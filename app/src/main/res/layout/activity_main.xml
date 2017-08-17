@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="10">
+
+    </android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:background="@mipmap/tab_message_sele_2x" />
+
+            <TextView
+                android:layout_width="50dip"
+                android:layout_height="0dip"
+                android:layout_marginLeft="3dip"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="消息"
+                android:textColor="#33ccff" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:background="@mipmap/tab_contact_sele_2x" />
+
+            <TextView
+                android:layout_width="50dip"
+                android:layout_height="0dip"
+                android:layout_marginLeft="3dip"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="联系人"
+                android:textColor="#33ccff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:background="@mipmap/tab_game_sele_2x" />
+
+            <TextView
+                android:layout_width="50dip"
+                android:layout_height="0dip"
+                android:layout_marginLeft="3dip"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="游戏"
+                android:textColor="#33ccff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:background="@mipmap/tab_find_sele_2x" />
+
+            <TextView
+                android:layout_width="50dip"
+                android:layout_height="0dip"
+                android:layout_marginLeft="3dip"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="发现"
+                android:textColor="#33ccff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_weight="1">
+
+            <ImageView
+                android:background="@mipmap/tab_myself_sele_2x"
+                android:layout_width="wrap_content"
+                android:layout_height="0dip"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="50dip"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:text="我的"
+                android:layout_marginLeft="3dip"
+                android:gravity="center"
+                android:textColor="#33ccff" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

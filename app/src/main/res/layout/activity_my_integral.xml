@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/darkblue"
+    tools:context="com.hotyi.hotyi.activity.MyIntegral">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:background="@color/darkblue"
+        android:orientation="horizontal">
+        <ImageButton
+            android:layout_width="40dip"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dip"
+            android:layout_marginBottom="5dip"
+            android:background="@mipmap/back_bai_3x"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            android:layout_marginTop="10dip"
+            android:layout_marginRight="40dip"
+            android:gravity="center"
+            android:text="我的积分"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:text="50"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dip"/>
+    <Button
+        android:layout_width="120dip"
+        android:layout_height="30dip"
+        android:layout_marginTop="20dip"
+        android:text="兑换礼包"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:background="@drawable/btn_white_corners"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dip"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="如何获取积分>"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dip"
+        android:text=" 积分明细"
+        android:textColor="@color/white"
+        android:gravity="left|center_vertical"
+        android:background="@color/darkblue_light"
+        android:textSize="14sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"/>
+
+
+</LinearLayout>
