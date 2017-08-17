@@ -2,5 +2,9 @@
     {
         "merged": "D:\\Demo\\Hotyi\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\rc_btn_file_list_send.xml",
         "source": "D:\\Demo\\Hotyi\\IMKit\\build\\intermediates\\bundles\\debug\\res\\color\\rc_btn_file_list_send.xml"
+    },
+    {
+        "merged": "C:\\Users\\HOTYI\\Desktop\\Project\\Hotyi\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\rc_btn_file_list_send.xml",
+        "source": "C:\\Users\\HOTYI\\Desktop\\Project\\Hotyi\\IMKit\\build\\intermediates\\bundles\\debug\\res\\color\\rc_btn_file_list_send.xml"
     }
 ]
