@@ -31,4 +31,5 @@ dependencies {
     compile 'com.android.support:support-v4:26.+'
     testCompile 'junit:junit:4.12'
     compile files('libs/fastjson-1.2.5.jar')
+    compile files('libs/org.apache.http.legacy.jar')
 }
