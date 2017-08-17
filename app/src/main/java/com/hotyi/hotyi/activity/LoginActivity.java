@@ -49,9 +49,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         imgbtn_qq.setOnClickListener(this);
         imgbtn_weibo.setOnClickListener(this);
         imgbtn_weixin.setOnClickListener(this);
-
     }
-
 
     @Override
     public void onClick(View view) {
@@ -59,14 +57,13 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             case R.id.btn_login:
                 phone_num = edt_phone_num.getText().toString();
                 password = edt_password.getText().toString();
-
-
                 startActivity(new Intent(LoginActivity.this,MainActivity.class));
-
                 break;
             case R.id.text_forget_password:
+              //  startActivity(new Intent(LoginActivity.this,Forg));
                 break;
             case R.id.text_regist:
+                startActivityForResult(new Intent(LoginActivity.this,RegistActivity.class),20);
                 break;
             case R.id.imgbtn_qq:
                 break;
@@ -75,5 +72,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             case R.id.imgbtn_weixin:
                 break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
