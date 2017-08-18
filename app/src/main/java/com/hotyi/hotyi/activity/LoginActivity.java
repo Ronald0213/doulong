@@ -26,6 +26,7 @@ import org.w3c.dom.Text;
 public class LoginActivity extends Activity implements View.OnClickListener,OnDataListener {
 
     public static final int LOGIN = 20;
+    public static final int GET_TOKEN = 21;
     private String password;
     private String phone_num;
     private Button btn_login;
@@ -112,14 +113,21 @@ public class LoginActivity extends Activity implements View.OnClickListener,OnDa
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 20) {
-
+        switch (resultCode) {
+            case LOGIN:
+                break;
+            case GET_TOKEN:
+                break;
         }
     }
 
     @Override
     public Object doInBackground(int requestCode, String parameter) throws HttpException {
         Log.e("LOGIN","CLICK text run  do in background");
+        switch (requestCode){
+            case LOGIN:
+                break;
+        }
         return null;
     }
 
@@ -127,6 +135,14 @@ public class LoginActivity extends Activity implements View.OnClickListener,OnDa
     public void onSuccess(int requestCode, Object result) {
 
         Log.e("LOGIN","CLICK text run onSuccess");
+        if(result != null){
+            switch (requestCode){
+                case LOGIN:
+                    break;
+                case GET_TOKEN:
+                    break;
+            }
+        }
 
     }
 

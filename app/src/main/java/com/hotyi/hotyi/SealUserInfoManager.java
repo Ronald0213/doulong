@@ -105,7 +105,7 @@ public class SealUserInfoManager implements OnDataListener {
     private FriendDao mFriendDao;
     private GroupsDao mGroupsDao;
     private GroupMemberDao mGroupMemberDao;
-    private BlackListDao mBlackListDao;
+//    private BlackListDao mBlackListDao;
     private LinkedHashMap<String, UserInfo> mUserInfoCache;
 
     public static SealUserInfoManager getInstance() {
@@ -140,7 +140,7 @@ public class SealUserInfoManager implements OnDataListener {
             mFriendDao = getFriendDao();
             mGroupsDao = getGroupsDao();
             mGroupMemberDao = getGroupMemberDao();
-            mBlackListDao = getBlackListDao();
+//            mBlackListDao = getBlackListDao();
             mUserInfoCache = new LinkedHashMap<>();
             setUserInfoEngineListener();
         }
@@ -156,7 +156,7 @@ public class SealUserInfoManager implements OnDataListener {
             mFriendDao = null;
             mGroupsDao = null;
             mGroupMemberDao = null;
-            mBlackListDao = null;
+//            mBlackListDao = null;
         }
         if (mWorkThread != null) {
             mWorkThread.quit();
@@ -302,7 +302,7 @@ public class SealUserInfoManager implements OnDataListener {
                             setGetAllUserInfoDone();
                             return;
                         }
-                        fetchBlackList();
+//                        fetchBlackList();
                     } else {
                         if (!hasGetFriends()) {
                             if (!fetchFriends()) {
@@ -334,7 +334,7 @@ public class SealUserInfoManager implements OnDataListener {
                             fetchGroupMembers();
                         }
                         if (!hasGetBlackList()) {
-                            fetchBlackList();
+//                            fetchBlackList();
                         }
                     }
                 } catch (HttpException e) {
@@ -360,7 +360,7 @@ public class SealUserInfoManager implements OnDataListener {
         try {
             userRelationshipResponse = action.getAllUserRelationship();
         } catch (JSONException e) {
-            NLog.d(TAG, "fetchFriends occurs JSONException e=" + e.toString());
+//            NLog.d(TAG, "fetchFriends occurs JSONException e=" + e.toString());
             return true;
         }
         if (userRelationshipResponse != null && userRelationshipResponse.getCode() == 200) {
@@ -381,7 +381,7 @@ public class SealUserInfoManager implements OnDataListener {
         try {
             userRelationshipResponse = action.getAllUserRelationship();
         } catch (JSONException e) {
-            NLog.d(TAG, "pullFriends occurs JSONException e=" + e.toString());
+//            NLog.d(TAG, "pullFriends occurs JSONException e=" + e.toString());
             return null;
         }
         if (userRelationshipResponse != null && userRelationshipResponse.getCode() == 200) {
@@ -400,7 +400,7 @@ public class SealUserInfoManager implements OnDataListener {
         try {
             groupResponse = action.getGroups();
         } catch (JSONException e) {
-            NLog.d(TAG, "fetchGroups occurs JSONException e=" + e.toString());
+//            NLog.d(TAG, "fetchGroups occurs JSONException e=" + e.toString());
             return true;
         }
         if (groupResponse != null && groupResponse.getCode() == 200) {
@@ -719,13 +719,13 @@ public class SealUserInfoManager implements OnDataListener {
         }
     }
 
-    private BlackListDao getBlackListDao() {
-        if (mDBManager != null && mDBManager.getDaoSession() != null) {
-            return mDBManager.getDaoSession().getBlackListDao();
-        } else {
-            return null;
-        }
-    }
+//    private BlackListDao getBlackListDao() {
+//        if (mDBManager != null && mDBManager.getDaoSession() != null) {
+//            return mDBManager.getDaoSession().getBlackListDao();
+//        } else {
+//            return null;
+//        }
+//    }
 
     public void addFriend(final Friend friend) {
         mWorkHandler.post(new Runnable() {
@@ -1216,9 +1216,9 @@ public class SealUserInfoManager implements OnDataListener {
         if (mGroupMemberDao != null) {
             mGroupMemberDao.deleteAll();
         }
-        if (mBlackListDao != null) {
-            mBlackListDao.deleteAll();
-        }
+//        if (mBlackListDao != null) {
+//            mBlackListDao.deleteAll();
+//        }
     }
 
     private void syncDeleteFriends() {
@@ -1327,33 +1327,33 @@ public class SealUserInfoManager implements OnDataListener {
         }
     }
 
-    public void deleteBlackList() {
-        mWorkHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (mBlackListDao != null) {
-                    mBlackListDao.deleteAll();
-                }
-            }
-        });
-    }
+//    public void deleteBlackList() {
+//        mWorkHandler.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (mBlackListDao != null) {
+//                    mBlackListDao.deleteAll();
+//                }
+//            }
+//        });
+//    }
 
-    public void deleteBlackList(final String userID) {
-        mWorkHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (mBlackListDao != null) {
-                    mBlackListDao.deleteByKey(userID);
-                }
-            }
-        });
-    }
-
-    private void syncDeleteBlackList() {
-        if (mBlackListDao != null) {
-            mBlackListDao.deleteAll();
-        }
-    }
+//    public void deleteBlackList(final String userID) {
+//        mWorkHandler.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (mBlackListDao != null) {
+//                    mBlackListDao.deleteByKey(userID);
+//                }
+//            }
+//        });
+//    }
+//
+//    private void syncDeleteBlackList() {
+//        if (mBlackListDao != null) {
+//            mBlackListDao.deleteAll();
+//        }
+//    }
 
     public boolean isFriendsRelationship(String userID) {
         if (TextUtils.isEmpty(userID))
