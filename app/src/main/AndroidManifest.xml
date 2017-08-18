@@ -38,6 +38,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.RegistActivity" />
+        
         <activity android:name=".activity.RegistNextActivity" />
         <activity android:name=".activity.MyAccountActivity" />
         <activity
