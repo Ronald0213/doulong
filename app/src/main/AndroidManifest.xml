@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hotyi.hotyi">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <provider
         android:name="android.support.v4.content.FileProvider"
         android:authorities="com.hotyi.hotyi.FileProvider"
@@ -42,7 +48,11 @@
             android:label="@string/title_activity_game_hub" />
         <activity
             android:name=".activity.SelfInfoActivity"
-            android:label="@string/title_activity_self_info"></activity>
+            android:label="@string/title_activity_self_info" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:label="@string/title_activity_wxentry"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

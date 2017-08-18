@@ -12,5 +12,6 @@
     <string name="title_activity_my_integral">MyIntegral</string>
     <string name="title_activity_game_hub">GameHubActivity</string>
     <string name="title_activity_self_info">SelfInfoActivity</string>
+    <string name="title_activity_wxentry">WXEntryActivity</string>
 
 </resources>

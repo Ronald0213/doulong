@@ -11,6 +11,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.hotyi.hotyi.R;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
+import com.tencent.mm.opensdk.modelmsg.WXTextObject;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import org.w3c.dom.Text;
 
@@ -25,11 +29,21 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private ImageButton imgbtn_weibo;
     private EditText edt_phone_num;
     private EditText edt_password;
+    private final String APP_ID = "wx4ae76f1d5b08feb3";
+    private IWXAPI api;
+
+
+    private void regToWx(){
+
+        api = WXAPIFactory.createWXAPI(this,APP_ID,true);
+        api.registerApp(APP_ID);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        regToWx();
         initView();
     }
 
@@ -42,6 +56,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         imgbtn_qq = (ImageButton) findViewById(R.id.imgbtn_qq);
         imgbtn_weibo = (ImageButton) findViewById(R.id.imgbtn_weibo);
         imgbtn_weixin = (ImageButton) findViewById(R.id.imgbtn_weixin);
+
 
         btn_login.setOnClickListener(this);
         text_regist.setOnClickListener(this);
@@ -70,6 +85,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             case R.id.imgbtn_weibo:
                 break;
             case R.id.imgbtn_weixin:
+                final SendAuth.Req req = new SendAuth.Req();
+                req.scope = "snsapi_userinfo";
+                req.state = "diandi_wx_login";
+                api.sendReq(req);
                 break;
         }
     }
