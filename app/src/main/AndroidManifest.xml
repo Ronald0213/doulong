@@ -38,7 +38,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.RegistActivity" />
-        
         <activity android:name=".activity.RegistNextActivity" />
         <activity android:name=".activity.MyAccountActivity" />
         <activity
@@ -52,8 +51,8 @@
             android:label="@string/title_activity_self_info" />
         <activity
             android:name=".wxapi.WXEntryActivity"
-            android:label="@string/title_activity_wxentry"
-            android:exported="true"></activity>
+            android:exported="true"
+            android:label="@string/title_activity_wxentry" />
     </application>
 
 </manifest>
