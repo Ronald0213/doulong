@@ -33,7 +33,7 @@ public class HotyiHttpConnection {
     public String postConnection(HashMap<String ,String > map, URL url) {
         String result;
         if (map == null)
-            return "无法请求网络连接";
+            return "请输入正确的账号密码";
         if (url == null)
             return "网络连接异常";
         try {

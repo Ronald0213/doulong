@@ -7,7 +7,6 @@ import android.text.TextUtils;
 
 import java.io.File;
 
-import cn.rongcloud.im.SealConst;
 import io.rong.common.RLog;
 import io.rong.imkit.userInfoCache.RongDatabaseContext;
 
@@ -68,12 +67,12 @@ public class DBManager {
      * @param context
      */
     private DBManager(Context context) {
-        DaoMaster.OpenHelper helper = new
-        DaoMaster.DevOpenHelper(new RongDatabaseContext(context, getDbPath()), DB_NAME, null);
-        daoMaster = new DaoMaster(helper.getWritableDatabase());
-        daoSession = daoMaster.newSession();
+//        DaoMaster.OpenHelper helper = new
+//        DaoMaster.DevOpenHelper(new RongDatabaseContext(context, getDbPath()), DB_NAME, null);
+//        daoMaster = new DaoMaster(helper.getWritableDatabase());
+//        daoSession = daoMaster.newSession();
         //数据库存贮路径修改,直接删除旧的数据库
-        mContext.deleteDatabase(mContext.getPackageName());
+//        mContext.deleteDatabase(mContext.getPackageName());
     }
 
     public DaoMaster getDaoMaster() {
@@ -110,13 +109,13 @@ public class DBManager {
         return appKey;
     }
 
-    private static String getDbPath () {
-        String currentUserId = mContext.getSharedPreferences("config", MODE_PRIVATE).getString(SealConst.SEALTALK_LOGIN_ID, null);
-        String dbPath = mContext.getFilesDir().getAbsolutePath();
-        dbPath = dbPath + File.separator + getAppKey() + File.separator + currentUserId;
-        RLog.d(TAG, "DBManager dbPath = " + dbPath);
-        return  dbPath;
-    }
+//    private static String getDbPath () {
+//        String currentUserId = mContext.getSharedPreferences("config", MODE_PRIVATE).getString(SealConst.SEALTALK_LOGIN_ID, null);
+//        String dbPath = mContext.getFilesDir().getAbsolutePath();
+//        dbPath = dbPath + File.separator + getAppKey() + File.separator + currentUserId;
+//        RLog.d(TAG, "DBManager dbPath = " + dbPath);
+//        return  dbPath;
+//    }
 
     public void uninit() {
         RLog.d(TAG, "DBManager uninit");
