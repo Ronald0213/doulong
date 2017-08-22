@@ -1,6 +1,8 @@
 package com.hotyi.hotyi.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -13,36 +15,26 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.hotyi.hotyi.R;
 import com.hotyi.hotyi.other.HotyiClass.LoginData;
 import com.hotyi.hotyi.other.HotyiClass.LoginInfo;
 import com.hotyi.hotyi.utils.HotyiHttpConnection;
 import com.hotyi.hotyi.utils.HttpException;
-import com.hotyi.hotyi.utils.JsonMananger;
 import com.hotyi.hotyi.utils.MyAsynctask;
-import com.hotyi.hotyi.utils.async.AsyncResult;
 import com.hotyi.hotyi.utils.async.AsyncTaskManager;
 import com.hotyi.hotyi.utils.async.OnDataListener;
-import com.hotyi.hotyi.wxapi.WXEntryActivity;
-import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
-import org.w3c.dom.Text;
+import org.json.JSONObject;
 
-import java.math.BigInteger;
 import java.net.URL;
-import java.security.Key;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.crypto.Cipher;
 
@@ -52,6 +44,8 @@ import io.rong.imlib.RongIMClient;
 public class LoginActivity extends MyBaseActivity implements View.OnClickListener, OnDataListener {
 
 
+    private SharedPreferences sharedPreferences;
+    private static final int MAX_ENCRYPT_BLOCK = 1024;
     private StringBuffer stringBuffer;
     public static final int LOGIN = 20;
     public static final int GET_TOKEN = 21;
@@ -67,6 +61,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
     private EditText edt_password;
     public AsyncTaskManager mAsyncTaskManager;
     public String android_id;
+    private String key_str = null;
     /**
      * RSA加密
      */
@@ -94,6 +89,10 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_login);
         android_id = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         regToWx();
+        sharedPreferences = getSharedPreferences("loginUser", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("AccountInformation",null);
+        editor.commit();
         mAsyncTaskManager = AsyncTaskManager.getInstance(getApplicationContext());
         initView();
         stringBuffer = new StringBuffer();
@@ -135,10 +134,10 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                     return;
                 }
                 try {
-                    stringBuffer.append(android_id).append("&").append(phone_num).append("&").append(encryptByPublicKey(password)).append(System.currentTimeMillis());
+                   key_str = encryptByPublicKey(stringBuffer.append(android_id).append("&").append(phone_num).append("&").append(password).append("&").append(System.currentTimeMillis()).toString());
                 }catch (Exception e){
                     Toast.makeText(LoginActivity.this,e.toString(),Toast.LENGTH_SHORT).show();
-                    Log.e("RSA",e.toString());
+                    Log.e("RSA0",e.toString());
                     break;
                 }
                 mAsyncTaskManager.request(LOGIN, true, this);
@@ -187,8 +186,15 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                     String login_url = MyAsynctask.HOST + MyAsynctask.Login;
                     URL url = new URL(login_url);
                     HashMap<String, String> map = new HashMap<>();
-                    map.put("RSAText", stringBuffer.toString());
-                    return HotyiHttpConnection.getInstance(getApplicationContext()).postConnection(map, url);
+                    map.put("RSAText", key_str);
+                    if(key_str == null){
+                        Log.e("RSA",".......");
+                    }
+                    else
+                        Log.e("RSA","----   "+stringBuffer.toString());
+                        Log.e("RSA","++++   "+key_str);
+                    return HotyiHttpConnection.getInstance(getApplicationContext()).post(map, url);
+//                    return HotyiHttpConnection.getInstance(getApplicationContext()).post();
                 } catch (Exception e) {
 
                 }
@@ -206,37 +212,48 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
         if (result != null) {
             switch (requestCode) {
                 case LOGIN:
-                    JSONObject jsonObject = JSON.parseObject(result.toString());
-                    final LoginInfo myLoginInfo = new LoginInfo();
-                    myLoginInfo.setCode(Integer.valueOf(jsonObject.get("code").toString()));
-                    myLoginInfo.setResult_msg(jsonObject.get("result_msg").toString());
-                    myLoginInfo.setReturn_msg(jsonObject.get("return_msg").toString());
-                    JSONObject logindataJson = JSON.parseObject(jsonObject.get("data").toString());
-                    LoginData loginData = new LoginData();
-                    loginData.setRYToken(logindataJson.get("RYToken").toString());
-                    loginData.setNickName(logindataJson.get("NickName").toString());
-                    loginData.setHeadImageUrl(logindataJson.get("HeadImageUrl").toString());
-                    loginData.setAccountInfo(logindataJson.get("AccountInformation").toString());
-                    if (myLoginInfo.getCode() == 1) {
-                        String token = myLoginInfo.getLoginData().getRYToken();
-                        RongIM.connect(token, new RongIMClient.ConnectCallback() {
+                    try {
+                        String str = result.toString();
+                        JSONObject jsonObject = new JSONObject(str);
+                        final LoginInfo myLoginInfo = new LoginInfo();
+                        myLoginInfo.setCode(Integer.valueOf(jsonObject.get("code").toString()));
+                        myLoginInfo.setResult_msg(jsonObject.get("result_msg").toString());
+                        myLoginInfo.setReturn_msg(jsonObject.get("retrun_msg").toString());
+                        JSONObject logindataJson = new JSONObject(jsonObject.get("data").toString());
+                        if (myLoginInfo.getCode() == -1){
+                            Toast.makeText(LoginActivity.this,"Test",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        LoginData loginData = new LoginData();
+                        loginData.setRYToken(logindataJson.getString("RYToken").toString());
+                        loginData.setNickName(logindataJson.get("NickName").toString());
+                        loginData.setHeadImageUrl(logindataJson.get("HeadImage").toString());
+                        loginData.setAccountInfo(logindataJson.get("AccountInformation").toString());
+                        myLoginInfo.setLoginData(loginData);
+                        if (myLoginInfo.getCode() == 1) {
+                            String token = myLoginInfo.getLoginData().getRYToken();
+                            Log.e("login",token);
+                            RongIM.connect(token, new RongIMClient.ConnectCallback() {
 
-                            @Override
-                            public void onSuccess(String s) {
-                                Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                            }
+                                @Override
+                                public void onSuccess(String s) {
+                                    Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                                }
 
-                            @Override
-                            public void onError(RongIMClient.ErrorCode errorCode) {
-                                String msg = myLoginInfo.getResult_msg();
-                                Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
-                            }
+                                @Override
+                                public void onError(RongIMClient.ErrorCode errorCode) {
+                                    String msg = myLoginInfo.getResult_msg();
+                                    Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                                }
 
-                            @Override
-                            public void onTokenIncorrect() {
+                                @Override
+                                public void onTokenIncorrect() {
 
-                            }
-                        });
+                                }
+                            });
+                        }
+                    }catch (Exception e){
+                        Log.e("LOGIN","  " +e.toString());
                     }
                     break;
                 case GET_TOKEN:
@@ -260,25 +277,19 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
      * 用公钥对字符串进行加密
      */
     private  String encryptByPublicKey(String str) throws Exception {
-        String public_key = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDgxOFIHXabcBxZOFBWz55WI18tQDTfHrU2IeJz6MVMgVv3yPXorrc8XucjPr16uMPy77qFGpJ2exOXpbzL0Rrmq9KzMDBdEWMttcppKVi+oTbz3xRGONyq3Gi22fNOiRPOOWO5NeuYMNNo7iV3egNgt2kHsW86/XAwB9Cbr0GUyQIDAQAB";
+        final String public_key = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDgxOFIHXabcBxZOFBWz55WI18tQDTfHrU2IeJz6MVMgVv3yPXorrc8XucjPr16uMPy77qFGpJ2exOXpbzL0Rrmq9KzMDBdEWMttcppKVi+oTbz3xRGONyq3Gi22fNOiRPOOWO5NeuYMNNo7iV3egNgt2kHsW86/XAwB9Cbr0GUyQIDAQAB";
         try {
-            byte[] publicKey = Base64.decode(public_key, Base64.DEFAULT);
-            Log.e("RSA", "公钥加密方法+++++++++1");
+            byte[] publicKey = Base64.decode(public_key,Base64.DEFAULT);
             byte[] data = str.getBytes();
-            Log.e("RSA", "公钥加密方法+++++++++2");
-            // 得到公钥
+//             得到公钥
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKey);
-            Log.e("RSA", "公钥加密方法+++++++++3");
-            KeyFactory kf = KeyFactory.getInstance(RSA, "BC");
-            Log.e("RSA", "公钥加密方法+++++++++4");
+            KeyFactory kf = KeyFactory.getInstance(RSA);
             PublicKey keyPublic = kf.generatePublic(keySpec);
-            Log.e("RSA", "公钥加密方法+++++++++5");
-            // 加密数据
+//             加密数据
             Cipher cp = Cipher.getInstance(ECB_PKCS1_PADDING);
-            Log.e("RSA", "公钥加密方法+++++++++6");
             cp.init(Cipher.ENCRYPT_MODE, keyPublic);
-            Log.e("RSA", "公钥加密方法+++++++++7");
-            return cp.doFinal(data).toString();
+            String str_ss = Base64.encodeToString(cp.doFinal(data),Base64.DEFAULT);
+            return str_ss;
         } catch (Exception e) {
             Log.e("RSA", e.toString());
             return null;
@@ -291,7 +302,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
      */
     private  String decryptByPrivateKey(String str) throws Exception {
         String private_key = "MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAODE4UgddptwHFk4UFbPnlYjXy1ANN8etTYh4nPoxUyBW/fI9eiutzxe5yM+vXq4w/LvuoUaknZ7E5elvMvRGuar0rMwMF0RYy21ymkpWL6hNvPfFEY43KrcaLbZ806JE845Y7k165gw02juJXd6A2C3aQexbzr9cDAH0JuvQZTJAgMBAAECgYEAl9nrKUFehBz1ygEVpdCWdDNpdbTPA35Hhs7VouE7ijhK3dhS6mQ/PvYOyez1Lhftqg7zwED3ejwkPGuoZTpcJP62hauoZooR8XCAJ6ZHEZpuJEwUH6DUiujmitkXzXXkZ+DhFEvWzLY4AfiuOLv/Az+MHVHbofAl4F9BI0fmr0ECQQD62BAzNU2ePqYLzodLjjM4y1ndH/XrMhdeo7nhUY47vHOl5uxiE+KvXuuZ29kUH7hMsG/nUiovPRsOT88kzTatAkEA5WOcYlxA0CLeGd3E62u4zH7CNrquZ3+423OCyjjx7JxPa9Fq2nxIPqiAp9i/Y2qFBErY4egI/VWzdj61aDzGDQJAShu/XYGn9tKHeAGCUz4lv+fEGuIwY1YfNWSlq/3OSbO5bxA0Uh2R4UHn1ULwdVORvYZ66RqLP/2LmsTVbAf82QJBALSX86rMjopOqSUcH8hoipkUwrprxprdRyAelL24j16EwVJVERbp+ca6ym9aiXMvjYGPm6hfEZTBQAS74f4qupECQQD6Qq+wmcDB/qGtNIFUTCMj5L1ozZujmP6w1TmyLnlJqIkNbVp5QCXIvb7dSZA4LG7IvwkcP++49C66IHjIMKWf";
-        byte[] privateKey = private_key.getBytes();
+        byte[] privateKey = Base64.decode(private_key,Base64.DEFAULT);
         // 得到私钥
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(privateKey);
         KeyFactory kf = KeyFactory.getInstance(RSA);
@@ -301,7 +312,8 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
         Cipher cp = Cipher.getInstance(ECB_PKCS1_PADDING);
         cp.init(Cipher.DECRYPT_MODE, keyPrivate);
         byte[] arr = cp.doFinal(encrypted);
-        return arr.toString();
+        String str_ss = Base64.encodeToString(cp.doFinal(arr),Base64.DEFAULT);
+        return str_ss;
     }
 
 
