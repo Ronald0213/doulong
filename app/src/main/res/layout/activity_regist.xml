@@ -6,6 +6,7 @@
     android:background="#ffffff"
     android:orientation="vertical">
     <ImageButton
+        android:id="@+id/regist_btn_back"
         android:layout_width="60dip"
         android:layout_height="60dip"
         android:background="@mipmap/login_back_2x"
@@ -24,7 +25,10 @@
             android:src="@mipmap/logo" />
     </LinearLayout>
     <EditText
+        android:id="@+id/regist_edit_phone"
         android:layout_width="match_parent"
+        android:maxLength="11"
+        android:lines="1"
         android:layout_height="40dip"
         android:gravity="center_vertical"
         android:layout_marginLeft="80dip"
@@ -32,6 +36,7 @@
         android:layout_marginTop="60dip"
         android:hint="@string/print_phone_num" />
     <Button
+        android:id="@+id/regist_btn_next"
         android:layout_width="match_parent"
         android:layout_height="50dip"
         android:layout_gravity="center_horizontal"

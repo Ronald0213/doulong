@@ -30,11 +30,12 @@
     <EditText
         android:id="@+id/edt_password"
         android:layout_width="match_parent"
-        android:gravity="center_vertical"
         android:layout_height="40dip"
         android:layout_marginLeft="80dip"
+        android:password="true"
         android:layout_marginRight="80dip"
         android:layout_marginTop="5dip"
+        android:gravity="center_vertical"
         android:hint="@string/print_password_num" />
 
     <Button
