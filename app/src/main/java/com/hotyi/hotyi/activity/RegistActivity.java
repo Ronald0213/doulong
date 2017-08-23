@@ -2,11 +2,9 @@ package com.hotyi.hotyi.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,20 +12,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.hotyi.hotyi.R;
-import com.hotyi.hotyi.other.hotyiClass.LoginData;
-import com.hotyi.hotyi.other.hotyiClass.LoginInfo;
-import com.hotyi.hotyi.other.hotyiClass.PhoneRegistInfo;
-import com.hotyi.hotyi.utils.HotyiHttpConnection;
-import com.hotyi.hotyi.utils.HttpException;
-import com.hotyi.hotyi.utils.JsonMananger;
-import com.hotyi.hotyi.utils.MyAsynctask;
 import com.hotyi.hotyi.utils.async.AsyncTaskManager;
-import com.hotyi.hotyi.utils.async.OnDataListener;
-
-import org.json.JSONObject;
-
-import java.net.URL;
-import java.util.HashMap;
 
 public class RegistActivity extends Activity implements View.OnClickListener{
 
@@ -56,12 +41,6 @@ public class RegistActivity extends Activity implements View.OnClickListener{
         imageButton_back.setOnClickListener(this);
         button_next.setOnClickListener(this);
         button_next.setBackgroundResource(R.drawable.gray_btn_corners);
-//        Drawable drawable = getResources().getDrawable(R.drawable.btn_white_corners);
-//        try {
-//            button_next.setBackgroundResource(drawable);
-//        }catch (Exception e){
-//
-//        }
 
         editText_phone.addTextChangedListener(new TextWatcher() {
             @Override
@@ -106,9 +85,6 @@ public class RegistActivity extends Activity implements View.OnClickListener{
                     Intent intent = new Intent(RegistActivity.this, RegistNextActivity.class);
                     intent.putExtra("phone", phone_num);
                     startActivityForResult(intent, 25);
-                    phone_num = editText_phone.getText().toString();
-//                    mAsyncTaskManager.request(PHONE_REGIST,true,this);
-
                 }
                 break;
         }
