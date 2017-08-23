@@ -2,10 +2,11 @@ package com.hotyi.hotyi.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,16 +14,38 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.hotyi.hotyi.R;
+import com.hotyi.hotyi.other.hotyiClass.LoginData;
+import com.hotyi.hotyi.other.hotyiClass.LoginInfo;
+import com.hotyi.hotyi.other.hotyiClass.PhoneRegistInfo;
+import com.hotyi.hotyi.utils.HotyiHttpConnection;
+import com.hotyi.hotyi.utils.HttpException;
+import com.hotyi.hotyi.utils.JsonMananger;
+import com.hotyi.hotyi.utils.MyAsynctask;
+import com.hotyi.hotyi.utils.async.AsyncTaskManager;
+import com.hotyi.hotyi.utils.async.OnDataListener;
+
+import org.json.JSONObject;
+
+import java.net.URL;
+import java.util.HashMap;
 
 public class RegistActivity extends Activity implements View.OnClickListener{
 
     private ImageButton imageButton_back;
     private EditText editText_phone;
     private Button button_next;
+    public AsyncTaskManager mAsyncTaskManager;
+    private String phone_num;
+
+
+
+    public static final int PHONE_REGIST = 21;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regist);
+        mAsyncTaskManager = AsyncTaskManager.getInstance(getApplicationContext());
         initView();
     }
     public void initView(){
@@ -32,6 +55,13 @@ public class RegistActivity extends Activity implements View.OnClickListener{
 
         imageButton_back.setOnClickListener(this);
         button_next.setOnClickListener(this);
+        button_next.setBackgroundResource(R.drawable.gray_btn_corners);
+//        Drawable drawable = getResources().getDrawable(R.drawable.btn_white_corners);
+//        try {
+//            button_next.setBackgroundResource(drawable);
+//        }catch (Exception e){
+//
+//        }
 
         editText_phone.addTextChangedListener(new TextWatcher() {
             @Override
@@ -41,7 +71,12 @@ public class RegistActivity extends Activity implements View.OnClickListener{
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                int len = editText_phone.getText().toString().length();
+                if (len == 11){
+                    button_next.setBackgroundResource(R.drawable.login_btn_shape);
+                }else {
+                    button_next.setBackgroundResource(R.drawable.gray_btn_corners);
+                }
             }
 
             @Override
@@ -67,9 +102,14 @@ public class RegistActivity extends Activity implements View.OnClickListener{
                     Toast.makeText(RegistActivity.this,"请输入正确的手机号码",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Intent intent =  new Intent(RegistActivity.this,RegistNextActivity.class);
-                intent.putExtra("phone",phone_num);
-                startActivityForResult(intent,25);
+                else {
+                    Intent intent = new Intent(RegistActivity.this, RegistNextActivity.class);
+                    intent.putExtra("phone", phone_num);
+                    startActivityForResult(intent, 25);
+                    phone_num = editText_phone.getText().toString();
+//                    mAsyncTaskManager.request(PHONE_REGIST,true,this);
+
+                }
                 break;
         }
     }
@@ -81,4 +121,60 @@ public class RegistActivity extends Activity implements View.OnClickListener{
 
         }
     }
+
+//    @Override
+//    public Object doInBackground(int requestCode, String parameter) throws HttpException {
+//        if (requestCode == PHONE_REGIST){
+//            try {
+//
+//                String login_url = MyAsynctask.HOST + MyAsynctask.Login;
+//                URL url = new URL(login_url);
+//                HashMap<String, String> map = new HashMap<>();
+//                map.put("PhoneNum", phone_num);
+//                if(phone_num == null){
+//                    Log.e("RSA",".......");
+//                }
+//                else
+//                    Log.e("RSA","----   ");
+//                Log.e("RSA","++++   "+phone_num);
+//                return HotyiHttpConnection.getInstance(getApplicationContext()).post(map, url);
+////                    return HotyiHttpConnection.getInstance(getApplicationContext()).post();
+//            } catch (Exception e) {
+//
+//            }
+//
+//        }
+//        return super.doInBackground(requestCode, parameter);
+//
+//    }
+//
+//    @Override
+//    public void onSuccess(int requestCode, Object result) {
+//        super.onSuccess(requestCode, result);
+//        if (requestCode == PHONE_REGIST){
+//            try {
+//                String str = result.toString();
+//                JSONObject jsonObject = new JSONObject(str);
+//                final PhoneRegistInfo phoneRegistInfo = new PhoneRegistInfo();
+//                phoneRegistInfo.setCode(Integer.valueOf(jsonObject.get("code").toString()));
+//                phoneRegistInfo.setResult_msg(jsonObject.get("result_msg").toString());
+//                phoneRegistInfo.setReturn_msg(jsonObject.get("retrun_msg").toString());
+//                if (phoneRegistInfo.getCode() == 1) {
+//                    Intent intent = new Intent(RegistActivity.this, RegistNextActivity.class);
+//                    intent.putExtra("phone", phone_num);
+//                    startActivityForResult(intent, 25);
+//                }if (phoneRegistInfo.getCode() == 2){
+//                    Toast.makeText(getApplicationContext(),phoneRegistInfo.getResult_msg(),Toast.LENGTH_SHORT).show();
+//                }
+//            }catch (Exception e){
+//                Log.e("LOGIN","  " +e.toString());
+//            }
+//        }
+//
+//    }
+//
+//    @Override
+//    public void onFailure(int requestCode, int state, Object result) {
+//        super.onFailure(requestCode, state, result);
+//    }
 }

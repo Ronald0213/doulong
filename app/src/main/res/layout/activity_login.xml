@@ -21,10 +21,10 @@
         android:id="@+id/edt_phone_num"
         android:layout_width="match_parent"
         android:layout_height="40dip"
-        android:gravity="center_vertical"
         android:layout_marginLeft="80dip"
         android:layout_marginRight="80dip"
         android:layout_marginTop="30dip"
+        android:gravity="center_vertical"
         android:hint="@string/print_phone_num" />
 
     <EditText

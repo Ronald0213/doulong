@@ -16,8 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hotyi.hotyi.R;
-import com.hotyi.hotyi.other.HotyiClass.LoginData;
-import com.hotyi.hotyi.other.HotyiClass.LoginInfo;
+import com.hotyi.hotyi.other.hotyiClass.LoginData;
+import com.hotyi.hotyi.other.hotyiClass.LoginInfo;
 import com.hotyi.hotyi.utils.HotyiHttpConnection;
 import com.hotyi.hotyi.utils.HttpException;
 import com.hotyi.hotyi.utils.MyAsynctask;

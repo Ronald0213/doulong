@@ -1,4 +1,4 @@
-package com.hotyi.hotyi.other.HotyiClass;
+package com.hotyi.hotyi.other.hotyiClass;
 
 /**
  * Created by HOTYI on 2017/8/21.

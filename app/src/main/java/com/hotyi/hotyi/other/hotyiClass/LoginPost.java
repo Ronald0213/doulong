@@ -1,4 +1,4 @@
-package com.hotyi.hotyi.other.HotyiClass;
+package com.hotyi.hotyi.other.hotyiClass;
 
 import java.io.Serializable;
 

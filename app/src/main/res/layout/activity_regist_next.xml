@@ -4,17 +4,20 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical">
+
     <ImageButton
+        android:id="@+id/regist_next_imgbtn_back"
         android:layout_width="60dip"
         android:layout_height="60dip"
-        android:background="@mipmap/login_back_2x"
+        android:layout_marginLeft="30dip"
         android:layout_marginTop="30dip"
-        android:layout_marginLeft="30dip"></ImageButton>
+        android:background="@mipmap/login_back_2x"></ImageButton>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dip"
-        android:gravity="center"
         android:layout_marginTop="40dip"
+        android:gravity="center"
         android:orientation="vertical">
 
         <ImageView
@@ -22,6 +25,7 @@
             android:layout_height="100dip"
             android:src="@mipmap/logo" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dip"
@@ -29,24 +33,31 @@
         android:layout_marginRight="80dip"
         android:layout_marginTop="60dip"
         android:orientation="horizontal">
+
         <EditText
+            android:id="@+id/regist_next_edt_code"
             android:layout_width="0dip"
-            android:layout_weight="19"
             android:layout_height="40dip"
-            android:maxLines="1"
+            android:layout_weight="19"
             android:gravity="center_vertical"
-            android:hint="请输入验证码" />
+            android:hint="请输入验证码"
+            android:inputType="number"
+            android:maxLength="6"
+            android:maxLines="1" />
+
         <TextView
+            android:id="@+id/regist_next_txt_getcode"
             android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="5"
-            android:text="获取"
             android:gravity="center"
-            android:textSize="18sp"
+            android:text="获取"
             android:textColor="#33ccff"
-            android:layout_height="match_parent" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <Button
+        android:id="@+id/regist_next_btn_next"
         android:layout_width="match_parent"
         android:layout_height="50dip"
         android:layout_gravity="center_horizontal"
