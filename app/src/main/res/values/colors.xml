@@ -9,4 +9,6 @@
     <color name="darkblue">#2c5093</color>
     <color name="darkblue_light">#3d62a7</color>
     <color name="blue">#52bfed</color>
+    <color name="line_color"> #c6d2e2</color>
+    <color name="btn_inside_color">#426b9f</color>
 </resources>

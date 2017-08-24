@@ -14,5 +14,7 @@
     <string name="title_activity_self_info">SelfInfoActivity</string>
     <string name="title_activity_wxentry">WXEntryActivity</string>
     <string name="title_activity_my_base">MyBaseActivity</string>
+    <string name="title_activity_new_friend_list">NewFriendListActivity</string>
+    <string name="title_activity_my_dialog">MyDialogActivity</string>
 
 </resources>

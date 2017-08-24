@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- 圆角边框 -->
+
+    <!-- 实心 背景色-->
+    <solid android:color="@color/btn_inside_color" />
+    <!-- 边框 颜色-->
+    <!--<stroke-->
+        <!--android:width="2dp"-->
+        <!--android:color="@color/line_color" />-->
+    <corners
+        android:bottomRightRadius="10dp" />
+    ></shape>
