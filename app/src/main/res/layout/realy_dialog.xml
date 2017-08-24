@@ -32,7 +32,7 @@
             android:layout_weight="1"
             android:background="@color/white"
             android:gravity="center"
-            android:text="testteststetse"
+            android:text="窗外的蝴蝶"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
