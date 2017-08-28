@@ -160,6 +160,9 @@ public class RegistNextActivity extends MyBaseActivity implements OnDataListener
             case R.id.regist_next_txt_getcode:
                     mAsyncTaskManager.request(GET_CODE,true,this);
                 break;
+            case R.id.regist_next_imgbtn_back:
+                finish();
+                break;
         }
     }
 }

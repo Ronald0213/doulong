@@ -5,12 +5,12 @@ import android.app.Activity;
 
 import com.hotyi.hotyi.R;
 
-public class MyIntegralActivity extends Activity {
+public class MyActivityActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_integral);
+        setContentView(R.layout.activity_my_activity);
     }
 
 }

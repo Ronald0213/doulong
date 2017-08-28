@@ -44,6 +44,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/my_account_id"
                 android:layout_width="0dip"
                 android:text="123456878"
                 android:textColor="@color/blue"
@@ -73,6 +74,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/my_account_phone"
                 android:layout_width="0dip"
                 android:text="123456878"
                 android:textColor="@color/blue"
@@ -101,6 +103,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/my_account_name"
                 android:layout_width="0dip"
                 android:text="123456878"
                 android:textColor="@color/blue"
@@ -123,6 +126,7 @@
             android:layout_marginLeft="15dip"
             android:background="@color/gray"></View>
         <LinearLayout
+            android:id="@+id/my_account_password"
             android:layout_width="match_parent"
             android:layout_height="40dip"
             android:layout_marginLeft="15dip"
@@ -157,6 +161,7 @@
             android:layout_marginLeft="15dip"
             android:background="@color/gray"></View>
         <LinearLayout
+            android:id="@+id/my_account_sex_click"
             android:layout_width="match_parent"
             android:layout_height="40dip"
             android:layout_marginLeft="15dip"
@@ -169,15 +174,18 @@
                 android:textSize="18sp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
+
             <TextView
+                android:id="@+id/my_account_sex"
                 android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dip"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
                 android:text="123456878"
                 android:textColor="@color/blue"
-                android:textSize="18sp"
-                android:gravity="center_vertical|right"
-                android:layout_marginRight="5dip"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:textSize="18sp" />
+
             <ImageView
                 android:layout_width="15dip"
                 android:layout_height="match_parent"

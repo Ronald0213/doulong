@@ -19,5 +19,12 @@
     <string name="title_activity_private_chat_detail">PrivateChatDetailActivity</string>
     <string name="title_activity_group_detail">GroupDetailActivity</string>
     <string name="title_activity_discussion_detail">DiscussionDetailActivity</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_feed_back">FeedBackActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_my_game_circle">MyGameCircleActivity</string>
+    <string name="title_activity_my_activity">MyActivityActivity</string>
+    <string name="title_activity_my_game">MyGameActivity</string>
+    <string name="title_activity_my_code">MyCodeActivity</string>
 
 </resources>

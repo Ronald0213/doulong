@@ -6,7 +6,8 @@ package com.hotyi.hotyi.utils;
 
 public class MyAsynctask {
     //  接口
-    public static final String HOST = "https://app.muops.com/";
+    public static final String HOST = "https://appapixtest.2blong.com/";//测试host
+//    public static final String HOST = "https://app.muops.com/";//正式host
     public static final String Regist = "AppLoginReg/Reg";//注册接口
     public static final String Login = "AppLoginReg/Login";//登陆接口
     public static final String SendRegistCode = "AppLoginReg/RegCode";//发送注册验证码

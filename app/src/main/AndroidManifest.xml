@@ -70,6 +70,7 @@
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
@@ -92,9 +93,9 @@
             android:name=".activity.ConversationActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
@@ -102,14 +103,12 @@
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
-
         </activity>
-
         <activity android:name=".activity.RegistActivity" />
         <activity android:name=".activity.RegistNextActivity" />
         <activity android:name=".activity.MyAccountActivity" />
         <activity
-            android:name=".activity.MyIntegralActivity"
+            android:name=".activity.MyProfitActivity"
             android:label="@string/title_activity_my_integral" />
         <activity
             android:name=".activity.GameHubActivity"
@@ -139,7 +138,7 @@
             android:label="@string/title_activity_group_detail" />
         <activity
             android:name=".activity.DiscussionDetailActivity"
-            android:label="@string/title_activity_discussion_detail"></activity>
+            android:label="@string/title_activity_discussion_detail" />
 
         <service
             android:name="io.rong.imlib.ipc.RongService"
@@ -147,7 +146,6 @@
         <service android:name="io.rong.imlib.ReConnectService" />
 
         <receiver android:name="io.rong.imlib.ConnectChangeReceiver" />
-
         <receiver
             android:name="io.rong.imlib.HeartbeatReceiver"
             android:process=":ipc" />
@@ -156,8 +154,27 @@
             android:name="io.rong.imkit.widget.provider.TakingPicturesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
-
-
+        <activity
+            android:name=".activity.AboutActivity"
+            android:label="@string/title_activity_about" />
+        <activity
+            android:name=".activity.FeedBackActivity"
+            android:label="@string/title_activity_feed_back" />
+        <activity
+            android:name=".activity.SettingActivity"
+            android:label="@string/title_activity_setting" />
+        <activity
+            android:name=".activity.MyGameCircleActivity"
+            android:label="@string/title_activity_my_game_circle" />
+        <activity
+            android:name=".activity.MyActivityActivity"
+            android:label="@string/title_activity_my_activity" />
+        <activity
+            android:name=".activity.MyGameActivity"
+            android:label="@string/title_activity_my_game" />
+        <activity
+            android:name=".activity.MyCodeActivity"
+            android:label="@string/title_activity_my_code"></activity>
     </application>
 
 </manifest>

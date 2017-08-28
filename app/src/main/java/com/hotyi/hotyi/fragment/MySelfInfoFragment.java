@@ -1,109 +1,134 @@
 package com.hotyi.hotyi.fragment;
 
+
+import android.app.Notification;
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 
 import com.hotyi.hotyi.R;
+import com.hotyi.hotyi.activity.AboutActivity;
+import com.hotyi.hotyi.activity.FeedBackActivity;
+import com.hotyi.hotyi.activity.MyAccountActivity;
+import com.hotyi.hotyi.activity.MyActivityActivity;
+import com.hotyi.hotyi.activity.MyCodeActivity;
+import com.hotyi.hotyi.activity.MyGameActivity;
+import com.hotyi.hotyi.activity.MyGameCircleActivity;
+import com.hotyi.hotyi.activity.MyProfitActivity;
+import com.hotyi.hotyi.activity.SettingActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MySelfInfoFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link MySelfInfoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class MySelfInfoFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import io.rong.imageloader.utils.L;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class MySelfInfoFragment extends Fragment implements View.OnClickListener{
 
-    private OnFragmentInteractionListener mListener;
+    private TextView mySelfName,mySelfHotyiId;
+    private LinearLayout mySelfCode,mySelfAccount,mySelfGame,mySelfProfit,mySelfActivity,mySelfGameCircle,
+                            mySelfSetting,mySelfFeedback,mySelfAbout,mySelfPortraitChange;
+    private ImageView  mySelfPortrait,mySelfSex;
+    private Context mcontext;
+    public MySelfInfoFragment(){}
 
-    public MySelfInfoFragment() {
-        // Required empty public constructor
+    Handler myAccountHandler =  new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_my_self_info,container,false);
+        initView(view);
+        new MyAccountInfoThread().start();
+        return view;
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MySelfInfoFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MySelfInfoFragment newInstance(String param1, String param2) {
-        MySelfInfoFragment fragment = new MySelfInfoFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public void initView(View view){
+
+        mySelfName = (TextView)view.findViewById(R.id.my_self_name);
+        mySelfHotyiId = (TextView)view.findViewById(R.id.my_self_hotyi_id);
+        mySelfSex = (ImageView)view.findViewById(R.id.my_self_sex);
+        mySelfPortrait = (ImageView)view.findViewById(R.id.my_self_portrait);
+        mySelfCode = (LinearLayout)view.findViewById(R.id.my_self_code);
+        mySelfAccount = (LinearLayout)view.findViewById(R.id.my_self_account);
+        mySelfGame = (LinearLayout)view.findViewById(R.id.my_self_game);
+        mySelfProfit = (LinearLayout)view.findViewById(R.id.my_self_profit);
+        mySelfActivity = (LinearLayout)view.findViewById(R.id.my_self_activity);
+        mySelfGame = (LinearLayout)view.findViewById(R.id.my_self_game);
+        mySelfGameCircle = (LinearLayout)view.findViewById(R.id.my_self_game_circle);
+        mySelfSetting = (LinearLayout)view.findViewById(R.id.my_self_setting);
+        mySelfFeedback = (LinearLayout)view.findViewById(R.id.my_self_feedback);
+        mySelfAbout = (LinearLayout)view.findViewById(R.id.my_self_about);
+        mySelfPortraitChange = (LinearLayout)view.findViewById(R.id.my_self_change_portrait);
+
+        mySelfPortraitChange.setOnClickListener(this);
+        mySelfAbout.setOnClickListener(this);
+        mySelfFeedback.setOnClickListener(this);
+        mySelfSetting.setOnClickListener(this);
+        mySelfGameCircle.setOnClickListener(this);
+        mySelfGame.setOnClickListener(this);
+        mySelfActivity.setOnClickListener(this);
+        mySelfProfit.setOnClickListener(this);
+        mySelfGame.setOnClickListener(this);
+        mySelfAccount.setOnClickListener(this);
+        mySelfCode.setOnClickListener(this);
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.my_self_code:
+                startActivity(new Intent(getContext().getApplicationContext(),MyCodeActivity.class));
+                break;
+            case R.id.my_self_account:
+                startActivity(new Intent(getContext().getApplicationContext(), MyAccountActivity.class));
+                break;
+            case R.id.my_self_game:
+                startActivity(new Intent(getContext().getApplicationContext(), MyGameActivity.class));
+                break;
+            case R.id.my_self_profit:
+                startActivity(new Intent(getContext().getApplicationContext(), MyProfitActivity.class));
+                break;
+            case R.id.my_self_activity:
+                startActivity(new Intent(getContext().getApplicationContext(), MyActivityActivity.class));
+                break;
+            case R.id.my_self_game_circle:
+                startActivity(new Intent(getContext().getApplicationContext(), MyGameCircleActivity.class));
+                break;
+            case R.id.my_self_setting:
+                startActivity(new Intent(getContext().getApplicationContext(), SettingActivity.class));
+                break;
+            case R.id.my_self_feedback:
+                startActivity(new Intent(getContext().getApplicationContext(), FeedBackActivity.class));
+                break;
+            case R.id.my_self_about:
+                startActivity(new Intent(getContext().getApplicationContext(), AboutActivity.class));
+                break;
+            case R.id.my_self_change_portrait:
+//                startActivity(new Intent(getContext().getApplicationContext(),));
+                break;
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_self_info, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    class MyAccountInfoThread extends Thread{
+        @Override
+        public void run() {
+            super.run();
+            Message  msg = new Message();
+            msg.what = 1;
+            myAccountHandler.sendMessage(msg);
         }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 }

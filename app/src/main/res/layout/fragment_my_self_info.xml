@@ -32,6 +32,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/my_self_change_portrait"
                 android:layout_width="match_parent"
                 android:layout_height="80dip"
                 android:layout_marginTop="15dip"
@@ -39,6 +40,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/my_self_portrait"
                     android:layout_width="60dip"
                     android:layout_height="60dip"
                     android:layout_margin="10dip"
@@ -60,6 +62,7 @@
                         android:layout_weight="1">
 
                         <TextView
+                            android:id="@+id/my_self_name"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="bottom|left"
@@ -68,6 +71,7 @@
                             android:textSize="20sp" />
 
                         <ImageView
+                            android:id="@+id/my_self_sex"
                             android:layout_width="20dip"
                             android:layout_height="20dip"
                             android:layout_marginTop="7dip"
@@ -75,6 +79,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/my_self_hotyi_id"
                         android:layout_width="match_parent"
                         android:layout_height="0dip"
                         android:layout_marginLeft="3dip"
@@ -106,6 +111,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/my_self_code"
                 android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:layout_marginTop="10dip"
@@ -145,6 +151,7 @@
                 android:background="#ffffff"></view>
 
             <LinearLayout
+                android:id="@+id/my_self_account"
                 android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:background="#ffffff"
@@ -183,6 +190,7 @@
                 android:background="#ffffff"></view>
 
             <LinearLayout
+                android:id="@+id/my_self_game"
                 android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:background="#ffffff"
@@ -216,6 +224,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/my_self_profit"
                 android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:layout_marginTop="10dip"
@@ -255,6 +264,7 @@
                 android:background="#ffffff"></view>
 
             <LinearLayout
+                android:id="@+id/my_self_activity"
                 android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:background="#ffffff"
@@ -293,6 +303,7 @@
                 android:background="#ffffff"></view>
 
             <LinearLayout
+                android:id="@+id/my_self_game_circle"
                 android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:background="#ffffff"
@@ -326,6 +337,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/my_self_setting"
                 android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:layout_marginTop="10dip"
@@ -360,6 +372,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/my_self_feedback"
                 android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:layout_marginTop="10dip"
@@ -399,6 +412,7 @@
                 android:background="#ffffff"></view>
 
             <LinearLayout
+                android:id="@+id/my_self_about"
                 android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:background="#ffffff"

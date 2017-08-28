@@ -23,6 +23,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/find_frg_game_circle"
         android:layout_width="match_parent"
         android:layout_height="60dip"
         android:background="#ffffff"
@@ -53,6 +54,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/find_frg_game_talent"
         android:layout_width="match_parent"
         android:layout_height="60dip"
         android:layout_marginTop="15dip"
@@ -61,19 +63,22 @@
         <ImageView
             android:layout_width="50dip"
             android:layout_height="50dip"
-            android:background="@mipmap/find_youxiquan_2x"
+            android:background="@mipmap/find_darenzuanshi_3x"
             android:layout_margin="5dip"/>
+
         <TextView
+            android:id="@+id/textView"
             android:layout_width="0dip"
-            android:layout_marginTop="5dip"
+            android:layout_height="match_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="15dip"
-            android:text="游戏达人"
+            android:layout_marginTop="5dip"
+            android:layout_weight="4"
             android:gravity="center_vertical"
+            android:text="游戏达人"
             android:textColor="#000000"
-            android:textSize="18sp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"/>
+            android:textSize="18sp" />
+
         <ImageView
             android:layout_width="0dip"
             android:layout_height="match_parent"
@@ -83,6 +88,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/find_frg_game_code"
         android:layout_width="match_parent"
         android:layout_height="60dip"
         android:layout_marginTop="15dip"
@@ -91,19 +97,22 @@
         <ImageView
             android:layout_width="50dip"
             android:layout_height="50dip"
-            android:background="@mipmap/find_youxiquan_2x"
+            android:background="@mipmap/find_saomiaoerweima_3x"
             android:layout_margin="5dip"/>
+
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="0dip"
-            android:layout_marginTop="5dip"
+            android:layout_height="match_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="15dip"
-            android:text="扫描二维码"
+            android:layout_marginTop="5dip"
+            android:layout_weight="4"
             android:gravity="center_vertical"
+            android:text="扫描二维码"
             android:textColor="#000000"
-            android:textSize="18sp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"/>
+            android:textSize="18sp" />
+
         <ImageView
             android:layout_width="0dip"
             android:layout_height="match_parent"
