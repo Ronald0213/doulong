@@ -16,5 +16,8 @@
     <string name="title_activity_my_base">MyBaseActivity</string>
     <string name="title_activity_new_friend_list">NewFriendListActivity</string>
     <string name="title_activity_my_dialog">MyDialogActivity</string>
+    <string name="title_activity_private_chat_detail">PrivateChatDetailActivity</string>
+    <string name="title_activity_group_detail">GroupDetailActivity</string>
+    <string name="title_activity_discussion_detail">DiscussionDetailActivity</string>
 
 </resources>

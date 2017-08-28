@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/darkblue"
-    tools:context="com.hotyi.hotyi.activity.MyIntegral">
+    tools:context="com.hotyi.hotyi.activity.MyIntegralActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dip"

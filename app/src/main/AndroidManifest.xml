@@ -67,7 +67,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="cn.rongcloud.im"
+                    android:pathPrefix="/push_message"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait"
@@ -78,11 +88,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.ConversationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="cn.rongcloud.im"
+                    android:pathPrefix="/conversation/"
+                    android:scheme="rong" />
+            </intent-filter>
+
+        </activity>
+
         <activity android:name=".activity.RegistActivity" />
         <activity android:name=".activity.RegistNextActivity" />
         <activity android:name=".activity.MyAccountActivity" />
         <activity
-            android:name=".activity.MyIntegral"
+            android:name=".activity.MyIntegralActivity"
             android:label="@string/title_activity_my_integral" />
         <activity
             android:name=".activity.GameHubActivity"
@@ -102,8 +129,35 @@
             android:label="@string/title_activity_new_friend_list" />
         <activity
             android:name=".activity.MyDialogActivity"
-            android:theme="@style/dialog"
-            android:label="@string/title_activity_my_dialog"></activity>
+            android:label="@string/title_activity_my_dialog"
+            android:theme="@style/dialog" />
+        <activity
+            android:name=".activity.PrivateChatDetailActivity"
+            android:label="@string/title_activity_private_chat_detail" />
+        <activity
+            android:name=".activity.GroupDetailActivity"
+            android:label="@string/title_activity_group_detail" />
+        <activity
+            android:name=".activity.DiscussionDetailActivity"
+            android:label="@string/title_activity_discussion_detail"></activity>
+
+        <service
+            android:name="io.rong.imlib.ipc.RongService"
+            android:process=":ipc" />
+        <service android:name="io.rong.imlib.ReConnectService" />
+
+        <receiver android:name="io.rong.imlib.ConnectChangeReceiver" />
+
+        <receiver
+            android:name="io.rong.imlib.HeartbeatReceiver"
+            android:process=":ipc" />
+
+        <activity
+            android:name="io.rong.imkit.widget.provider.TakingPicturesActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+
+
     </application>
 
 </manifest>

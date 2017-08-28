@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Users\HOTYI\Desktop\Project\Hotyi\IMKit\src\main\assets"/><source path="C:\Users\HOTYI\Desktop\Project\Hotyi\IMKit\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\Users\HOTYI\Desktop\Project\Hotyi\IMKit\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\Users\Administrator\Desktop\project\doulong\IMKit\src\main\assets"/><source path="C:\Users\Administrator\Desktop\project\doulong\IMKit\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\Users\Administrator\Desktop\project\doulong\IMKit\src\debug\assets"/></dataSet></merger>

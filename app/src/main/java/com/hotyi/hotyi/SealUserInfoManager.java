@@ -20,6 +20,7 @@ import com.hotyi.hotyi.other.response.GetGroupMemberResponse;
 import com.hotyi.hotyi.other.response.GetGroupResponse;
 import com.hotyi.hotyi.other.response.GetTokenResponse;
 import com.hotyi.hotyi.other.response.UserRelationshipResponse;
+import com.hotyi.hotyi.utils.HotyiHttpConnection;
 import com.hotyi.hotyi.utils.HttpException;
 import com.hotyi.hotyi.utils.async.AsyncTaskManager;
 import com.hotyi.hotyi.utils.async.OnDataListener;
@@ -33,8 +34,12 @@ import com.hotyi.hotyi.utils.db.Groups;
 import com.hotyi.hotyi.utils.db.GroupsDao;
 import com.hotyi.hotyi.utils.db.UserInfoBean;
 
+import org.json.JSONObject;
+
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -91,9 +96,9 @@ public class SealUserInfoManager implements OnDataListener {
     private static final int ALL = 27;//11011
 
     private static SealUserInfoManager sInstance;
-//    private final Context mContext;
-//    private final AsyncTaskManager mAsyncTaskManager;
-    //private final SealAction action;
+    private final Context mContext;
+    private final AsyncTaskManager mAsyncTaskManager;
+//    private final SealAction action;
     private DBManager mDBManager;
     private Handler mWorkHandler;
     private HandlerThread mWorkThread;
@@ -112,19 +117,19 @@ public class SealUserInfoManager implements OnDataListener {
         return sInstance;
     }
 
-//    public SealUserInfoManager(Context context) {
-//        mContext = context;
-//        mAsyncTaskManager = AsyncTaskManager.getInstance(mContext);
-//        sp = context.getSharedPreferences("config", Context.MODE_PRIVATE);
-//       // action = new SealAction(mContext);
-//        mHandler = new Handler(Looper.getMainLooper());
-//        mGroupsList = null;
-//    }
+    public SealUserInfoManager(Context context) {
+        mContext = context;
+        mAsyncTaskManager = AsyncTaskManager.getInstance(mContext);
+        sp = context.getSharedPreferences("config", Context.MODE_PRIVATE);
+       // action = new SealAction(mContext);
+        mHandler = new Handler(Looper.getMainLooper());
+        mGroupsList = null;
+    }
 
-//    public static void init(Context context) {
-//        RLog.d(TAG, "SealUserInfoManager init");
-//        sInstance = new SealUserInfoManager(context);
-//    }
+    public static void init(Context context) {
+        RLog.d(TAG, "SealUserInfoManager init");
+        sInstance = new SealUserInfoManager(context);
+    }
 
 //    /**
 //     * 修改数据库的存贮路径为.../appkey/userID/,
@@ -727,21 +732,21 @@ public class SealUserInfoManager implements OnDataListener {
 //        }
 //    }
 
-//    public void addFriend(final Friend friend) {
-//        mWorkHandler.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                if (mFriendDao != null) {
-//                    if (friend != null) {
-//                        if (friend.getPortraitUri() == null || TextUtils.isEmpty(friend.getPortraitUri().toString())) {
-//                            friend.setPortraitUri(Uri.parse(getPortrait(friend)));
-//                        }
-//                        mFriendDao.insertOrReplace(friend);
-//                    }
-//                }
-//            }
-//        });
-//    }
+    public void addFriend(final Friend friend) {
+        mWorkHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (mFriendDao != null) {
+                    if (friend != null) {
+                        if (friend.getPortraitUri() == null || TextUtils.isEmpty(friend.getPortraitUri().toString())) {
+                            friend.setPortraitUri(Uri.parse(getPortrait(friend)));
+                        }
+                        mFriendDao.insertOrReplace(friend);
+                    }
+                }
+            }
+        });
+    }
 
 //    public void addGroup(final Groups groups) {
 //        mWorkHandler.post(new Runnable() {
@@ -854,18 +859,18 @@ public class SealUserInfoManager implements OnDataListener {
 //    }
 
 
-//    /**
-//     * 删除一个群组里的所有群成员
-//     *
-//     * @param groupID 群组ID
-//     */
-//    private void syncDeleteGroupMembers(String groupID) {
-//        if (mGroupMemberDao != null) {
-//            mGroupMemberDao.queryBuilder()
-//                    .where(GroupMemberDao.Properties.GroupId.eq(groupID))
-//                    .buildDelete().executeDeleteWithoutDetachingEntities();
-//        }
-//    }
+    /**
+     * 删除一个群组里的所有群成员
+     *
+     * @param groupID 群组ID
+     */
+    private void syncDeleteGroupMembers(String groupID) {
+        if (mGroupMemberDao != null) {
+            mGroupMemberDao.queryBuilder()
+                    .where(GroupMemberDao.Properties.GroupId.eq(groupID))
+                    .buildDelete().executeDeleteWithoutDetachingEntities();
+        }
+    }
 
 //    /**
 //     * 同步接口,从server获取的群成员信息插入数据库,目前只有同步接口,如果需要可以加异步接口
@@ -1040,83 +1045,91 @@ public class SealUserInfoManager implements OnDataListener {
 //        });
 //    }
 
-//    /**
-//     * 同步获取群组成员信息
-//     *
-//     * @param groupID 群组ID
-//     * @return List<GroupMember> 群组成员列表
-//     */
-//    public List<GroupMember> getGroupMembers(String groupID) {
-//        if (TextUtils.isEmpty(groupID)) {
-//            return null;
-//        } else {
-//            if (mGroupMemberDao != null) {
-//                return mGroupMemberDao.queryBuilder().
-//                        where(GroupMemberDao.Properties.GroupId.eq(groupID)).list();
-//            } else {
-//                return null;
-//            }
-//        }
-//    }
+    /**
+     * 同步获取群组成员信息
+     *
+     * @param groupID 群组ID
+     * @return List<GroupMember> 群组成员列表
+     */
+    public List<GroupMember> getGroupMembers(String groupID) {
+        if (TextUtils.isEmpty(groupID)) {
+            return null;
+        } else {
+            if (mGroupMemberDao != null) {
+                return mGroupMemberDao.queryBuilder().
+                        where(GroupMemberDao.Properties.GroupId.eq(groupID)).list();
+            } else {
+                return null;
+            }
+        }
+    }
 
-//    /**
-//     * 同步获取群组成员信息
-//     *
-//     * @param userId 用户Id
-//     * @return List<GroupMember> 群组成员列表
-//     */
-//    public List<GroupMember> getGroupMembersWithUserId(String userId) {
-//        if (TextUtils.isEmpty(userId)) {
-//            return null;
-//        } else {
-//            if (mGroupMemberDao != null) {
-//                return mGroupMemberDao.queryBuilder().
-//                        where(GroupMemberDao.Properties.UserId.eq(userId)).list();
-//            } else {
-//                return null;
-//            }
-//        }
-//    }
+    /**
+     * 同步获取群组成员信息
+     *
+     * @param userId 用户Id
+     * @return List<GroupMember> 群组成员列表
+     */
+    public List<GroupMember> getGroupMembersWithUserId(String userId) {
+        if (TextUtils.isEmpty(userId)) {
+            return null;
+        } else {
+            if (mGroupMemberDao != null) {
+                return mGroupMemberDao.queryBuilder().
+                        where(GroupMemberDao.Properties.UserId.eq(userId)).list();
+            } else {
+                return null;
+            }
+        }
+    }
 
-//    /**
-//     * 异步获取群组成员信息
-//     *
-//     * @param groupID  群组ID
-//     * @param callback 获取群组成员信息的回调
-//     */
-//    public void getGroupMembers(final String groupID, final ResultCallback<List<GroupMember>> callback) {
-//        if (TextUtils.isEmpty(groupID)) {
-//            if (callback != null) {
-//                callback.onError(null);
-//            }
-//        } else {
-//            mWorkHandler.post(new Runnable() {
-//                @Override
-//                public void run() {
-//                    List<GroupMember> groupMembersList;
-//                    if (!doingGetAllUserInfo && (!hasGetAllGroupMembers() || hasGetPartGroupMembers())) {
-//                        if (!isNetworkConnected()) {
-//                            onCallBackFail(callback);
-//                            return;
-//                        }
-//                        try {
-//                            groupMembersList = pullGroupMembers(groupID);
-//                            sp.edit().putInt("getAllUserInfoState", mGetAllUserInfoState).apply();
-//                        } catch (HttpException e) {
-//                            onCallBackFail(callback);
-////                            NLog.d(TAG, "getGroupMembers occurs HttpException e=" + e.toString() + "mGetAllUserInfoState=" + mGetAllUserInfoState);
-//                            return;
-//                        }
-//                    } else {
-//                        groupMembersList = getGroupMembers(groupID);
-//                    }
-//                    if (callback != null) {
-//                        callback.onCallback(groupMembersList);
-//                    }
-//                }
-//            });
-//        }
-//    }
+    /**
+     * 异步获取群组成员信息
+     *
+     * @param groupID  群组ID
+     * @param callback 获取群组成员信息的回调
+     */
+    public void getGroupMembers(final String groupID, final ResultCallback<List<GroupMember>> callback) {
+        if (TextUtils.isEmpty(groupID)) {
+            if (callback != null) {
+                callback.onError(null);
+            }
+        } else {
+            mWorkHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    List<GroupMember> groupMembersList = new ArrayList<GroupMember>();
+                    if (!doingGetAllUserInfo && (!hasGetAllGroupMembers() || hasGetPartGroupMembers())) {
+                        if (!isNetworkConnected()) {
+                            onCallBackFail(callback);
+                            return;
+                        }
+                        try {
+                            // 未具体实现  暂用于app能运行。
+                            HashMap<String,String> map = new HashMap<String, String>();
+                            map.put("group","test");
+                            String group_info = HotyiHttpConnection.getInstance(mContext).post(map, new URL("sssss"));
+                            JSONObject jsonObject = new JSONObject(group_info);
+
+                            groupMembersList.add(new GroupMember(jsonObject.getString("id"),jsonObject.getString("id"),Uri.parse(jsonObject.getString("uri"))));
+                            sp.edit().putInt("getAllUserInfoState", mGetAllUserInfoState).apply();
+                        } catch (HttpException e) {
+                            onCallBackFail(callback);
+//                            NLog.d(TAG, "getGroupMembers occurs HttpException e=" + e.toString() + "mGetAllUserInfoState=" + mGetAllUserInfoState);
+                            return;
+                        }catch (Exception e){
+                            return;
+                        }
+                    } else {
+                        groupMembersList = getGroupMembers(groupID);
+                    }
+                    if (callback != null) {
+                        callback.onCallback(groupMembersList);
+                    }
+                }
+            });
+        }
+    }
 
 //    /**
 //     * 同步获取黑名单列表信息
@@ -1355,30 +1368,30 @@ public class SealUserInfoManager implements OnDataListener {
 //        }
 //    }
 
-//    public boolean isFriendsRelationship(String userID) {
-//        if (TextUtils.isEmpty(userID))
-//            return false;
-//        else
-//            return getFriendByID(userID) != null;
-//    }
+    public boolean isFriendsRelationship(String userID) {
+        if (TextUtils.isEmpty(userID))
+            return false;
+        else
+            return getFriendByID(userID) != null;
+    }
 
-//    /**
-//     * 同步接口,获取1个好友信息
-//     *
-//     * @param userID 好友ID
-//     * @return Friend 好友信息
-//     */
-////    public Friend getFriendByID(String userID) {
-////        if (TextUtils.isEmpty(userID)) {
-////            return null;
-////        } else {
-////            if (mFriendDao != null) {
-////                return mFriendDao.queryBuilder().where(FriendDao.Properties.UserId.eq(userID)).unique();
-////            } else {
-////                return null;
-////            }
-////        }
-////    }
+    /**
+     * 同步接口,获取1个好友信息
+     *
+     * @param userID 好友ID
+     * @return Friend 好友信息
+     */
+    public Friend getFriendByID(String userID) {
+        if (TextUtils.isEmpty(userID)) {
+            return null;
+        } else {
+            if (mFriendDao != null) {
+                return mFriendDao.queryBuilder().where(FriendDao.Properties.UserId.eq(userID)).unique();
+            } else {
+                return null;
+            }
+        }
+    }
 //
 ////    /**
 ////     * 异步接口,获取1个好友信息
@@ -1556,49 +1569,49 @@ public class SealUserInfoManager implements OnDataListener {
 //     *
 //     * @param <T> 声明一个泛型 T。
 //     */
-//    public static abstract class ResultCallback<T> {
-//
-//        public static class Result<T> {
-//            public T t;
-//        }
-//
-//        public ResultCallback() {
-//
-//        }
-//
-//        /**
-//         * 成功时回调。
-//         *
-//         * @param t 已声明的类型。
-//         */
-//        public abstract void onSuccess(T t);
-//
-//        /**
-//         * 错误时回调。
-//         *
-//         * @param errString 错误提示
-//         */
-//        public abstract void onError(String errString);
-//
-//
-//        public void onFail(final String errString) {
-//            mHandler.post(new Runnable() {
-//                @Override
-//                public void run() {
-//                    onError(errString);
-//                }
-//            });
-//        }
-//
-//        public void onCallback(final T t) {
-//            mHandler.post(new Runnable() {
-//                @Override
-//                public void run() {
-//                    onSuccess(t);
-//                }
-//            });
-//        }
-//    }
+    public static abstract class ResultCallback<T> {
+
+        public static class Result<T> {
+            public T t;
+        }
+
+        public ResultCallback() {
+
+        }
+
+        /**
+         * 成功时回调。
+         *
+         * @param t 已声明的类型。
+         */
+        public abstract void onSuccess(T t);
+
+        /**
+         * 错误时回调。
+         *
+         * @param errString 错误提示
+         */
+        public abstract void onError(String errString);
+
+
+        public void onFail(final String errString) {
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    onError(errString);
+                }
+            });
+        }
+
+        public void onCallback(final T t) {
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    onSuccess(t);
+                }
+            });
+        }
+    }
 
 //    private List<GroupMember> setCreatedToTop(List<GetGroupMemberResponse.ResultEntity> groupMember, String groupID) {
 //        List<GroupMember> newList = new ArrayList<>();
@@ -1646,20 +1659,20 @@ public class SealUserInfoManager implements OnDataListener {
 //        return (mGetAllUserInfoState & FRIEND) != 0;
 //    }
 //
-//    private boolean hasGetGroups() {
-//        return (mGetAllUserInfoState & GROUPS) != 0;
-//    }
-//
-//    private boolean hasGetAllGroupMembers() {
-//        return ((mGetAllUserInfoState & GROUPMEMBERS) != 0)
-//                && ((mGetAllUserInfoState & PARTGROUPMEMBERS) == 0);
-//    }
-//
-//    private boolean hasGetPartGroupMembers() {
-//        return ((mGetAllUserInfoState & GROUPMEMBERS) == 0)
-//                && ((mGetAllUserInfoState & PARTGROUPMEMBERS) != 0);
-//    }
-//
+    private boolean hasGetGroups() {
+        return (mGetAllUserInfoState & GROUPS) != 0;
+    }
+
+    private boolean hasGetAllGroupMembers() {
+        return ((mGetAllUserInfoState & GROUPMEMBERS) != 0)
+                && ((mGetAllUserInfoState & PARTGROUPMEMBERS) == 0);
+    }
+
+    private boolean hasGetPartGroupMembers() {
+        return ((mGetAllUserInfoState & GROUPMEMBERS) == 0)
+                && ((mGetAllUserInfoState & PARTGROUPMEMBERS) != 0);
+    }
+
 //    private boolean hasGetBlackList() {
 //        return (mGetAllUserInfoState & BLACKLIST) != 0;
 //    }
@@ -1674,18 +1687,18 @@ public class SealUserInfoManager implements OnDataListener {
 //        mGetAllUserInfoState |= GROUPMEMBERS;
 //    }
 //
-//    private void onCallBackFail(ResultCallback<?> callback) {
-//        if (callback != null) {
-//            callback.onFail(null);
-//        }
-//    }
-//
-//    private boolean isNetworkConnected() {
-//        ConnectivityManager cm = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-//        NetworkInfo ni = cm.getActiveNetworkInfo();
-//        return ni != null && ni.isConnectedOrConnecting();
-//    }
-//
+    private void onCallBackFail(ResultCallback<?> callback) {
+        if (callback != null) {
+            callback.onFail(null);
+        }
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        return ni != null && ni.isConnectedOrConnecting();
+    }
+
 //    /**
 //     * app中获取用户头像的接口,此前这部分调用分散在app显示头像的每处代码中,整理写一个方法使app代码更整洁
 //     * 这个方法不涉及读数据库,头像空时直接生成默认头像
@@ -1752,42 +1765,42 @@ public class SealUserInfoManager implements OnDataListener {
 //     * 获取用户头像,头像为空时会生成默认的头像,此默认头像可能已经存在数据库中,不重新生成
 //     * 先从缓存读,再从数据库读
 //     */
-//    private String getPortrait(Friend friend) {
-//        if (friend != null) {
-//            if (friend.getPortraitUri() == null || TextUtils.isEmpty(friend.getPortraitUri().toString())) {
-//                if (TextUtils.isEmpty(friend.getUserId())) {
-//                    return null;
-//                } else {
-//                    UserInfo userInfo = mUserInfoCache.get(friend.getUserId());
-//                    if (userInfo != null) {
-//                        if (userInfo.getPortraitUri() != null && !TextUtils.isEmpty(userInfo.getPortraitUri().toString())) {
-//                            return userInfo.getPortraitUri().toString();
-//                        } else {
-//                            mUserInfoCache.remove(friend.getUserId());
-//                        }
-//                    }
-//                    List<GroupMember> groupMemberList = getGroupMembersWithUserId(friend.getUserId());
-//                    if (groupMemberList != null && groupMemberList.size() > 0) {
-//                        GroupMember groupMember = groupMemberList.get(0);
-//                        if (groupMember.getPortraitUri() != null && !TextUtils.isEmpty(groupMember.getPortraitUri().toString()))
-//                            return groupMember.getPortraitUri().toString();
-//                    }
-//                    String portrait = RongGenerate.generateDefaultAvatar(friend.getName(), friend.getUserId());
-//                    //缓存信息kit会使用,备注名存在时需要缓存displayName
-//                    String name = friend.getName();
-//                    if (friend.isExitsDisplayName()) {
-//                        name = friend.getDisplayName();
-//                    }
-//                    userInfo = new UserInfo(friend.getUserId(), name, Uri.parse(portrait));
-//                    mUserInfoCache.put(friend.getUserId(), userInfo);
-//                    return portrait;
-//                }
-//            } else {
-//                return friend.getPortraitUri().toString();
-//            }
-//        }
-//        return null;
-//    }
+    private String getPortrait(Friend friend) {
+        if (friend != null) {
+            if (friend.getPortraitUri() == null || TextUtils.isEmpty(friend.getPortraitUri().toString())) {
+                if (TextUtils.isEmpty(friend.getUserId())) {
+                    return null;
+                } else {
+                    UserInfo userInfo = mUserInfoCache.get(friend.getUserId());
+                    if (userInfo != null) {
+                        if (userInfo.getPortraitUri() != null && !TextUtils.isEmpty(userInfo.getPortraitUri().toString())) {
+                            return userInfo.getPortraitUri().toString();
+                        } else {
+                            mUserInfoCache.remove(friend.getUserId());
+                        }
+                    }
+                    List<GroupMember> groupMemberList = getGroupMembersWithUserId(friend.getUserId());
+                    if (groupMemberList != null && groupMemberList.size() > 0) {
+                        GroupMember groupMember = groupMemberList.get(0);
+                        if (groupMember.getPortraitUri() != null && !TextUtils.isEmpty(groupMember.getPortraitUri().toString()))
+                            return groupMember.getPortraitUri().toString();
+                    }
+                    String portrait = RongGenerate.generateDefaultAvatar(friend.getName(), friend.getUserId());
+                    //缓存信息kit会使用,备注名存在时需要缓存displayName
+                    String name = friend.getName();
+                    if (friend.isExitsDisplayName()) {
+                        name = friend.getDisplayName();
+                    }
+                    userInfo = new UserInfo(friend.getUserId(), name, Uri.parse(portrait));
+                    mUserInfoCache.put(friend.getUserId(), userInfo);
+                    return portrait;
+                }
+            } else {
+                return friend.getPortraitUri().toString();
+            }
+        }
+        return null;
+    }
 //
 //    private Uri getPortrait(GroupMember groupMember) {
 //        if (groupMember != null) {
