@@ -130,6 +130,7 @@ public class RegistNextActivity extends MyBaseActivity implements OnDataListener
             case GET_CODE:
                 try {
                     String str = result.toString();
+                    Log.e("regist","111111     "+str);
                     JSONObject jsonObject = new JSONObject(str);
                     final LoginInfo myLoginInfo = new LoginInfo();
                     myLoginInfo.setCode(Integer.valueOf(jsonObject.get("code").toString()));
@@ -162,6 +163,39 @@ public class RegistNextActivity extends MyBaseActivity implements OnDataListener
                 break;
             case R.id.regist_next_imgbtn_back:
                 finish();
+                break;
+            case R.id.regist_next_btn_next:
+                String code = edtbtn_code.getText().toString();
+                try {
+
+                    String login_url = MyAsynctask.HOST + MyAsynctask.JudgeCode;
+                    URL url = new URL(login_url);
+                    HashMap<String, String> map = new HashMap<>();
+                    if(phone_num == null){
+                        Log.e("RSA",".......");
+                    }
+                    else{
+                        map.put("PhoneNum",phone_num);
+                        map.put("VCode",code);
+                        map.put("UserWay","1");
+                    }
+                    Log.e("RSA","----   "+phone_num.toString());
+                   String result =  HotyiHttpConnection.getInstance(getApplicationContext()).post(map, url);
+//                    return HotyiHttpConnection.getInstance(getApplicationContext()).post();
+                    JSONObject jsonObject = new JSONObject(result);
+
+                    int result_code = Integer.valueOf(jsonObject.getString("code").toString());
+                    String result_msg = jsonObject.get("result_msg").toString();
+                    String return_msg = jsonObject.get("retrun_msg").toString();
+                    if(result_code == 1){
+                        startActivity(new Intent(RegistNextActivity.this,RegistFinallyActivity.class));
+                    }else {
+                        Toast.makeText(RegistNextActivity.this,result_msg,Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (Exception e) {
+
+                }
                 break;
         }
     }

@@ -236,9 +236,11 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                         loginData.setHeadImageUrl(logindataJson.get("HeadImage").toString());
                         loginData.setAccountInfo(logindataJson.get("AccountInformation").toString());
                         myLoginInfo.setLoginData(loginData);
+                        String userInfo = RSAUtil.decryptByPrivateKey(logindataJson.get("AccountInformation").toString());
+                        Log.e("LOGIN","123+++"+userInfo);
                         if (myLoginInfo.getCode() == 1) {
                             String token = myLoginInfo.getLoginData().getRYToken();
-                            Log.e("login",token);
+                            Log.e("LOGIN",token);
                             RongIM.connect(token, new RongIMClient.ConnectCallback() {
 
                                 @Override
@@ -257,8 +259,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
 
                                 }
                             });
-                            String userInfo = RSAUtil.decryptByPrivateKey(logindataJson.get("AccountInformation").toString());
-                            Log.e("userinfo",userInfo);
+
                         }
                     }catch (Exception e){
                         Log.e("LOGIN","  " +e.toString());

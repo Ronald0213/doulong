@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:orientation="horizontal">
+
+        <com.hotyi.hotyi.utils.ui.HeadImageView
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:layout_marginLeft="15dip"
+            android:layout_marginTop="5dip"
+            android:background="@drawable/btn_white_corners"
+            android:src="@mipmap/head04"/>
+
+        <TextView
+            android:layout_width="60dip"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dip"
+            android:gravity="center_vertical"
+            android:text="公会"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dip"
+            android:gravity="right|center_vertical"
+            android:text="0"
+
+            android:textColor="@color/gray"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

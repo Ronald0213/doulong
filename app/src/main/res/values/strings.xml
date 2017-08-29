@@ -26,5 +26,6 @@
     <string name="title_activity_my_activity">MyActivityActivity</string>
     <string name="title_activity_my_game">MyGameActivity</string>
     <string name="title_activity_my_code">MyCodeActivity</string>
+    <string name="title_activity_regist_finally">RegistFinallyActivity</string>
 
 </resources>

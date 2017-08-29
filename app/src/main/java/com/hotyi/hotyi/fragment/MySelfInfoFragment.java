@@ -51,7 +51,7 @@ public class MySelfInfoFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_self_info,container,false);
         initView(view);
-        new MyAccountInfoThread().start();
+//        new MyAccountInfoThread().start();
         return view;
     }
 

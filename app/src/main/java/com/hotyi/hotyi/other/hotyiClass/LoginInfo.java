@@ -10,6 +10,15 @@ public class LoginInfo {
     String result_msg;
     LoginData loginData;
 
+    public LoginInfo(){}
+
+    public LoginInfo(int mcode,String mreturn_msg,String mresult_msg,LoginData mloginData){
+        this.code = mcode;
+        this.result_msg = mresult_msg;
+        this.return_msg = mreturn_msg;
+        this.loginData = mloginData;
+    }
+
     public int getCode() {
         return code;
     }

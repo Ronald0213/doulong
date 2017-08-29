@@ -6,21 +6,21 @@
     android:orientation="vertical"
     tools:context="com.hotyi.hotyi.fragment.MySelfInfoFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dip"
-        android:background="#3399ff"
-        android:orientation="vertical">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dip"-->
+        <!--android:background="#3399ff"-->
+        <!--android:orientation="vertical">-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="53dip"
-            android:gravity="center_horizontal|bottom"
-            android:text="我"
-            android:textColor="#ffffff"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="53dip"-->
+            <!--android:gravity="center_horizontal|bottom"-->
+            <!--android:text="我"-->
+            <!--android:textColor="#ffffff"-->
+            <!--android:textSize="24sp"-->
+            <!--android:textStyle="bold" />-->
+    <!--</LinearLayout>-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -145,10 +145,10 @@
                     android:layout_marginTop="10dip"/>
             </LinearLayout>
 
-            <view
-                android:layout_width="10dip"
-                android:layout_height="2px"
-                android:background="#ffffff"></view>
+            <!--<view-->
+                <!--android:layout_width="10dip"-->
+                <!--android:layout_height="2px"-->
+                <!--android:background="#ffffff"></view>-->
 
             <LinearLayout
                 android:id="@+id/my_self_account"
@@ -184,10 +184,10 @@
                     android:layout_marginTop="10dip"/>
             </LinearLayout>
 
-            <view
-                android:layout_width="10dip"
-                android:layout_height="2px"
-                android:background="#ffffff"></view>
+            <!--<view-->
+                <!--android:layout_width="10dip"-->
+                <!--android:layout_height="2px"-->
+                <!--android:background="#ffffff"></view>-->
 
             <LinearLayout
                 android:id="@+id/my_self_game"
@@ -258,10 +258,10 @@
                     android:layout_marginTop="10dip"/>
             </LinearLayout>
 
-            <view
-                android:layout_width="10dip"
-                android:layout_height="2px"
-                android:background="#ffffff"></view>
+            <!--<view-->
+                <!--android:layout_width="10dip"-->
+                <!--android:layout_height="2px"-->
+                <!--android:background="#ffffff"></view>-->
 
             <LinearLayout
                 android:id="@+id/my_self_activity"
@@ -297,10 +297,10 @@
                     android:layout_marginTop="10dip"/>
             </LinearLayout>
 
-            <view
-                android:layout_width="10dip"
-                android:layout_height="2px"
-                android:background="#ffffff"></view>
+            <!--<view-->
+                <!--android:layout_width="10dip"-->
+                <!--android:layout_height="2px"-->
+                <!--android:background="#ffffff"></view>-->
 
             <LinearLayout
                 android:id="@+id/my_self_game_circle"
@@ -406,10 +406,10 @@
                     android:layout_marginTop="10dip"/>
             </LinearLayout>
 
-            <view
-                android:layout_width="10dip"
-                android:layout_height="2px"
-                android:background="#ffffff"></view>
+            <!--<view-->
+                <!--android:layout_width="10dip"-->
+                <!--android:layout_height="2px"-->
+                <!--android:background="#ffffff"></view>-->
 
             <LinearLayout
                 android:id="@+id/my_self_about"

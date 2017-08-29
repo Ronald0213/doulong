@@ -67,7 +67,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        <activity android:name=".activity.MainActivity">
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -78,6 +80,12 @@
                     android:pathPrefix="/push_message"
                     android:scheme="rong" />
             </intent-filter>
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".activity.LoginActivity"
@@ -174,7 +182,10 @@
             android:label="@string/title_activity_my_game" />
         <activity
             android:name=".activity.MyCodeActivity"
-            android:label="@string/title_activity_my_code"></activity>
+            android:label="@string/title_activity_my_code" />
+        <activity
+            android:name=".activity.RegistFinallyActivity"
+            android:label="@string/title_activity_regist_finally"></activity>
     </application>
 
 </manifest>

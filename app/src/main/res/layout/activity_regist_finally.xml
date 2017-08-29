@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/regist_finally_imgbtn_back"
+        android:layout_width="60dip"
+        android:layout_height="60dip"
+        android:layout_marginLeft="30dip"
+        android:layout_marginTop="30dip"
+        android:background="@mipmap/login_back_2x"></ImageButton>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:layout_marginTop="40dip"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:src="@mipmap/logo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dip"
+        android:layout_marginRight="80dip"
+        android:layout_marginTop="40dip"
+        android:orientation="vertical">
+
+        <EditText
+            android:lines="1"
+            android:id="@+id/regist_finally_edt_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_weight="19"
+            android:gravity="center_vertical"
+            android:hint="请输入用户名"
+            android:inputType="number"
+            android:maxLength="6"
+            android:maxLines="1" />
+        <EditText
+            android:layout_marginTop="5dip"
+            android:id="@+id/regist_finally_edt_sex"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_weight="19"
+            android:gravity="center_vertical"
+            android:hint="请选择性别"
+            android:inputType="number"
+            android:maxLength="6"
+            android:maxLines="1" />
+        <EditText
+            android:layout_marginTop="5dip"
+            android:id="@+id/regist_finally_edt_password"
+            android:lines="1"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_weight="19"
+            android:gravity="center_vertical"
+            android:hint="请输入密码"
+            android:inputType="number"
+            android:maxLength="6"
+            android:maxLines="1" />
+        <EditText
+            android:layout_marginTop="5dip"
+            android:id="@+id/regist_finally_edt_sure_password"
+            android:lines="1"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_weight="19"
+            android:gravity="center_vertical"
+            android:hint="请再次输入密码"
+            android:inputType="number"
+            android:maxLength="6"
+            android:maxLines="1" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/regist_finally_btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="100dip"
+        android:layout_marginRight="100dip"
+        android:layout_marginTop="40dip"
+        android:background="@drawable/login_btn_shape"
+        android:text="下一步"
+        android:textColor="#ffffff"
+        android:textSize="24sp" />
+
+</LinearLayout>

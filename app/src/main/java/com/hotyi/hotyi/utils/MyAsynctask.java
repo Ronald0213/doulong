@@ -14,7 +14,7 @@ public class MyAsynctask {
     public static final String FogetCode = "AppLoginReg/ForgetCode";//发送忘记密码验证码
     public static final String SendNewPwd = "AppLoginReg/SendNewPwd";//发送忘记密码临时密码
     public static final String Logout = "AppLoginReg/Logout";//退出登陆
-    public static final String JudgeCode = "AppLoginReg/JudgeCode";//验证码验证登陆
+    public static final String JudgeCode = "AppLoginReg/JudgeCode";//验证码验证
     public static final String ThirdLogin = "AppLoginReg/ThirdLogin";//第三方登录
     public static final String ThirdReg = "AppLoginReg/ThirdReg";//第三方账号绑定
     public static final String TFirstLogin = "AppIndex/TFirstLogin";//首次线上积分
