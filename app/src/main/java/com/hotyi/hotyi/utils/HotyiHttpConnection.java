@@ -313,16 +313,20 @@ public class HotyiHttpConnection {
         Iterator iter = map.entrySet().iterator();
         String key = null;
         String val = null;
+        FormEncodingBuilder formEncodingBuilder = new FormEncodingBuilder();
         while (iter.hasNext()) {
             Map.Entry entry = (Map.Entry) iter.next();
             key = entry.getKey().toString();
             val = entry.getValue().toString();
+            if (key!=null)
+                 formEncodingBuilder.add(key,val);
+            Log.e("okhttp", key + "  "+ val);
         }
         if (key != null) {
             String result = null;
-            RequestBody body = new FormEncodingBuilder()
-                    .add(key, val)
+            RequestBody body = formEncodingBuilder
                     .build();
+
 
             Request request = new Request.Builder()
                     .url(url)

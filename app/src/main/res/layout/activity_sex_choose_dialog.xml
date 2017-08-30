@@ -27,7 +27,6 @@
             android:background="@color/line_color"></View>
 
         <TextView
-            android:id="@+id/dialog_text"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -49,7 +48,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/dialog_left_btn"
+            android:id="@+id/button"
             android:layout_width="0dip"
             android:layout_height="60dip"
             android:layout_weight="1"
@@ -60,7 +59,6 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/dialog_right_btn"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"

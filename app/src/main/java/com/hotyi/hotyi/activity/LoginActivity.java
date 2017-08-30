@@ -91,13 +91,15 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_login);
         android_id = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         regToWx();
-        sharedPreferences = getSharedPreferences("loginUser", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("config", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("AccountInformation",null);
-        editor.commit();
+        editor.apply();
+        String userID = sharedPreferences.getString("userID",null);
+        String loginToken = sharedPreferences.getString("loginToken",null);
         mAsyncTaskManager = AsyncTaskManager.getInstance(getApplicationContext());
         initView();
-        stringBuffer = new StringBuffer();
+
     }
 
     public void initView() {
@@ -136,14 +138,18 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                     return;
                 }
                 try {
-                   key_str = RSAUtil.encryptByPublicKey(stringBuffer.append(android_id).append("&").append(phone_num).append("&").append(password).append("&").append(System.currentTimeMillis()).toString());
+                    stringBuffer = new StringBuffer();
+                    key_str = RSAUtil.encryptByPublicKey(stringBuffer.append(android_id).append("&").append(phone_num).append("&").append(password).append("&").append(System.currentTimeMillis()).toString());
+                    Log.e("aaaaaaaaaaaaaaaaaaaa","   "+ key_str);
+                    String str = RSAUtil.decryptByPrivateKey(key_str);
+                    Log.e("aaaaaaaaaaaaaaaaaaaa","ssssssss"   +str);
                 }catch (Exception e){
                     Toast.makeText(LoginActivity.this,e.toString(),Toast.LENGTH_SHORT).show();
-                    Log.e("RSA0",e.toString());
+//                    Log.e("RSA0",e.toString());
                     break;
                 }
                 mAsyncTaskManager.request(LOGIN, true, this);
-                Log.e("LOGIN", "CLICK text run");
+//                Log.e("LOGIN", "CLICK text run");
                 break;
             case R.id.text_forget_password:
                 //  startActivity(new Intent(LoginActivity.this,Forg));
@@ -179,7 +185,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
 
     @Override
     public Object doInBackground(int requestCode, String parameter) throws HttpException {
-        Log.e("LOGIN", "CLICK text run  do in background");
+//        Log.e("LOGIN", "CLICK text run  do in background");
         switch (requestCode) {
             case LOGIN:
 
@@ -215,17 +221,18 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
             switch (requestCode) {
                 case LOGIN:
                     try {
-                        Log.e("LOGIN", "CLICK text run onSuccess"+"-------------");
+//                        Log.e("LOGIN", "CLICK text run onSuccess"+"-------------");
                         String str = result.toString();
                         JSONObject jsonObject = new JSONObject(str);
-                        Log.e("LOGIN", "CLICK text run onSuccess"+"111111");
+//                        Log.e("LOGIN", "CLICK text run onSuccess"+"111111");
+                        Log.e("LOGIN","   result   "+ str);
                         final LoginInfo myLoginInfo = new LoginInfo();
                         myLoginInfo.setCode(Integer.valueOf(jsonObject.get("code").toString()));
-                        Log.e("LOGIN", "CLICK text run onSuccess"+"2222222");
+//                        Log.e("LOGIN", "CLICK text run onSuccess"+"2222222");
                         myLoginInfo.setResult_msg(jsonObject.get("result_msg").toString());
                         myLoginInfo.setReturn_msg(jsonObject.get("retrun_msg").toString());
                         JSONObject logindataJson = new JSONObject(jsonObject.get("data").toString());
-                        Log.e("LOGIN", "CLICK text run onSuccess"+"3333334");
+//                        Log.e("LOGIN", "CLICK text run onSuccess"+"3333334");
                         if (myLoginInfo.getCode() == -1){
                             Toast.makeText(LoginActivity.this,"Test",Toast.LENGTH_SHORT).show();
                             return;
@@ -235,10 +242,13 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                         loginData.setNickName(logindataJson.get("NickName").toString());
                         loginData.setHeadImageUrl(logindataJson.get("HeadImage").toString());
                         loginData.setAccountInfo(logindataJson.get("AccountInformation").toString());
+                        loginData.setToken(logindataJson.get("Token").toString());
                         myLoginInfo.setLoginData(loginData);
-                        String userInfo = RSAUtil.decryptByPrivateKey(logindataJson.get("AccountInformation").toString());
-                        Log.e("LOGIN","123+++"+userInfo);
+
                         if (myLoginInfo.getCode() == 1) {
+                            Log.e("LOGIN","   " + "login done");
+//                            String userInfo = RSAUtil.decryptByPrivateKey(logindataJson.get("AccountInformation").toString());
+//                            Log.e("LOGIN","123+++   "+userInfo);
                             String token = myLoginInfo.getLoginData().getRYToken();
                             Log.e("LOGIN",token);
                             RongIM.connect(token, new RongIMClient.ConnectCallback() {

@@ -37,6 +37,7 @@ public class RegistNextActivity extends MyBaseActivity implements OnDataListener
     public AsyncTaskManager mAsyncTaskManager;
 
     private static final int GET_CODE = 25;
+    private static final int JUDE_CODE = 30;
 
 
 
@@ -119,6 +120,31 @@ public class RegistNextActivity extends MyBaseActivity implements OnDataListener
 
                 }
                 break;
+            case JUDE_CODE:
+                try {
+                    String code = edtbtn_code.getText().toString();
+
+                    Log.e("regist","code is " + code.toString());
+                    String login_url = MyAsynctask.HOST + MyAsynctask.JudgeCode;
+                    URL url = new URL(login_url);
+                    HashMap<String, String> map = new HashMap<>();
+                    if(phone_num == null){
+                        Log.e("RSA",".......");
+                    }
+                    else{
+                        map.put("PhoneNum",phone_num);
+                        map.put("UserWay","1");
+                        map.put("VCode",code.toString());
+                        Log.e("regist", phone_num+"  "+code);
+
+                    }
+                    Log.e("RSA","----   "+phone_num.toString());
+                    return HotyiHttpConnection.getInstance(getApplicationContext()).post(map, url);
+
+                } catch (Exception e) {
+                    Log.e("regist",e.toString());
+                }
+                break;
         }
         return null;
     }
@@ -145,7 +171,27 @@ public class RegistNextActivity extends MyBaseActivity implements OnDataListener
                     Log.e("LOGIN","  " +e.toString());
                 }
                 break;
+            case JUDE_CODE:
+               try {
+                   JSONObject jsonObject = new JSONObject(result.toString());
 
+                   int result_code = Integer.valueOf(jsonObject.getString("code").toString());
+                   Log.e("regist","    "+result);
+                   String result_msg = jsonObject.get("result_msg").toString();
+                   String return_msg = jsonObject.get("retrun_msg").toString();
+                   if(result_code == 1){
+                       Intent intent = new Intent(RegistNextActivity.this,RegistFinallyActivity.class);
+                       intent.putExtra("phoneNum",phone_num);
+                       intent.putExtra("code",edtbtn_code.getText().toString());
+                       startActivity(intent);
+                   }else {
+                       Toast.makeText(RegistNextActivity.this,result_msg,Toast.LENGTH_SHORT).show();
+                   }
+               }catch (Exception e){
+                   Log.e("regist",e.toString()+"   code");
+               }
+
+                break;
 
         }
     }
@@ -165,37 +211,7 @@ public class RegistNextActivity extends MyBaseActivity implements OnDataListener
                 finish();
                 break;
             case R.id.regist_next_btn_next:
-                String code = edtbtn_code.getText().toString();
-                try {
-
-                    String login_url = MyAsynctask.HOST + MyAsynctask.JudgeCode;
-                    URL url = new URL(login_url);
-                    HashMap<String, String> map = new HashMap<>();
-                    if(phone_num == null){
-                        Log.e("RSA",".......");
-                    }
-                    else{
-                        map.put("PhoneNum",phone_num);
-                        map.put("VCode",code);
-                        map.put("UserWay","1");
-                    }
-                    Log.e("RSA","----   "+phone_num.toString());
-                   String result =  HotyiHttpConnection.getInstance(getApplicationContext()).post(map, url);
-//                    return HotyiHttpConnection.getInstance(getApplicationContext()).post();
-                    JSONObject jsonObject = new JSONObject(result);
-
-                    int result_code = Integer.valueOf(jsonObject.getString("code").toString());
-                    String result_msg = jsonObject.get("result_msg").toString();
-                    String return_msg = jsonObject.get("retrun_msg").toString();
-                    if(result_code == 1){
-                        startActivity(new Intent(RegistNextActivity.this,RegistFinallyActivity.class));
-                    }else {
-                        Toast.makeText(RegistNextActivity.this,result_msg,Toast.LENGTH_SHORT).show();
-                    }
-
-                } catch (Exception e) {
-
-                }
+                mAsyncTaskManager.request(JUDE_CODE,true,this);
                 break;
         }
     }

@@ -7,7 +7,9 @@ import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
+
 import java.security.spec.X509EncodedKeySpec;
+import java.util.Arrays;
 
 import javax.crypto.Cipher;
 
@@ -22,12 +24,16 @@ public class RSAUtil {
     private  static final String public_key = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDgxOFIHXabcBxZOFBWz55WI18tQDTfHrU2IeJz6MVMgVv3yPXorrc8XucjPr16uMPy77qFGpJ2exOXpbzL0Rrmq9KzMDBdEWMttcppKVi+oTbz3xRGONyq3Gi22fNOiRPOOWO5NeuYMNNo7iV3egNgt2kHsW86/XAwB9Cbr0GUyQIDAQAB";
     private  static final String private_key = "MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAODE4UgddptwHFk4UFbPnlYjXy1ANN8etTYh4nPoxUyBW/fI9eiutzxe5yM+vXq4w/LvuoUaknZ7E5elvMvRGuar0rMwMF0RYy21ymkpWL6hNvPfFEY43KrcaLbZ806JE845Y7k165gw02juJXd6A2C3aQexbzr9cDAH0JuvQZTJAgMBAAECgYEAl9nrKUFehBz1ygEVpdCWdDNpdbTPA35Hhs7VouE7ijhK3dhS6mQ/PvYOyez1Lhftqg7zwED3ejwkPGuoZTpcJP62hauoZooR8XCAJ6ZHEZpuJEwUH6DUiujmitkXzXXkZ+DhFEvWzLY4AfiuOLv/Az+MHVHbofAl4F9BI0fmr0ECQQD62BAzNU2ePqYLzodLjjM4y1ndH/XrMhdeo7nhUY47vHOl5uxiE+KvXuuZ29kUH7hMsG/nUiovPRsOT88kzTatAkEA5WOcYlxA0CLeGd3E62u4zH7CNrquZ3+423OCyjjx7JxPa9Fq2nxIPqiAp9i/Y2qFBErY4egI/VWzdj61aDzGDQJAShu/XYGn9tKHeAGCUz4lv+fEGuIwY1YfNWSlq/3OSbO5bxA0Uh2R4UHn1ULwdVORvYZ66RqLP/2LmsTVbAf82QJBALSX86rMjopOqSUcH8hoipkUwrprxprdRyAelL24j16EwVJVERbp+ca6ym9aiXMvjYGPm6hfEZTBQAS74f4qupECQQD6Qq+wmcDB/qGtNIFUTCMj5L1ozZujmP6w1TmyLnlJqIkNbVp5QCXIvb7dSZA4LG7IvwkcP++49C66IHjIMKWf";
 
+    byte[]key_test;
 
     //**********公钥加密
     public static String encryptByPublicKey(String str) throws Exception {
         try {
             byte[] publicKey = Base64.decode(public_key,Base64.DEFAULT);
+//            byte[] publicKey = b
+
             byte[] data = str.getBytes();
+            Log.e("data "," 1 "+toStringHex(data));
 //             得到公钥
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKey);
             KeyFactory kf = KeyFactory.getInstance(RSA);
@@ -35,6 +41,7 @@ public class RSAUtil {
 //             加密数据
             Cipher cp = Cipher.getInstance(ECB_PKCS1_PADDING);
             cp.init(Cipher.ENCRYPT_MODE, keyPublic);
+            Log.e("data "," 2 "+toStringHex(cp.doFinal(data)));
             String str_ss = Base64.encodeToString(cp.doFinal(data),Base64.DEFAULT);
             return str_ss;
         } catch (Exception e) {
@@ -52,9 +59,10 @@ public class RSAUtil {
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(privateKey);
         KeyFactory kf = KeyFactory.getInstance(RSA);
         PrivateKey keyPrivate = kf.generatePrivate(keySpec);
-        byte[] encrypted = str.getBytes();
+        byte[] encrypted = Base64.decode(str,Base64.DEFAULT);
+        Log.e("data ","  3 "+ toStringHex(encrypted));
         // 解密数据
-        Cipher cp = Cipher.getInstance(ECB_PKCS1_PADDING);
+        Cipher cp = Cipher.getInstance("RSA");
         cp.init(Cipher.DECRYPT_MODE, keyPrivate);
         byte[] arr = cp.doFinal(encrypted);
         String str_ss = Base64.encodeToString(cp.doFinal(arr), Base64.DEFAULT);
@@ -72,7 +80,7 @@ public class RSAUtil {
             KeyFactory kf = KeyFactory.getInstance(RSA);
             PrivateKey keyPrivate = kf.generatePrivate(keySpec);
 //             加密数据
-            Cipher cp = Cipher.getInstance(ECB_PKCS1_PADDING);
+            Cipher cp = Cipher.getInstance("RSA");
             cp.init(Cipher.ENCRYPT_MODE, keyPrivate);
             String str_ss = Base64.encodeToString(cp.doFinal(data),Base64.DEFAULT);
             return str_ss;
@@ -81,6 +89,18 @@ public class RSAUtil {
             return null;
         }
 
+    }
+
+    public static String toStringHex(byte [] bytes){
+        if(bytes == null || bytes.length == 0){
+            return null;
+        }
+        StringBuilder mStringBuilder = new StringBuilder(bytes.length);
+        for (byte mbyte :bytes){
+            mStringBuilder.append(String.format("%02x",mbyte));
+        }
+        String str = mStringBuilder.toString();
+        return str;
     }
 
 }

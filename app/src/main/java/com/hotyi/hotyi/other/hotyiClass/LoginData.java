@@ -9,6 +9,15 @@ public class LoginData {
     String NickName;
     String HeadImageUrl;
     String AccountInfo;
+    String Token;
+
+    public void setToken(String token) {
+        Token = token;
+    }
+
+    public String getToken() {
+        return Token;
+    }
 
     public String getRYToken() {
         return RYToken;
