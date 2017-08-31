@@ -80,12 +80,12 @@
                     android:pathPrefix="/push_message"
                     android:scheme="rong" />
             </intent-filter>
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+             <!--<intent-filter> -->
+             <!--<action android:name="android.intent.action.MAIN" /> -->
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <!--<category android:name="android.intent.category.LAUNCHER" /> -->
+             <!--</intent-filter> -->
         </activity>
         <activity
             android:name=".activity.LoginActivity"
@@ -185,7 +185,16 @@
             android:label="@string/title_activity_my_code" />
         <activity
             android:name=".activity.RegistFinallyActivity"
-            android:label="@string/title_activity_regist_finally"></activity>
+            android:label="@string/title_activity_regist_finally" />
+        <activity
+            android:name=".activity.Main2Activity"
+            android:label="@string/title_activity_main2">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
     </application>
 
 </manifest>

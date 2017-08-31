@@ -13,8 +13,7 @@ import android.widget.LinearLayout;
 import com.hotyi.hotyi.R;
 
 public class FindFragment extends Fragment implements View.OnClickListener {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 
     private LinearLayout gameCircle;
     private LinearLayout gameTalent;

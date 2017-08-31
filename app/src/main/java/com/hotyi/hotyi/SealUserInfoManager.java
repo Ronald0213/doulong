@@ -328,7 +328,6 @@ public class SealUserInfoManager implements OnDataListener {
 //                            }
 //                        }
 //                        //部分群组信息同步的情况,此时需要特殊处理,但是目前暂未处理
-//                        //// TODO: 16/9/20
 //                        if (!hasGetAllGroupMembers()) {
 //                            if (hasGetPartGroupMembers()) {
 //                                syncDeleteGroupMembers();

@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.hotyi.hotyi.R;
 import com.hotyi.hotyi.other.hotyiClass.LoginData;
 import com.hotyi.hotyi.other.hotyiClass.LoginInfo;
+import com.hotyi.hotyi.other.hotyiClass.MyUserInfo;
 import com.hotyi.hotyi.utils.HotyiHttpConnection;
 import com.hotyi.hotyi.utils.HttpException;
 import com.hotyi.hotyi.utils.MyAsynctask;
@@ -47,7 +48,7 @@ import io.rong.imlib.RongIMClient;
 
 public class LoginActivity extends MyBaseActivity implements View.OnClickListener, OnDataListener {
 
-
+    private MyUserInfo myUserInfo;
     private AlertDialog dialog ;
     private SharedPreferences sharedPreferences;
     private static final int MAX_ENCRYPT_BLOCK = 1024;
@@ -91,6 +92,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_login);
         android_id = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         regToWx();
+        myUserInfo = MyUserInfo.getInstance();
         sharedPreferences = getSharedPreferences("config", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("AccountInformation",null);
@@ -140,9 +142,9 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                 try {
                     stringBuffer = new StringBuffer();
                     key_str = RSAUtil.encryptByPublicKey(stringBuffer.append(android_id).append("&").append(phone_num).append("&").append(password).append("&").append(System.currentTimeMillis()).toString());
-                    Log.e("aaaaaaaaaaaaaaaaaaaa","   "+ key_str);
-                    String str = RSAUtil.decryptByPrivateKey(key_str);
-                    Log.e("aaaaaaaaaaaaaaaaaaaa","ssssssss"   +str);
+//                    Log.e("aaaaaaaaaaaaaaaaaaaa","   "+ stringBuffer.toString());
+//                    String str = RSAUtil.decryptByPrivateKey(key_str);
+//                    Log.e("aaaaaaaaaaaaaaaaaaaa","ssssssss"   +str);
                 }catch (Exception e){
                     Toast.makeText(LoginActivity.this,e.toString(),Toast.LENGTH_SHORT).show();
 //                    Log.e("RSA0",e.toString());
@@ -221,7 +223,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
             switch (requestCode) {
                 case LOGIN:
                     try {
-//                        Log.e("LOGIN", "CLICK text run onSuccess"+"-------------");
+                        Log.e("LOGIN", "CLICK text run onSuccess"+"-------------");
                         String str = result.toString();
                         JSONObject jsonObject = new JSONObject(str);
 //                        Log.e("LOGIN", "CLICK text run onSuccess"+"111111");
@@ -240,17 +242,21 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                         LoginData loginData = new LoginData();
                         loginData.setRYToken(logindataJson.getString("RYToken").toString());
                         loginData.setNickName(logindataJson.get("NickName").toString());
+                        myUserInfo.setNickName(loginData.getNickName());
                         loginData.setHeadImageUrl(logindataJson.get("HeadImage").toString());
+                        myUserInfo.setHeadImage(loginData.getHeadImageUrl());
                         loginData.setAccountInfo(logindataJson.get("AccountInformation").toString());
                         loginData.setToken(logindataJson.get("Token").toString());
                         myLoginInfo.setLoginData(loginData);
 
                         if (myLoginInfo.getCode() == 1) {
                             Log.e("LOGIN","   " + "login done");
-//                            String userInfo = RSAUtil.decryptByPrivateKey(logindataJson.get("AccountInformation").toString());
-//                            Log.e("LOGIN","123+++   "+userInfo);
+                            String userInfo = RSAUtil.decryptByPrivateKey(logindataJson.get("AccountInformation").toString());
+                            JSONObject userJson = new JSONObject(userInfo);
+                            myUserInfo.setUserId(userJson.getString("UserId"));
+                            myUserInfo.setRyAccount(userJson.getString("RYAccount"));
                             String token = myLoginInfo.getLoginData().getRYToken();
-                            Log.e("LOGIN",token);
+                            Log.e("LOGIN   ",myUserInfo.getUserId());
                             RongIM.connect(token, new RongIMClient.ConnectCallback() {
 
                                 @Override
@@ -269,7 +275,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
 
                                 }
                             });
-
+                            startActivity(new Intent(LoginActivity.this,MainActivity.class));
                         }
                     }catch (Exception e){
                         Log.e("LOGIN","  " +e.toString());
