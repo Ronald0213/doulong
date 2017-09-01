@@ -106,12 +106,12 @@ public class ConversationActivity extends FragmentActivity implements View.OnCli
             return;
 
         mTargetId = intent.getData().getQueryParameter("targetId");
-        //10000 为 Demo Server 加好友的 id，若 targetId 为 10000，则为加好友消息，默认跳转到 NewFriendListActivity
-        // Demo 逻辑
-        if (mTargetId != null && mTargetId.equals("10000")) {
-            startActivity(new Intent(ConversationActivity.this, NewFriendListActivity.class));
-            return;
-        }
+//        //10000 为 Demo Server 加好友的 id，若 targetId 为 10000，则为加好友消息，默认跳转到 NewFriendListActivity
+//        // Demo 逻辑
+//        if (mTargetId != null && mTargetId.equals("10000")) {
+//            startActivity(new Intent(ConversationActivity.this, NewFriendListActivity.class));
+//            return;
+//        }
         mConversationType = Conversation.ConversationType.valueOf(intent.getData()
                 .getLastPathSegment().toUpperCase(Locale.US));
 
@@ -179,7 +179,7 @@ public class ConversationActivity extends FragmentActivity implements View.OnCli
             }
         });
 
-        SealAppContext.getInstance().pushActivity(this);
+//        SealAppContext.getInstance().pushActivity(this);
 
         //CallKit start 2
 //        RongCallKit.setGroupMemberProvider(new RongCallKit.GroupMembersProvider() {
@@ -530,34 +530,34 @@ public class ConversationActivity extends FragmentActivity implements View.OnCli
         //CallKit end 3
 
         RongIMClient.setTypingStatusListener(null);
-        SealAppContext.getInstance().popActivity(this);
+//        SealAppContext.getInstance().popActivity(this);
         super.onDestroy();
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (KeyEvent.KEYCODE_BACK == event.getKeyCode()) {
-            if (fragment != null && !fragment.onBackPressed()) {
-                if (isFromPush) {
-                    isFromPush = false;
-                    startActivity(new Intent(this, MainActivity.class));
-                    SealAppContext.getInstance().popAllActivity();
-                } else {
-                    if (fragment.isLocationSharing()) {
-                        fragment.showQuitLocationSharingDialog(this);
-                        return true;
-                    }
-                    if (mConversationType.equals(Conversation.ConversationType.CHATROOM)
-                            || mConversationType.equals(Conversation.ConversationType.CUSTOMER_SERVICE)) {
-                        SealAppContext.getInstance().popActivity(this);
-                    } else {
-                        SealAppContext.getInstance().popActivity(this);
-                    }
-                }
-            }
-        }
-        return false;
-    }
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (KeyEvent.KEYCODE_BACK == event.getKeyCode()) {
+//            if (fragment != null && !fragment.onBackPressed()) {
+//                if (isFromPush) {
+//                    isFromPush = false;
+//                    startActivity(new Intent(this, MainActivity.class));
+//                    SealAppContext.getInstance().popAllActivity();
+//                } else {
+//                    if (fragment.isLocationSharing()) {
+//                        fragment.showQuitLocationSharingDialog(this);
+//                        return true;
+//                    }
+//                    if (mConversationType.equals(Conversation.ConversationType.CHATROOM)
+//                            || mConversationType.equals(Conversation.ConversationType.CUSTOMER_SERVICE)) {
+//                        SealAppContext.getInstance().popActivity(this);
+//                    } else {
+//                        SealAppContext.getInstance().popActivity(this);
+//                    }
+//                }
+//            }
+//        }
+//        return false;
+//    }
 
     private void hintKbTwo() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

@@ -26,7 +26,8 @@ public class MyAsynctask {
     public static final String SearchMoreGame = "AppIndex/SearchMoreGame";//搜索更多游戏
     public static final String HotGame = "AppIndex/HotGame";//热门和其他游戏列表
     public static final String TheCarouselFigure = "AppIndex/TheCarouselFigure";//轮播图
-    public static final String LinkMan = "AppIndex/LinkMan";//联系人页面
+//    public static final String LinkMan = "AppIndex/LinkMan";//联系人页面 弃用
+    public static final String LinkMan = "AppIndex/LinkMan_107";//联系人页面
     public static final String SearchGameList = "AppIndex/SearchGameList";//热门和其他游戏的搜索
     public static final String CreateGuild = "AppGuild/CreateGuild";//创建公会
     public static final String ApplyIntoGuild = "AppGuild/ApplyIntoGuild";//申请进入工会

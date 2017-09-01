@@ -10,7 +10,7 @@
         android:orientation="horizontal">
 
         <com.hotyi.hotyi.utils.ui.HeadImageView
-            android:id="@+id/friend_item_head_image"
+            android:id="@+id/official_item_head_image"
             android:layout_width="40dip"
             android:layout_height="40dip"
             android:layout_marginLeft="15dip"
@@ -18,7 +18,7 @@
             android:background="@mipmap/head03" />
 
         <TextView
-            android:id="@+id/friend_item_name"
+            android:id="@+id/official_item_name"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="15dip"
@@ -28,12 +28,18 @@
             android:textSize="20sp" />
 
         <ImageView
-            android:id="@+id/friend_item_sex"
+            android:id="@+id/official_item_sex"
             android:layout_width="20dip"
             android:layout_height="20dip"
             android:layout_marginLeft="5dip"
             android:layout_marginTop="20dip"
             android:background="@mipmap/nan_2x" />
+        <ImageView
+            android:layout_marginTop="20dip"
+            android:layout_width="50dip"
+            android:layout_marginLeft="10dip"
+            android:layout_height="20dip"
+            android:background="@mipmap/contact_guanfang_3x"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -123,6 +123,7 @@ public class SealAppContext
      * init 后就能设置的监听
      */
     private void initListener() {
+        Log.e("conversation", "    done   ");
         RongIM.setConversationBehaviorListener(this);//设置会话界面操作的监听器。
         RongIM.setConversationListBehaviorListener(this);
         RongIM.setConnectionStatusListener(this);
@@ -134,6 +135,7 @@ public class SealAppContext
         setReadReceiptConversationType();
         RongIM.getInstance().enableNewComingMessageIcon(true);
         RongIM.getInstance().enableUnreadMessageIcon(true);
+        Log.e("conversation", "    done 2   ");
         RongIM.getInstance().setGroupMembersProvider(this);
         //RongIM.setGroupUserInfoProvider(this, true);//seal app暂时未使用这种方式,目前使用UserInfoProvider
         BroadcastManager.getInstance(mContext).addAction(HotyiConst.EXIT, new BroadcastReceiver() {

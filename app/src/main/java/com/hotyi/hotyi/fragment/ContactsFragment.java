@@ -12,12 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.hotyi.hotyi.R;
+import com.hotyi.hotyi.activity.UserInfoDetailActivity;
 import com.hotyi.hotyi.other.hotyiClass.MyFriendInfo;
 import com.hotyi.hotyi.other.hotyiClass.MyUserInfo;
 import com.hotyi.hotyi.other.hotyiClass.OfficialInfo;
@@ -41,7 +43,9 @@ import java.util.zip.Inflater;
 
 import io.rong.imageloader.core.ImageLoader;
 import io.rong.imkit.RongContext;
+import io.rong.imkit.RongIM;
 import io.rong.imlib.model.Conversation;
+import io.rong.imlib.model.UserInfo;
 
 public class ContactsFragment extends Fragment implements OnDataListener{
 
@@ -53,6 +57,7 @@ public class ContactsFragment extends Fragment implements OnDataListener{
     private static final int GET_FRIEND_INFO = 45;
     private ImageLoader imageLoader;
     private ListView friendListView;
+    private ListView officialListView;
 
 
     @Nullable
@@ -67,6 +72,30 @@ public class ContactsFragment extends Fragment implements OnDataListener{
         guildTextView = (TextView)view.findViewById(R.id.contacts_guild_num);
         groupTextView = (TextView)view.findViewById(R.id.contacts_group_numm);
         friendListView = (ListView)view.findViewById(R.id.contacts_list);
+        officialListView = (ListView)view.findViewById(R.id.contacts_official_list);
+
+        friendListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                int num =  friendListView.getHeaderViewsCount();
+                String id = friendList.get(i - num).getUserId();
+                Intent intent = new Intent(getContext().getApplicationContext(), UserInfoDetailActivity.class);
+                intent.putExtra("UserID",id);
+                startActivity(intent);
+            }
+        });
+        officialListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                int num =  officialListView.getHeaderViewsCount();
+                String id = officialList.get(i - num).getUserId();
+                Intent intent = new Intent(getContext().getApplicationContext(), UserInfoDetailActivity.class);
+                intent.putExtra("UserID",id);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
@@ -88,7 +117,7 @@ public class ContactsFragment extends Fragment implements OnDataListener{
                     Log.e("contacts","              2   " );
                     String signText = RSAUtil.encryptByPrivateKey("UserId="+id);
                     Log.e("contacts","              sign   " +signText);
-                    String login_url = MyAsynctask.HOST + MyAsynctask.MyFriendsList;
+                    String login_url = MyAsynctask.HOST + MyAsynctask.LinkMan;
                     URL url = new URL(login_url);
                     Log.e("contacts","              3   "+ login_url.toString());
                     HashMap<String, String> map = new HashMap<>();
@@ -118,11 +147,26 @@ public class ContactsFragment extends Fragment implements OnDataListener{
                     if (result != null){
                         String str_result = result.toString();
                         JSONObject jsonObject = new JSONObject(str_result);
+                        JSONObject myJsonObject = jsonObject.getJSONObject("data");
+                        Log.e("friend","     1   ");
                         if (jsonObject.getString("code").equals("1")) {
-                            JSONArray jsonArray = jsonObject.getJSONArray("data");
-                            deFriendJsonInfo(jsonArray);
+                            Log.e("friend","     2   ");
+//                            JSONArray jsonArray = jsonObject.getJSONArray("data");
+
+                            Log.e("friend","     3   ");
+                            JSONArray friendJsonArray = myJsonObject.getJSONArray("FriendListModel");
+                            Log.e("friend","     4   ");
+                            JSONArray officialJsonArray = myJsonObject.getJSONArray("OfficialUserModel");
+                            Log.e("friend","     5   ");
+                            deFriendJsonInfo(friendJsonArray);
+                            deFriendJsonInfo(officialJsonArray);
                         }
                         friendListView.setAdapter(new FriendListAdpter());
+                        Log.e("friend","     6   ");
+                        officialListView.setAdapter(new OfficialListAdpter());
+                        Log.e("friend","     7   ");
+                        groupTextView.setText(myJsonObject.getString("MyGroupCount"));
+                        guildTextView.setText(myJsonObject.getString("MyGuildCount"));
                     }
                 }catch (Exception e){
 
@@ -137,21 +181,29 @@ public class ContactsFragment extends Fragment implements OnDataListener{
     private void deFriendJsonInfo(JSONArray jsonArray){
         try {
             int len = jsonArray.length();
-            if (len == 0){
+            Log.e("friend","     1+   ");
+            if (len == 0)
                 return;
-            }
             for (int i = 0 ;i < len; i++){
                 if (jsonArray.getJSONObject(i).getInt("IsOfficial") == 0) {
+                    Log.e("friend","     2+   ");
                     String userId = jsonArray.getJSONObject(i).getString("UserId");
                     String userName = jsonArray.getJSONObject(i).getString("NickName");
                     String headImange = jsonArray.getJSONObject(i).getString("HeadImage");
+                    String rongID = jsonArray.getJSONObject(i).getString("RYAccount");
                     int sex = jsonArray.getJSONObject(i).getInt("Gender");
+                    Log.e("friend","     3+   ");
+                    //******刷新用户信息缓存
+                    RongIM.getInstance().refreshUserInfoCache(new UserInfo(rongID,userName,Uri.parse(headImange)));
                     friendList.add(new MyFriendInfo(userId, userName, headImange,sex));
                 }else {
+                    Log.e("friend","     ++   ");
                     String userId = jsonArray.getJSONObject(i).getString("UserId");
                     String userName = jsonArray.getJSONObject(i).getString("NickName");
                     String headImange = jsonArray.getJSONObject(i).getString("HeadImage");
                     int sex = jsonArray.getJSONObject(i).getInt("Gender");
+                    String rongID = jsonArray.getJSONObject(i).getString("RYAccount");
+                    RongIM.getInstance().refreshUserInfoCache(new UserInfo(rongID,userName,Uri.parse(headImange)));
                     officialList.add(new OfficialInfo(userId, userName, headImange,sex));
                 }
             }
@@ -209,6 +261,45 @@ public class ContactsFragment extends Fragment implements OnDataListener{
        public TextView name;
         public HeadImageView headImageView;
         public ImageView imageView;
+    }
+
+    class OfficialListAdpter extends BaseAdapter {
+
+        @Override
+        public int getCount() {
+            return officialList.size();
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            ViewHolder viewHolder = null;
+            if (view == null) {
+                viewHolder = new ViewHolder();
+                view = LayoutInflater.from(getContext().getApplicationContext()).inflate(R.layout.official_list_item, null);
+                viewHolder.name = (TextView) view.findViewById(R.id.official_item_name);
+                viewHolder.headImageView = (HeadImageView) view.findViewById(R.id.official_item_head_image);
+                viewHolder.imageView = (ImageView) view.findViewById(R.id.official_item_sex);
+                view.setTag(viewHolder);
+            } else
+                viewHolder = (ViewHolder) view.getTag();
+            if (officialList.get(i).getMsex() == 1)
+                viewHolder.imageView.setBackgroundResource(R.mipmap.nan_3x);
+            else
+                viewHolder.imageView.setBackgroundResource(R.mipmap.nv_3x);
+            viewHolder.name.setText(officialList.get(i).getUserName());
+            imageLoader.displayImage(officialList.get(i).getHeadImage(),viewHolder.headImageView);
+            return view;
+        }
     }
 }
 

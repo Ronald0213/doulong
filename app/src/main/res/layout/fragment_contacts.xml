@@ -129,7 +129,7 @@
             </LinearLayout>
 
             <ListView
-                android:id="@+id/contacts_system_list"
+                android:id="@+id/contacts_official_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="none"></ListView>

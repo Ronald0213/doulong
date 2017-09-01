@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -45,6 +46,7 @@ import javax.crypto.Cipher;
 
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
+import io.rong.imlib.model.UserInfo;
 
 public class LoginActivity extends MyBaseActivity implements View.OnClickListener, OnDataListener {
 
@@ -275,6 +277,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
 
                                 }
                             });
+                            RongIM.getInstance().refreshUserInfoCache(new UserInfo(myUserInfo.getRyAccount(),myUserInfo.getNickName(), Uri.parse(myUserInfo.getHeadImage())));
                             startActivity(new Intent(LoginActivity.this,MainActivity.class));
                         }
                     }catch (Exception e){
