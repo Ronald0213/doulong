@@ -16,6 +16,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.hotyi.hotyi.R;
 import com.hotyi.hotyi.SealAppContext;
@@ -53,7 +54,7 @@ import io.rong.message.VoiceMessage;
  * 2，加载会话页面
  * 3，push 和 通知 判断
  */
-public class ConversationActivity extends FragmentActivity implements View.OnClickListener {
+public class ConversationActivity extends BaseActivity implements View.OnClickListener {
     protected Context mContext;
 
     private String TAG = ConversationActivity.class.getSimpleName();
@@ -77,6 +78,7 @@ public class ConversationActivity extends FragmentActivity implements View.OnCli
 //    private LoadingDialog mDialog;
 
     private SharedPreferences sp;
+//    private TextView titleText;
 
     private final String TextTypingTitle = "对方正在输入...";
     private final String VoiceTypingTitle = "对方正在讲话...";
@@ -87,7 +89,7 @@ public class ConversationActivity extends FragmentActivity implements View.OnCli
     public static final int SET_VOICE_TYPING_TITLE = 2;
     public static final int SET_TARGET_ID_TITLE = 0;
 
-//    private Button mRightButton;
+    private Button mRightButton;
 
     @Override
     @TargetApi(23)
@@ -96,9 +98,10 @@ public class ConversationActivity extends FragmentActivity implements View.OnCli
         setContentView(R.layout.conversation);
         sp = getSharedPreferences("config", MODE_PRIVATE);
         mContext = this;
+//        titleText = (TextView)findViewById(R.id.conversation_title);
 //        mDialog = new LoadingDialog(this);
 
-//        mRightButton = getHeadRightButton();
+        mRightButton = getHeadRightButton();
 
         Intent intent = getIntent();
 
@@ -116,19 +119,20 @@ public class ConversationActivity extends FragmentActivity implements View.OnCli
                 .getLastPathSegment().toUpperCase(Locale.US));
 
         title = intent.getData().getQueryParameter("title");
+//        titleText.setText(title);
 
         setActionBarTitle(mConversationType, mTargetId);
 
 
-//        if (mConversationType.equals(Conversation.ConversationType.GROUP)) {
-//            mRightButton.setBackground(getResources().getDrawable(R.drawable.icon2_menu));
-//        } else if (mConversationType.equals(Conversation.ConversationType.PRIVATE) | mConversationType.equals(Conversation.ConversationType.PUBLIC_SERVICE) | mConversationType.equals(Conversation.ConversationType.DISCUSSION)) {
-//            mRightButton.setBackground(getResources().getDrawable(R.drawable.icon1_menu));
-//        } else {
-//            mRightButton.setVisibility(View.GONE);
-//            mRightButton.setClickable(false);
-//        }
-//        mRightButton.setOnClickListener(this);
+        if (mConversationType.equals(Conversation.ConversationType.GROUP)) {
+            mRightButton.setBackgroundResource(R.mipmap.icon2_menu);
+        } else if (mConversationType.equals(Conversation.ConversationType.PRIVATE) | mConversationType.equals(Conversation.ConversationType.PUBLIC_SERVICE) | mConversationType.equals(Conversation.ConversationType.DISCUSSION)) {
+            mRightButton.setBackgroundResource(R.mipmap.icon1_menu);
+        } else {
+            mRightButton.setVisibility(View.GONE);
+            mRightButton.setClickable(false);
+        }
+        mRightButton.setOnClickListener(this);
 
         isPushMessage(intent);
 

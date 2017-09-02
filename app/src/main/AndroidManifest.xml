@@ -80,12 +80,12 @@
                     android:pathPrefix="/push_message"
                     android:scheme="rong" />
             </intent-filter>
-            <!--<intent-filter> -->
-            <!--<action android:name="android.intent.action.MAIN" /> -->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
 
-            <!--<category android:name="android.intent.category.LAUNCHER" /> -->
-            <!--</intent-filter> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".activity.LoginActivity"
@@ -100,7 +100,6 @@
         <activity
             android:name=".activity.ConversationActivity"
             android:launchMode="singleTop"
-
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
@@ -126,54 +125,44 @@
         <activity
             android:name=".activity.MyProfitActivity"
             android:label="@string/title_activity_my_integral"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.GameHubActivity"
             android:label="@string/title_activity_game_hub"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.SelfInfoActivity"
             android:label="@string/title_activity_self_info"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:exported="true"
-
             android:label="@string/title_activity_wxentry"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MyBaseActivity"
             android:label="@string/title_activity_my_base"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.NewFriendListActivity"
             android:label="@string/title_activity_new_friend_list"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MyDialogActivity"
             android:label="@string/title_activity_my_dialog"
-
             android:screenOrientation="portrait"
             android:theme="@style/dialog" />
         <activity
             android:name=".activity.PrivateChatDetailActivity"
             android:label="@string/title_activity_private_chat_detail"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.GroupDetailActivity"
             android:label="@string/title_activity_group_detail"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.DiscussionDetailActivity"
             android:label="@string/title_activity_discussion_detail"
-
             android:screenOrientation="portrait" />
 
         <service
@@ -193,58 +182,54 @@
         <activity
             android:name=".activity.AboutActivity"
             android:label="@string/title_activity_about"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.FeedBackActivity"
             android:label="@string/title_activity_feed_back"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.SettingActivity"
             android:label="@string/title_activity_setting"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MyGameCircleActivity"
             android:label="@string/title_activity_my_game_circle"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MyActivityActivity"
             android:label="@string/title_activity_my_activity"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MyGameActivity"
             android:label="@string/title_activity_my_game"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MyCodeActivity"
             android:label="@string/title_activity_my_code"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.RegistFinallyActivity"
             android:label="@string/title_activity_regist_finally"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.UserInfoDetailActivity"
             android:label="@string/title_activity_regist_finally"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.Main2Activity"
             android:label="@string/title_activity_main2"
             android:screenOrientation="portrait">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
 
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
+        <activity
+            android:name=".activity.GroupListActivity"
+            android:label="@string/title_activity_group_list"></activity>
     </application>
 
 </manifest>
