@@ -15,10 +15,13 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.hotyi.hotyi.R;
+import com.hotyi.hotyi.activity.MyGroupActivity;
+import com.hotyi.hotyi.activity.MyGuildActivity;
 import com.hotyi.hotyi.activity.UserInfoDetailActivity;
 import com.hotyi.hotyi.other.hotyiClass.MyFriendInfo;
 import com.hotyi.hotyi.other.hotyiClass.MyUserInfo;
@@ -42,6 +45,7 @@ import java.util.List;
 import java.util.zip.Inflater;
 
 import io.rong.imageloader.core.ImageLoader;
+import io.rong.imageloader.utils.L;
 import io.rong.imkit.RongContext;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.model.Conversation;
@@ -58,6 +62,7 @@ public class ContactsFragment extends Fragment implements OnDataListener{
     private ImageLoader imageLoader;
     private ListView friendListView;
     private ListView officialListView;
+    private LinearLayout contactsGroup,contactsGuild;
 
 
     @Nullable
@@ -73,6 +78,22 @@ public class ContactsFragment extends Fragment implements OnDataListener{
         groupTextView = (TextView)view.findViewById(R.id.contacts_group_numm);
         friendListView = (ListView)view.findViewById(R.id.contacts_list);
         officialListView = (ListView)view.findViewById(R.id.contacts_official_list);
+        contactsGroup = (LinearLayout)view.findViewById(R.id.contacts_group);
+        contactsGuild = (LinearLayout)view.findViewById(R.id.contacts_guild);
+        contactsGuild.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext().getApplicationContext(), MyGuildActivity.class));
+
+            }
+        });
+
+        contactsGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext().getApplicationContext(), MyGroupActivity.class));
+            }
+        });
 
         friendListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -253,6 +274,7 @@ public class ContactsFragment extends Fragment implements OnDataListener{
                 viewHolder.imageView.setBackgroundResource(R.mipmap.nv_3x);
             viewHolder.name.setText(friendList.get(i).getUserName());
             imageLoader.displayImage(friendList.get(i).getHeadImage(),viewHolder.headImageView);
+            Log.e("friend pro "," check");
             return view;
 
         }

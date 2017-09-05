@@ -1,21 +1,21 @@
 package com.hotyi.hotyi.activity;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.util.Base64;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,21 +29,24 @@ import com.hotyi.hotyi.utils.MyAsynctask;
 import com.hotyi.hotyi.utils.RSAUtil;
 import com.hotyi.hotyi.utils.async.AsyncTaskManager;
 import com.hotyi.hotyi.utils.async.OnDataListener;
+import com.tencent.connect.common.Constants;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
 import org.json.JSONObject;
 
 import java.net.URL;
-import java.security.KeyFactory;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 
-import javax.crypto.Cipher;
 
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.wechat.friends.Wechat;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.UserInfo;
@@ -57,6 +60,9 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
     private StringBuffer stringBuffer;
     public static final int LOGIN = 20;
     public static final int GET_TOKEN = 21;
+    public static final int THIRD_LOGIN = 22;
+//    public static final int qq_LOGIN = 22;
+//    public static final int WEIBO_LOGIN = 22;
     private String password;
     private String phone_num;
     private Button btn_login;
@@ -70,6 +76,9 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
     public AsyncTaskManager mAsyncTaskManager;
     public String android_id;
     private String key_str = null;
+    private ImageView sinaImageView,qqImageView,weixinImageView;
+    private String token = null;
+    private int flag = 0;
     /**
      * RSA加密
      */
@@ -115,7 +124,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
         imgbtn_qq = (ImageButton) findViewById(R.id.imgbtn_qq);
         imgbtn_weibo = (ImageButton) findViewById(R.id.imgbtn_weibo);
         imgbtn_weixin = (ImageButton) findViewById(R.id.imgbtn_weixin);
-
+        sinaImageView = (ImageView)findViewById(R.id.imgbtn_weibo);
 
         btn_login.setOnClickListener(this);
         text_regist.setOnClickListener(this);
@@ -162,10 +171,13 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                 startActivityForResult(new Intent(LoginActivity.this, RegistActivity.class), 20);
                 break;
             case R.id.imgbtn_qq:
+                thirdQQLogin();
                 break;
             case R.id.imgbtn_weibo:
+                ThirdWeiboLogin();
                 break;
             case R.id.imgbtn_weixin:
+                thirdWechatLogin();
                 //******微信登录
 //                final SendAuth.Req req = new SendAuth.Req();
 //                req.scope = "snsapi_userinfo";
@@ -298,62 +310,379 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
 
     }
 
-    /**
-     *    RSA方法已封装入RSAUtil
-     *
-     *
-     *
-     *   RSA 加密 解密
-     * */
-
-    /**
-     * 用公钥对字符串进行加密
-     */
-//    private  String encryptByPublicKey(String str) throws Exception {
-//        final String public_key = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDgxOFIHXabcBxZOFBWz55WI18tQDTfHrU2IeJz6MVMgVv3yPXorrc8XucjPr16uMPy77qFGpJ2exOXpbzL0Rrmq9KzMDBdEWMttcppKVi+oTbz3xRGONyq3Gi22fNOiRPOOWO5NeuYMNNo7iV3egNgt2kHsW86/XAwB9Cbr0GUyQIDAQAB";
-//        try {
-//            byte[] publicKey = Base64.decode(public_key,Base64.DEFAULT);
-//            byte[] data = str.getBytes();
-//             得到公钥
-//            X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKey);
-//            KeyFactory kf = KeyFactory.getInstance(RSA);
-//            PublicKey keyPublic = kf.generatePublic(keySpec);
-//             加密数据
-//            Cipher cp = Cipher.getInstance(ECB_PKCS1_PADDING);
-//            cp.init(Cipher.ENCRYPT_MODE, keyPublic);
-//            String str_ss = Base64.encodeToString(cp.doFinal(data),Base64.DEFAULT);
-//            return str_ss;
-//        } catch (Exception e) {
-//            Log.e("RSA", e.toString());
-//            return null;
-//        }
-//
-//    }
-
-    /**
-     * 使用私钥进行解密
-     */
-//    private  String decryptByPrivateKey(String str) throws Exception {
-//        String private_key = "MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAODE4UgddptwHFk4UFbPnlYjXy1ANN8etTYh4nPoxUyBW/fI9eiutzxe5yM+vXq4w/LvuoUaknZ7E5elvMvRGuar0rMwMF0RYy21ymkpWL6hNvPfFEY43KrcaLbZ806JE845Y7k165gw02juJXd6A2C3aQexbzr9cDAH0JuvQZTJAgMBAAECgYEAl9nrKUFehBz1ygEVpdCWdDNpdbTPA35Hhs7VouE7ijhK3dhS6mQ/PvYOyez1Lhftqg7zwED3ejwkPGuoZTpcJP62hauoZooR8XCAJ6ZHEZpuJEwUH6DUiujmitkXzXXkZ+DhFEvWzLY4AfiuOLv/Az+MHVHbofAl4F9BI0fmr0ECQQD62BAzNU2ePqYLzodLjjM4y1ndH/XrMhdeo7nhUY47vHOl5uxiE+KvXuuZ29kUH7hMsG/nUiovPRsOT88kzTatAkEA5WOcYlxA0CLeGd3E62u4zH7CNrquZ3+423OCyjjx7JxPa9Fq2nxIPqiAp9i/Y2qFBErY4egI/VWzdj61aDzGDQJAShu/XYGn9tKHeAGCUz4lv+fEGuIwY1YfNWSlq/3OSbO5bxA0Uh2R4UHn1ULwdVORvYZ66RqLP/2LmsTVbAf82QJBALSX86rMjopOqSUcH8hoipkUwrprxprdRyAelL24j16EwVJVERbp+ca6ym9aiXMvjYGPm6hfEZTBQAS74f4qupECQQD6Qq+wmcDB/qGtNIFUTCMj5L1ozZujmP6w1TmyLnlJqIkNbVp5QCXIvb7dSZA4LG7IvwkcP++49C66IHjIMKWf";
-//        byte[] privateKey = Base64.decode(private_key,Base64.DEFAULT);
-        // 得到私钥
-//        PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(privateKey);
-//        KeyFactory kf = KeyFactory.getInstance(RSA);
-//        PrivateKey keyPrivate = kf.generatePrivate(keySpec);
-//        byte[] encrypted = str.getBytes();
-        // 解密数据
-//        Cipher cp = Cipher.getInstance(ECB_PKCS1_PADDING);
-//        cp.init(Cipher.DECRYPT_MODE, keyPrivate);
-//        byte[] arr = cp.doFinal(encrypted);
-//        String str_ss = Base64.encodeToString(cp.doFinal(arr),Base64.DEFAULT);
-//        return str_ss;
-//    }
-
     @Override
     protected void onStart() {
         super.onStart();
 //        startActivity(new Intent(LoginActivity.this,MyDialogActivity.class));
 
     }
+
+    OnDataListener mydataListener = new OnDataListener() {
+        @Override
+        public Object doInBackground(int requestCode, String parameter) throws HttpException {
+            switch (requestCode){
+                case THIRD_LOGIN:
+
+                    try{
+
+                        String login_url = MyAsynctask.HOST + MyAsynctask.ThirdLogin;
+                        URL url = new URL(login_url);
+                        HashMap<String, String> map = new HashMap<>();
+                        map.put("UnionNo", token);
+                        if(flag == 0)
+                            return null;
+                        else
+                            map.put("Type", String.valueOf(flag));
+                        if(key_str == null){
+                            Log.e("RSA",".......");
+                        }
+                        else
+                            Log.e("RSA","----   "+flag);
+                        return HotyiHttpConnection.getInstance(getApplicationContext()).post(map, url);
+
+                    }catch (Exception e){
+
+                    }
+
+                    break;
+            }
+            return null;
+        }
+
+        @Override
+        public void onSuccess(int requestCode, Object result) {
+
+            switch (requestCode){
+                case THIRD_LOGIN:
+                    try {
+                        Log.e("LOGIN", "CLICK text run onSuccess"+"-------------");
+                        String str = result.toString();
+                        JSONObject jsonObject = new JSONObject(str);
+                        if (jsonObject.getInt("code") == 1 && jsonObject.getString("retrun_msg").equals("succeed")){
+                            JSONObject logindataJson = new JSONObject(jsonObject.get("data").toString());
+//                        Log.e("LOGIN", "CLICK text run onSuccess"+"3333334");
+//                            if (myLoginInfo.getCode() == -1){
+//                                Toast.makeText(LoginActivity.this,"Test",Toast.LENGTH_SHORT).show();
+//                                return;
+//                            }
+                            final LoginInfo myLoginInfo = new LoginInfo();
+                            LoginData loginData = new LoginData();
+                            loginData.setRYToken(logindataJson.getString("RYToken").toString());
+                            loginData.setNickName(logindataJson.get("NickName").toString());
+                            myUserInfo.setNickName(loginData.getNickName());
+                            loginData.setHeadImageUrl(logindataJson.get("HeadImage").toString());
+                            myUserInfo.setHeadImage(loginData.getHeadImageUrl());
+                            loginData.setAccountInfo(logindataJson.get("AccountInformation").toString());
+                            loginData.setToken(logindataJson.get("Token").toString());
+                            myLoginInfo.setLoginData(loginData);
+
+                            if (myLoginInfo.getCode() == 1) {
+                                Log.e("LOGIN", "   " + "login done");
+                                String userInfo = RSAUtil.decryptByPrivateKey(logindataJson.get("AccountInformation").toString());
+                                JSONObject userJson = new JSONObject(userInfo);
+                                myUserInfo.setUserId(userJson.getString("UserId"));
+                                myUserInfo.setRyAccount(userJson.getString("RYAccount"));
+                                String token = myLoginInfo.getLoginData().getRYToken();
+                                Log.e("LOGIN   ", myUserInfo.getUserId());
+                                RongIM.connect(token, new RongIMClient.ConnectCallback() {
+
+                                    @Override
+                                    public void onSuccess(String s) {
+                                        Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    @Override
+                                    public void onError(RongIMClient.ErrorCode errorCode) {
+                                        String msg = myLoginInfo.getResult_msg();
+                                        Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    @Override
+                                    public void onTokenIncorrect() {
+
+                                    }
+                                });
+                                RongIM.getInstance().refreshUserInfoCache(new UserInfo(myUserInfo.getRyAccount(), myUserInfo.getNickName(), Uri.parse(myUserInfo.getHeadImage())));
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+                            }
+                        }else if (jsonObject.getInt("code") == 1 && jsonObject.getString("retrun_msg").equals("NoBind")){
+
+                            startActivity(new Intent(LoginActivity.this,ThirdLoginBindActivity.class));
+
+                        }
+                    }catch (Exception e){
+
+                    }
+
+
+                    break;
+            }
+
+        }
+
+        @Override
+        public void onFailure(int requestCode, int state, Object result) {
+
+        }
+    };
+
+    private static final int WEIBO_MSG_ACTION_CCALLBACK = 11;
+    private static final int QQ_MSG_ACTION_CCALLBACK = 12;
+    private static final int WECHAT_MSG_ACTION_CCALLBACK = 13;
+    Handler myHandler =  new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+                case WEIBO_MSG_ACTION_CCALLBACK:
+                    switch (msg.arg1){
+                        case 1:
+                            Platform pf = ShareSDK.getPlatform(QQ.NAME);
+                            Log.e("sharesdk use_id", pf.getDb().getUserId()); //获取用户id
+                            myUserInfo.setHeadImage(pf.getDb().getUserIcon());
+                            myUserInfo.setNickName(pf.getDb().getUserName());
+                            String sex  = pf.getDb().getUserGender();
+                            if (sex.equals("m"))
+                                myUserInfo.setSex("1");
+                            else
+                                myUserInfo.setSex("2");
+
+                            Log.e("sharesdk use_name", pf.getDb().getUserName());//获取用户名称
+                            Log.e("sharesdk use_icon", pf.getDb().getUserIcon());//获取用户头像
+                            Log.e("sharesdk use_icon", pf.getDb().getUserGender());
+                            Log.e("third 1", msg.obj.toString());
+                            token = pf.getDb().getToken();
+                            myUserInfo.setUnionNo(token);
+                            Toast.makeText(LoginActivity.this,"成功",Toast.LENGTH_LONG).show();
+                            Log.e("third ", msg.obj.toString());
+                            flag = 3;
+                            mAsyncTaskManager.request(THIRD_LOGIN, true, mydataListener);
+                            break;
+                        case 2:
+                            Toast.makeText(LoginActivity.this,"失败",Toast.LENGTH_LONG).show();
+                            break;
+                        case 3:
+                            Toast.makeText(LoginActivity.this,"取消",Toast.LENGTH_LONG).show();
+                            break;
+                    }
+                    break;
+            }
+        }
+    };
+
+
+
+    public void ThirdWeiboLogin(){
+        //初始化新浪平台
+        Platform pf = ShareSDK.getPlatform( SinaWeibo.NAME);
+//        pf.SSOSetting(true);
+        //设置监听
+        pf.setPlatformActionListener(new PlatformActionListener() {
+            @Override
+            public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                Message msg = new Message();
+                msg.what = WEIBO_MSG_ACTION_CCALLBACK;
+                msg.arg1 = 1;
+                msg.arg2 = i;
+                msg.obj = platform;
+                myHandler.sendMessage(msg);
+            }
+
+            @Override
+            public void onError(Platform platform, int i, Throwable throwable) {
+                Message msg = new Message();
+                msg.what = WEIBO_MSG_ACTION_CCALLBACK;
+                msg.arg1 = 2;
+                msg.arg2 = i;
+                msg.obj = platform;
+                myHandler.sendMessage(msg);
+            }
+
+            @Override
+            public void onCancel(Platform platform, int i) {
+
+                Message msg = new Message();
+                msg.what = WEIBO_MSG_ACTION_CCALLBACK;
+                msg.arg1 = 3;
+                msg.arg2 = i;
+                msg.obj = platform;
+                myHandler.sendMessage(msg);
+            }
+        });
+        //获取登陆用户的信息，如果没有授权，会先授权，然后获取用户信息
+        pf.authorize();
+        pf.showUser(null);
+    }
+
+    Handler myQQHandler =  new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+                case QQ_MSG_ACTION_CCALLBACK:
+                    switch (msg.arg1){
+                        case 1:
+                            Platform pf = ShareSDK.getPlatform(QQ.NAME);
+                            Log.e("sharesdk use_id", pf.getDb().getUserId()); //获取用户id
+                            myUserInfo.setHeadImage(pf.getDb().getUserIcon());
+                            myUserInfo.setNickName(pf.getDb().getUserName());
+                            String sex  = pf.getDb().getUserGender();
+                            if (sex.equals("m"))
+                                myUserInfo.setSex("1");
+                            else
+                                myUserInfo.setSex("2");
+
+                            Log.e("sharesdk use_name", pf.getDb().getUserName());//获取用户名称
+                            Log.e("sharesdk use_icon", pf.getDb().getUserIcon());//获取用户头像
+                            Log.e("sharesdk use_icon", pf.getDb().getUserGender());
+                            Log.e("third 1", msg.obj.toString());
+                            token = pf.getDb().getToken();
+                            myUserInfo.setUnionNo(token);
+                            Toast.makeText(LoginActivity.this,"成功",Toast.LENGTH_LONG).show();
+                            Log.e("third ", msg.obj.toString());
+                            flag = 2;
+                            mAsyncTaskManager.request(THIRD_LOGIN, true, mydataListener);
+                            break;
+                        case 2:
+                            Toast.makeText(LoginActivity.this,"q失败",Toast.LENGTH_LONG).show();
+                            break;
+                        case 3:
+                            Toast.makeText(LoginActivity.this,"q取消",Toast.LENGTH_LONG).show();
+                            break;
+                    }
+                    break;
+            }
+        }
+    };
+
+
+    public void thirdQQLogin(){
+        //初始化qq
+        Platform pf = ShareSDK.getPlatform( QQ.NAME);
+//        pf.SSOSetting(true);
+        //设置监听
+        pf.setPlatformActionListener(new PlatformActionListener() {
+            @Override
+            public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                Message msg = new Message();
+                msg.what = QQ_MSG_ACTION_CCALLBACK;
+                msg.arg1 = 1;
+                msg.arg2 = i;
+                msg.obj = platform;
+                myQQHandler.sendMessage(msg);
+            }
+
+            @Override
+            public void onError(Platform platform, int i, Throwable throwable) {
+                Message msg = new Message();
+                msg.what = QQ_MSG_ACTION_CCALLBACK;
+                msg.arg1 = 2;
+                msg.arg2 = i;
+                msg.obj = platform;
+                myQQHandler.sendMessage(msg);
+            }
+
+            @Override
+            public void onCancel(Platform platform, int i) {
+
+                Message msg = new Message();
+                msg.what = QQ_MSG_ACTION_CCALLBACK;
+                msg.arg1 = 3;
+                msg.arg2 = i;
+                msg.obj = platform;
+                myQQHandler.sendMessage(msg);
+            }
+        });
+        //获取登陆用户的信息，如果没有授权，会先授权，然后获取用户信息
+        pf.authorize();
+        pf.showUser(null);
+    }
+
+
+    Handler myWechatHandler =  new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+                case WECHAT_MSG_ACTION_CCALLBACK:
+                    switch (msg.arg1){
+                        case 1:
+                            Platform pf = ShareSDK.getPlatform(QQ.NAME);
+                            Log.e("sharesdk use_id", pf.getDb().getUserId()); //获取用户id
+                            myUserInfo.setHeadImage(pf.getDb().getUserIcon());
+                            myUserInfo.setNickName(pf.getDb().getUserName());
+                            String sex  = pf.getDb().getUserGender();
+                            if (sex.equals("m"))
+                                myUserInfo.setSex("1");
+                            else
+                                myUserInfo.setSex("2");
+
+                            Log.e("sharesdk use_name", pf.getDb().getUserName());//获取用户名称
+                            Log.e("sharesdk use_icon", pf.getDb().getUserIcon());//获取用户头像
+                            Log.e("sharesdk use_icon", pf.getDb().getUserGender());
+                            Log.e("third 1", msg.obj.toString());
+                            token = pf.getDb().getToken();
+                            myUserInfo.setUnionNo(token);
+                            Toast.makeText(LoginActivity.this,"成功",Toast.LENGTH_LONG).show();
+                            Log.e("third ", msg.obj.toString());
+                            flag = 1;
+                            mAsyncTaskManager.request(THIRD_LOGIN, true, mydataListener);
+                            break;
+                        case 2:
+                            Toast.makeText(LoginActivity.this,"w失败",Toast.LENGTH_LONG).show();
+                            break;
+                        case 3:
+                            Toast.makeText(LoginActivity.this,"w取消",Toast.LENGTH_LONG).show();
+                            break;
+                    }
+                    break;
+            }
+        }
+    };
+
+
+    public void thirdWechatLogin(){
+        //初始化wechat
+        Platform pf = ShareSDK.getPlatform( Wechat.NAME);
+//        pf.SSOSetting(true);
+        //设置监听
+        pf.setPlatformActionListener(new PlatformActionListener() {
+            @Override
+            public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                Message msg = new Message();
+                msg.what = WECHAT_MSG_ACTION_CCALLBACK;
+                msg.arg1 = 1;
+                msg.arg2 = i;
+                msg.obj = platform;
+                myWechatHandler.sendMessage(msg);
+            }
+
+            @Override
+            public void onError(Platform platform, int i, Throwable throwable) {
+                Message msg = new Message();
+                msg.what = WECHAT_MSG_ACTION_CCALLBACK;
+                msg.arg1 = 2;
+                msg.arg2 = i;
+                msg.obj = platform;
+                myWechatHandler.sendMessage(msg);
+            }
+
+            @Override
+            public void onCancel(Platform platform, int i) {
+
+                Message msg = new Message();
+                msg.what = WECHAT_MSG_ACTION_CCALLBACK;
+                msg.arg1 = 3;
+                msg.arg2 = i;
+                msg.obj = platform;
+                myWechatHandler.sendMessage(msg);
+            }
+        });
+        //获取登陆用户的信息，如果没有授权，会先授权，然后获取用户信息
+        pf.authorize();
+        pf.showUser(null);
+    }
+
 
 }

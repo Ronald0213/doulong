@@ -2,5 +2,9 @@
     {
         "merged": "D:\\demoAndroid\\sealtalk-android-master\\CallKit\\build\\intermediates\\res\\merged\\release\\raw\\voip_outgoing_ring.mp3",
         "source": "D:\\demoAndroid\\sealtalk-android-master\\CallKit\\src\\main\\res\\raw\\voip_outgoing_ring.mp3"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\CallKit\\build\\intermediates\\res\\merged\\release\\raw\\voip_outgoing_ring.mp3",
+        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\CallKit\\src\\main\\res\\raw\\voip_outgoing_ring.mp3"
     }
 ]

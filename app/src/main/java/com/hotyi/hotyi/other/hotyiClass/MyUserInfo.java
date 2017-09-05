@@ -13,6 +13,16 @@ public class MyUserInfo {
     private String ryAccount;
     private String phoneNum;
     private String sex;
+    private String unionNo;
+
+    public String getUnionNo() {
+        return unionNo;
+    }
+
+    public void setUnionNo(String unionNo) {
+        this.unionNo = unionNo;
+    }
+
     private static  MyUserInfo instance ;
 
     public static MyUserInfo getInstance(){

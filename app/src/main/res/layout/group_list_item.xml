@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:orientation="horizontal">
+
+        <com.hotyi.hotyi.utils.ui.HeadImageView
+            android:id="@+id/group_item_head_image"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_marginLeft="15dip"
+            android:layout_marginTop="10dip"
+            android:background="@mipmap/head03" />
+
+        <TextView
+            android:id="@+id/group_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dip"
+            android:gravity="center_vertical"
+            android:text="最长的电影"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -99,9 +99,8 @@
 
             <ImageButton
                 android:id="@+id/imgbtn_qq"
-                android:layout_width="wrap_content"
-                android:layout_height="0dip"
-                android:layout_weight="3"
+                android:layout_width="60dip"
+                android:layout_height="60dip"
                 android:background="@mipmap/login_qq_2x" />
 
             <TextView
@@ -121,9 +120,8 @@
 
             <ImageButton
                 android:id="@+id/imgbtn_weibo"
-                android:layout_width="wrap_content"
-                android:layout_height="0dip"
-                android:layout_weight="3"
+                android:layout_width="60dip"
+                android:layout_height="60dip"
                 android:background="@mipmap/login_weibo_2x" />
 
             <TextView
@@ -143,9 +141,8 @@
 
             <ImageButton
                 android:id="@+id/imgbtn_weixin"
-                android:layout_width="wrap_content"
-                android:layout_height="0dip"
-                android:layout_weight="3"
+                android:layout_width="60dip"
+                android:layout_height="60dip"
                 android:background="@mipmap/login_weixin_2x" />
 
             <TextView
