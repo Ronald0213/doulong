@@ -52,24 +52,24 @@
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_btn_public_service_unfollow_selector.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_corner_style.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_corner_style.xml"
+        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_bg_mentionlist_item.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_bg_mentionlist_item.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_cs_leave_message_btn.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_cs_leave_message_btn.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_bg_mentionlist_item.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_bg_mentionlist_item.xml"
-    },
-    {
-        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_ic_star_selector.xml",
-        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_ic_star_selector.xml"
+        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_corner_style.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_corner_style.xml"
     },
     {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_an_voice_receive.xml",
         "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_an_voice_receive.xml"
+    },
+    {
+        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_ic_star_selector.xml",
+        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_ic_star_selector.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_item_top_list_selector.xml",
@@ -84,12 +84,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_ic_location.xml"
     },
     {
-        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_btn_input.xml",
-        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_btn_input.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_cs_group_dialog_ok_selector.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_cs_group_dialog_ok_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_btn_input.xml",
+        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_btn_input.xml"
     },
     {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_bg_mentionlist_item.xml",
@@ -136,12 +136,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_bg_menu.xml"
     },
     {
-        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_ed_public_service_search_selector.xml",
-        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_ed_public_service_search_selector.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_sel_picsel_toolbar_back.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_sel_picsel_toolbar_back.xml"
+    },
+    {
+        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_ed_public_service_search_selector.xml",
+        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable\\rc_ed_public_service_search_selector.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_ic_files_selector.xml",

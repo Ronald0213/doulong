@@ -7,8 +7,9 @@
     <color name="white">#ffffff</color>
     <color name="gray">#cccccc</color>
     <color name="bright_gray">#e4e1e1</color>
+    <color name="bright_gray_more">#f2f2f2</color>
     <color name="dark_gray">#c9c7c7</color>
-    <color name="darkblue">#2c5093</color>
+    <color name="darkblue">#426b9f</color>
     <color name="darkblue_light">#3d62a7</color>
     <color name="blue">#52bfed</color>
     <color name="line_color"> #c6d2e2</color>

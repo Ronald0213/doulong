@@ -6,6 +6,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -16,7 +18,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.hotyi.hotyi.R;
 import com.hotyi.hotyi.broadcast.BroadcastManager;
@@ -57,6 +61,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private Conversation.ConversationType[] mConversationsTypes = null;
     private LinearLayout main_msg,main_contect,main_game,main_find,main_mine;
     private String key_str = null;
+    private TextView main_msg_text,main_contect_text,main_game_text,main_mine_text,main_find_text;
+    private ImageView main_msg_img,main_contect_img,main_game_img,main_find_img,main_mine_img;
+//    private Resources gray = getResources().getColor(R.color.gray);
+//    private ColorStateList blue = ColorStateList.valueOf(getResources().getColor(R.color.darkblue));
 
 
     @Override
@@ -69,7 +77,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         initView();
     }
-
     void initView(){
         myViewPager = (ViewPager)findViewById(R.id.main_viewpager);
         main_msg = (LinearLayout)findViewById(R.id.main_msg);
@@ -77,6 +84,20 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         main_contect = (LinearLayout)findViewById(R.id.main_contect);
         main_find = (LinearLayout)findViewById(R.id.main_find);
         main_mine = (LinearLayout)findViewById(R.id.main_mine);
+
+        main_msg_text = (TextView)findViewById(R.id.main_msg_text);
+        main_contect_text = (TextView)findViewById(R.id.main_contect_text);
+        main_game_text = (TextView)findViewById(R.id.main_game_text);
+        main_find_text = (TextView)findViewById(R.id.main_find_text);
+        main_mine_text = (TextView)findViewById(R.id.main_mine_text);
+
+        main_msg_img = (ImageView)findViewById(R.id.main_msg_img);
+        main_contect_img = (ImageView)findViewById(R.id.main_contect_img);
+        main_game_img = (ImageView)findViewById(R.id.main_game_img);
+        main_find_img = (ImageView)findViewById(R.id.main_find_img);
+        main_mine_img = (ImageView)findViewById(R.id.main_mine_img);
+
+
         myViewPager.setOnPageChangeListener(this);
         main_msg.setOnClickListener(this);
         main_game.setOnClickListener(this);
@@ -166,16 +187,49 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.main_msg:
+                initColor();
+                main_msg_img.setBackgroundResource(R.mipmap.tab_message_sele_2x);
+                main_msg_text.setTextColor(getResources().getColor(R.color.darkblue));
                 break;
             case R.id.main_contect:
+                initColor();
+                main_contect_img.setBackgroundResource(R.mipmap.tab_contact_sele_2x);
+                main_contect_text.setTextColor(getResources().getColor(R.color.darkblue));
                 break;
             case R.id.main_game:
+                initColor();
+                main_game_img.setBackgroundResource(R.mipmap.tab_game_sele_2x);
+                main_game_text.setTextColor(getResources().getColor(R.color.darkblue));
                 break;
             case R.id.main_find:
+                initColor();
+                main_find_img.setBackgroundResource(R.mipmap.tab_find_sele_2x);
+                main_find_text.setTextColor(getResources().getColor(R.color.darkblue));
                 break;
             case R.id.main_mine:
+                initColor();
+                main_mine_img.setBackgroundResource(R.mipmap.tab_myself_sele_2x);
+                main_mine_text.setTextColor(getResources().getColor(R.color.darkblue));
                 break;
         }
+    }
+    public void initColor(){
+        try{
+
+            main_msg_text.setTextColor(getResources().getColor(R.color.gray));
+            main_contect_text.setTextColor(getResources().getColor(R.color.gray));
+            main_find_text.setTextColor(getResources().getColor(R.color.gray));
+            main_game_text.setTextColor(getResources().getColor(R.color.gray));
+            main_mine_text.setTextColor(getResources().getColor(R.color.gray));
+            main_msg_img.setBackgroundResource(R.mipmap.tab_message_nor_3x);
+            main_contect_img.setBackgroundResource(R.mipmap.tab_contact_nor_3x);
+            main_game_img.setBackgroundResource(R.mipmap.tab_game_nor_3x);
+            main_find_img.setBackgroundResource(R.mipmap.tab_message_nor_3x);
+            main_mine_img.setBackgroundResource(R.mipmap.tab_myself_nor_3x);
+        }catch (Exception e){
+
+        }
+
     }
 
     @Override

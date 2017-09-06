@@ -66,7 +66,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+        android:theme="@style/MyTheme">
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
@@ -284,10 +284,8 @@
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
                 <data android:scheme="tencent1106256029" />
             </intent-filter>
         </activity>
@@ -299,7 +297,22 @@
 
         <activity
             android:name=".activity.ThirdLoginBindActivity"
-            android:label="@string/title_activity_third_login_bind"></activity>
+            android:label="@string/title_activity_third_login_bind" />
+        <activity
+            android:name=".activity.SubConversationListActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="cn.rongcloud.im"
+                    android:path="/subconversationlist"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

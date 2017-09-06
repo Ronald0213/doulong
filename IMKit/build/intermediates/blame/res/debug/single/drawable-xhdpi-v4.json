@@ -4,28 +4,28 @@
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_btn_send_normal.9.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f61f.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f61f.png"
+        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_volume_5.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_volume_5.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f4b0.png",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f4b0.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_volume_5.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_volume_5.png"
+        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f61f.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f61f.png"
     },
     {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f607.png",
         "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f607.png"
     },
     {
-        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_rt_location_bar.png",
-        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_rt_location_bar.png"
-    },
-    {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_praise.png",
         "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_praise.png"
+    },
+    {
+        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_rt_location_bar.png",
+        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_rt_location_bar.png"
     },
     {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f48d.png",
@@ -88,12 +88,12 @@
         "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_checkbox_full.png"
     },
     {
-        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f64a.png",
-        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f64a.png"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_cs_button_bg_hover.png",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_cs_button_bg_hover.png"
+    },
+    {
+        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f64a.png",
+        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f64a.png"
     },
     {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_cs_evaluate_plugin_hover.png",
@@ -104,28 +104,28 @@
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f616.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f47f.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f47f.png"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f48a.png",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f48a.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f47f.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f47f.png"
     },
     {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_def_coversation_portrait.png",
         "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_def_coversation_portrait.png"
     },
     {
-        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_cs_unresolved.png",
-        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_cs_unresolved.png"
+        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_cs_group_uncheck.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_cs_group_uncheck.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ed_pub_service_search_hover.9.png",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ed_pub_service_search_hover.9.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_cs_group_uncheck.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_cs_group_uncheck.png"
+        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_cs_unresolved.png",
+        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_cs_unresolved.png"
     },
     {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_volume_3.png",
@@ -140,12 +140,12 @@
         "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f4e2.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f384.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f384.png"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ac_sd_card_icon.png",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ac_sd_card_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f384.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f384.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f62a.png",

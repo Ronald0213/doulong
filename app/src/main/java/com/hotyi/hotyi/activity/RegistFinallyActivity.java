@@ -2,6 +2,7 @@ package com.hotyi.hotyi.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
 import android.provider.Settings;
@@ -30,15 +31,15 @@ import java.util.HashMap;
 public class RegistFinallyActivity extends MyBaseActivity implements View.OnClickListener, View.OnFocusChangeListener {
 
     private ImageButton imageButton_back;
-    private EditText edt_name, edt_sex, edt_password, edt_sure_password;
-    private Button btn_next;
+    private EditText edt_name, edt_sex, edt_password;
+    private Button btn_next,btn_nan,btn_nv;
     private AsyncTaskManager asyncTaskManager;
     private Context mcontext;
 //    public String android_id;
     private StringBuffer stringBuffer;
     private String phoneNum;
     private String code;
-    private boolean password_input_again = false;
+//    private boolean password_input_again = false;
 
     private static final int REGIST = 45;
 
@@ -63,8 +64,12 @@ public class RegistFinallyActivity extends MyBaseActivity implements View.OnClic
         edt_name = (EditText) findViewById(R.id.regist_finally_edt_name);
         edt_sex = (EditText) findViewById(R.id.regist_finally_edt_sex);
         edt_password = (EditText) findViewById(R.id.regist_finally_edt_password);
-        edt_sure_password = (EditText) findViewById(R.id.regist_finally_edt_sure_password);
+//        edt_sure_password = (EditText) findViewById(R.id.regist_finally_edt_sure_password);
         btn_next = (Button) findViewById(R.id.regist_finally_btn_next);
+        btn_nan = (Button)findViewById(R.id.regist_finally_nan);
+        btn_nv = (Button)findViewById(R.id.regist_finally_nv);
+        btn_nan.setOnClickListener(this);
+        btn_nv.setOnClickListener(this);
         imageButton_back.setOnClickListener(this);
         btn_next.setOnClickListener(this);
         edt_sex.setOnClickListener(this);
@@ -73,23 +78,23 @@ public class RegistFinallyActivity extends MyBaseActivity implements View.OnClic
     }
 
     public void edtListener() {
-        edt_sex.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (b) {
-                    Intent intent = new Intent(RegistFinallyActivity.this, MyDialogActivity.class);
-                    intent.putExtra("regist", true);
-                    startActivityForResult(intent, 1);
-                }
-            }
-        });
+//        edt_sex.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View view, boolean b) {
+//                if (b) {
+//                    Intent intent = new Intent(RegistFinallyActivity.this, MyDialogActivity.class);
+//                    intent.putExtra("regist", true);
+//                    startActivityForResult(intent, 1);
+//                }
+//            }
+//        });
 
         edt_password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (!b) {
                     String password = edt_password.getText().toString();
-                    String password_sure = edt_sure_password.getText().toString();
+//                    String password_sure = edt_sure_password.getText().toString();
                     int len = edt_password.getText().toString().length();
                     if (len < 6) {
                         Intent intent = new Intent(RegistFinallyActivity.this, MyDialogActivity.class);
@@ -109,6 +114,20 @@ public class RegistFinallyActivity extends MyBaseActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.regist_finally_nan:
+                btn_nan.setBackgroundResource(R.drawable.blue_coners_btn);
+                btn_nan.setTextColor(getResources().getColor(R.color.darkblue));
+                edt_sex.setText("男");
+                btn_nv.setBackgroundResource(R.drawable.gray_corners_btn);
+                btn_nv.setTextColor(getResources().getColor(R.color.gray));
+                break;
+            case R.id.regist_finally_nv:
+                btn_nv.setBackgroundResource(R.drawable.blue_coners_btn);
+                btn_nv.setTextColor(getResources().getColor(R.color.darkblue));
+                edt_sex.setText("女");
+                btn_nan.setBackgroundResource(R.drawable.gray_corners_btn);
+                btn_nan.setTextColor(getResources().getColor(R.color.gray));
+                break;
             case R.id.regist_finally_imgbtn_back:
                 finish();
                 break;
@@ -118,12 +137,12 @@ public class RegistFinallyActivity extends MyBaseActivity implements View.OnClic
 //                startActivityForResult(intent, 1);
 //                break;
             case R.id.regist_finally_btn_next:
-                if (! edt_sure_password.getText().toString().equals(edt_password.getText().toString())){
-                    Intent intent = new Intent(RegistFinallyActivity.this, MyDialogActivity.class);
-                    intent.putExtra("regist_password_sure", true);
-                    startActivity(intent);
-                    return;
-                }
+//                if (! edt_sure_password.getText().toString().equals(edt_password.getText().toString())){
+//                    Intent intent = new Intent(RegistFinallyActivity.this, MyDialogActivity.class);
+//                    intent.putExtra("regist_password_sure", true);
+//                    startActivity(intent);
+//                    return;
+//                }
                 String sex = "0";
                 if (edt_sex.getText().toString().equals("男")){
                     sex = "1";

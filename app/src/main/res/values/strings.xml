@@ -30,5 +30,6 @@
     <string name="title_activity_my_group">MyGroupActivity</string>
     <string name="title_activity_my_guild">MyGuildActivity</string>
     <string name="title_activity_third_login_bind">ThirdLoginBindActivity</string>
+    <string name="title_activity_sub_conversation_list">SubConversationListActivity</string>
 
 </resources>

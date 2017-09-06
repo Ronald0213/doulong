@@ -8,12 +8,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversationlist.xml"
     },
     {
-        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_catalog_listview.xml",
-        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_catalog_listview.xml"
-    },
-    {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_activity.xml",
         "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_catalog_listview.xml",
+        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_catalog_listview.xml"
     },
     {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_dialog_popup_prompt_warning.xml",
@@ -48,28 +48,28 @@
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ext_emoticon_tab_item.xml"
     },
     {
-        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_base_conversation.xml",
-        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_base_conversation.xml"
+        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_conversation_member_list.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversation_member_list.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_picture_pager.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_picture_pager.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_conversation_member_list.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversation_member_list.xml"
+        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_base_conversation.xml",
+        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_base_conversation.xml"
     },
     {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_discussion_notification_message.xml",
         "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_discussion_notification_message.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_inf.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_public_service_inf.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_dialog_popup_prompt.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_dialog_popup_prompt.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_inf.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_public_service_inf.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ext_plugin_pager.xml",
@@ -148,36 +148,36 @@
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ext_plugin_grid_view.xml"
     },
     {
-        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_mention_members.xml",
-        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_mention_members.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_grid_item.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_grid_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_mention_members.xml",
+        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_mention_members.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_rich_content_message.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_rich_content_message.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_cs_leave_message.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_cs_leave_message.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_input_pager_layout.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_input_pager_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_cs_leave_message.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_cs_leave_message.xml"
     },
     {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ext_emoticon_tab_item.xml",
         "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ext_emoticon_tab_item.xml"
     },
     {
-        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_group_information_notification_message.xml",
-        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_group_information_notification_message.xml"
-    },
-    {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ext_extension_bar.xml",
         "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ext_extension_bar.xml"
+    },
+    {
+        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_group_information_notification_message.xml",
+        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_group_information_notification_message.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_conversation_member.xml",
@@ -264,12 +264,12 @@
         "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_text_message.xml"
     },
     {
-        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_multi_rich_content_message.xml",
-        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_multi_rich_content_message.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_voice_message.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_voice_message.xml"
+    },
+    {
+        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_multi_rich_content_message.xml",
+        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_multi_rich_content_message.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_conversation.xml",
@@ -320,12 +320,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_file_manager.xml"
     },
     {
-        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_group_conversation.xml",
-        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_group_conversation.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_cs_item_single_choice.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_cs_item_single_choice.xml"
+    },
+    {
+        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_group_conversation.xml",
+        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_group_conversation.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_catalog_listview.xml",

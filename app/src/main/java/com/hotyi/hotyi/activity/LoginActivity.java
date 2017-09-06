@@ -329,6 +329,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                         URL url = new URL(login_url);
                         HashMap<String, String> map = new HashMap<>();
                         map.put("UnionNo", token);
+                        Log.e("LOGIN", "    "+token);
                         if(flag == 0)
                             return null;
                         else
@@ -357,8 +358,9 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                     try {
                         Log.e("LOGIN", "CLICK text run onSuccess"+"-------------");
                         String str = result.toString();
+                        Log.e("LOGIN","  " + str);
                         JSONObject jsonObject = new JSONObject(str);
-                        if (jsonObject.getInt("code") == 1 && jsonObject.getString("retrun_msg").equals("succeed")){
+                        if (jsonObject.getInt("code") == 1 && jsonObject.getString("retrun_msg").equals("HasBind")){
                             JSONObject logindataJson = new JSONObject(jsonObject.get("data").toString());
 //                        Log.e("LOGIN", "CLICK text run onSuccess"+"3333334");
 //                            if (myLoginInfo.getCode() == -1){
@@ -375,8 +377,6 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                             loginData.setAccountInfo(logindataJson.get("AccountInformation").toString());
                             loginData.setToken(logindataJson.get("Token").toString());
                             myLoginInfo.setLoginData(loginData);
-
-                            if (myLoginInfo.getCode() == 1) {
                                 Log.e("LOGIN", "   " + "login done");
                                 String userInfo = RSAUtil.decryptByPrivateKey(logindataJson.get("AccountInformation").toString());
                                 JSONObject userJson = new JSONObject(userInfo);
@@ -405,11 +405,14 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                                 RongIM.getInstance().refreshUserInfoCache(new UserInfo(myUserInfo.getRyAccount(), myUserInfo.getNickName(), Uri.parse(myUserInfo.getHeadImage())));
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
-                            }
+
                         }else if (jsonObject.getInt("code") == 1 && jsonObject.getString("retrun_msg").equals("NoBind")){
 
-                            startActivity(new Intent(LoginActivity.this,ThirdLoginBindActivity.class));
-
+//                            startActivity(new Intent(LoginActivity.this,ThirdLoginBindActivity.class));
+                            Intent intent = new Intent(LoginActivity.this,ThirdLoginBindActivity.class);
+                            intent.putExtra("UnionNo",token);
+                            intent.putExtra("Type",String.valueOf(flag));
+                            startActivity(intent);
                         }
                     }catch (Exception e){
 
@@ -438,21 +441,28 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                 case WEIBO_MSG_ACTION_CCALLBACK:
                     switch (msg.arg1){
                         case 1:
-                            Platform pf = ShareSDK.getPlatform(QQ.NAME);
+                            Platform pf = ShareSDK.getPlatform(SinaWeibo.NAME);
+                            Log.e("LOGIN", "   " + "weibo login done  1");
+                            String id = pf.getDb().getUserId();
+                            Log.e("LOGIN", "   " + "weibo login  name done  1  "  + id);
                             Log.e("sharesdk use_id", pf.getDb().getUserId()); //获取用户id
+                            Log.e("LOGIN", "   " + "weibo login done  2  "+pf.getDb().getUserId());
                             myUserInfo.setHeadImage(pf.getDb().getUserIcon());
+                            Log.e("LOGIN", "   " + "weibo login done  3  "+pf.getDb().getUserIcon());
                             myUserInfo.setNickName(pf.getDb().getUserName());
+                            Log.e("LOGIN", "   " + "weibo login done  4  "+pf.getDb().getUserName());
                             String sex  = pf.getDb().getUserGender();
-                            if (sex.equals("m"))
+                            if(sex == null)
+                                myUserInfo.setSex("1");
+                            else if (sex.equals("m"))
                                 myUserInfo.setSex("1");
                             else
                                 myUserInfo.setSex("2");
-
                             Log.e("sharesdk use_name", pf.getDb().getUserName());//获取用户名称
                             Log.e("sharesdk use_icon", pf.getDb().getUserIcon());//获取用户头像
-                            Log.e("sharesdk use_icon", pf.getDb().getUserGender());
+//                            Log.e("sharesdk use_icon", pf.getDb().getUserGender());
                             Log.e("third 1", msg.obj.toString());
-                            token = pf.getDb().getToken();
+                            token = pf.getDb().getUserId();
                             myUserInfo.setUnionNo(token);
                             Toast.makeText(LoginActivity.this,"成功",Toast.LENGTH_LONG).show();
                             Log.e("third ", msg.obj.toString());
@@ -486,6 +496,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                 msg.arg1 = 1;
                 msg.arg2 = i;
                 msg.obj = platform;
+                Log.e("LOGIN", "   " + "weibo login done");
                 myHandler.sendMessage(msg);
             }
 
@@ -537,7 +548,8 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                             Log.e("sharesdk use_icon", pf.getDb().getUserIcon());//获取用户头像
                             Log.e("sharesdk use_icon", pf.getDb().getUserGender());
                             Log.e("third 1", msg.obj.toString());
-                            token = pf.getDb().getToken();
+                            token = pf.getDb().getUserId();
+//                            token = pf.getDb().getToken();
                             myUserInfo.setUnionNo(token);
                             Toast.makeText(LoginActivity.this,"成功",Toast.LENGTH_LONG).show();
                             Log.e("third ", msg.obj.toString());
@@ -608,7 +620,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                 case WECHAT_MSG_ACTION_CCALLBACK:
                     switch (msg.arg1){
                         case 1:
-                            Platform pf = ShareSDK.getPlatform(QQ.NAME);
+                            Platform pf = ShareSDK.getPlatform(Wechat.NAME);
                             Log.e("sharesdk use_id", pf.getDb().getUserId()); //获取用户id
                             myUserInfo.setHeadImage(pf.getDb().getUserIcon());
                             myUserInfo.setNickName(pf.getDb().getUserName());
@@ -622,9 +634,10 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                             Log.e("sharesdk use_icon", pf.getDb().getUserIcon());//获取用户头像
                             Log.e("sharesdk use_icon", pf.getDb().getUserGender());
                             Log.e("third 1", msg.obj.toString());
-                            token = pf.getDb().getToken();
+                            token = pf.getDb().getUserId();
+//                            token = pf.getDb().getToken();
                             myUserInfo.setUnionNo(token);
-                            Toast.makeText(LoginActivity.this,"成功",Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this,"w成功",Toast.LENGTH_LONG).show();
                             Log.e("third ", msg.obj.toString());
                             flag = 1;
                             mAsyncTaskManager.request(THIRD_LOGIN, true, mydataListener);
@@ -651,6 +664,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
             @Override
             public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
                 Message msg = new Message();
+                Log.e("wechat", "  done 001");
                 msg.what = WECHAT_MSG_ACTION_CCALLBACK;
                 msg.arg1 = 1;
                 msg.arg2 = i;

@@ -121,8 +121,8 @@
             android:layout_width="60dip"
             android:layout_height="60dip"
             android:layout_marginTop="10dip"
+
             android:layout_marginLeft="10dip"
-            android:background="@mipmap/actionbar_picture_icon"
             />
         <com.hotyi.hotyi.utils.ui.HeadImageView
             android:id="@+id/usere_info_detail_game_two"
@@ -130,7 +130,6 @@
             android:layout_height="60dip"
             android:layout_marginTop="10dip"
             android:layout_marginLeft="10dip"
-            android:background="@mipmap/actionbar_picture_icon"
             />
         <com.hotyi.hotyi.utils.ui.HeadImageView
             android:id="@+id/usere_info_detail_game_three"
@@ -138,7 +137,6 @@
             android:layout_height="60dip"
             android:layout_marginTop="10dip"
             android:layout_marginLeft="10dip"
-            android:background="@mipmap/actionbar_picture_icon"
             />
         <TextView
             android:layout_width="0dip"
@@ -177,7 +175,6 @@
             android:layout_height="60dip"
             android:layout_marginTop="10dip"
             android:layout_marginLeft="10dip"
-            android:background="@mipmap/actionbar_picture_icon"
             />
 
         <com.hotyi.hotyi.utils.ui.HeadImageView
@@ -186,7 +183,6 @@
             android:layout_height="60dip"
             android:layout_marginLeft="10dip"
             android:layout_marginTop="10dip"
-            android:background="@mipmap/actionbar_picture_icon"
             />
 
         <com.hotyi.hotyi.utils.ui.HeadImageView
@@ -195,7 +191,6 @@
             android:layout_height="60dip"
             android:layout_marginTop="10dip"
             android:layout_marginLeft="10dip"
-            android:background="@mipmap/actionbar_picture_icon"
             />
         <TextView
             android:layout_width="0dip"
@@ -229,7 +224,6 @@
             android:layout_height="60dip"
             android:layout_marginTop="10dip"
             android:layout_marginLeft="10dip"
-            android:background="@mipmap/actionbar_picture_icon"
             />
         <com.hotyi.hotyi.utils.ui.HeadImageView
             android:id="@+id/usere_info_detail_game_circle_two"
@@ -237,7 +231,6 @@
             android:layout_height="60dip"
             android:layout_marginTop="10dip"
             android:layout_marginLeft="10dip"
-            android:background="@mipmap/actionbar_picture_icon"
             />
         <com.hotyi.hotyi.utils.ui.HeadImageView
             android:id="@+id/usere_info_detail_game_circle_three"
@@ -245,7 +238,6 @@
             android:layout_height="60dip"
             android:layout_marginTop="10dip"
             android:layout_marginLeft="10dip"
-            android:background="@mipmap/actionbar_picture_icon"
             />
         <TextView
             android:layout_width="0dip"

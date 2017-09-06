@@ -64,12 +64,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_menu_background_selector.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_ic_yes_selector.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_ic_yes_selector.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_cs_submit_comment.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_cs_submit_comment.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_ic_yes_selector.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_ic_yes_selector.xml"
     },
     {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_cs_corner_single_check_style.xml",
