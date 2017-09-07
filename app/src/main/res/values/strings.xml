@@ -32,4 +32,7 @@
     <string name="title_activity_third_login_bind">ThirdLoginBindActivity</string>
     <string name="title_activity_sub_conversation_list">SubConversationListActivity</string>
 
+    <dimen name="login_imgbtn_width">40dip</dimen>
+    <dimen name="login_choose_btn_width">20dip</dimen>
+
 </resources>

@@ -121,7 +121,6 @@
             android:layout_width="60dip"
             android:layout_height="60dip"
             android:layout_marginTop="10dip"
-
             android:layout_marginLeft="10dip"
             />
         <com.hotyi.hotyi.utils.ui.HeadImageView

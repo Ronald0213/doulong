@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.hotyi.hotyi.R;
@@ -16,7 +17,7 @@ import com.hotyi.hotyi.utils.async.AsyncTaskManager;
 
 public class RegistActivity extends Activity implements View.OnClickListener{
 
-    private ImageButton imageButton_back;
+    private ImageView imageButton_back;
     private EditText editText_phone;
     private Button button_next;
     public AsyncTaskManager mAsyncTaskManager;
@@ -34,35 +35,35 @@ public class RegistActivity extends Activity implements View.OnClickListener{
         initView();
     }
     public void initView(){
-        imageButton_back = (ImageButton)findViewById(R.id.regist_btn_back);
+        imageButton_back = (ImageView)findViewById(R.id.regist_btn_back);
         editText_phone = (EditText)findViewById(R.id.regist_edit_phone);
         button_next = (Button)findViewById(R.id.regist_btn_next);
 
         imageButton_back.setOnClickListener(this);
         button_next.setOnClickListener(this);
-        button_next.setBackgroundResource(R.drawable.gray_btn_corners);
+//        button_next.setBackgroundResource(R.drawable.gray_btn_corners);
 
-        editText_phone.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                int len = editText_phone.getText().toString().length();
-                if (len == 11){
-                    button_next.setBackgroundResource(R.drawable.login_btn_shape);
-                }else {
-                    button_next.setBackgroundResource(R.drawable.gray_btn_corners);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+//        editText_phone.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                int len = editText_phone.getText().toString().length();
+//                if (len == 11){
+//                    button_next.setBackgroundResource(R.drawable.login_btn_shape);
+//                }else {
+//                    button_next.setBackgroundResource(R.drawable.gray_btn_corners);
+//                }
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//            }
+//        });
 
 
     }

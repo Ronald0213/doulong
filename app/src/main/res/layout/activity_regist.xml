@@ -5,54 +5,127 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical">
-    <ImageButton
-        android:id="@+id/regist_btn_back"
-        android:layout_width="60dip"
-        android:layout_height="60dip"
-        android:background="@mipmap/login_back_2x"
-        android:layout_marginTop="30dip"
-        android:layout_marginLeft="30dip"></ImageButton>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dip"
+        android:layout_height="0dip"
+        android:layout_weight="8"></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="8">
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="5"></LinearLayout>
+        <ImageView
+            android:id="@+id/regist_btn_back"
+            android:layout_width="0dip"
+            android:layout_weight="7"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/login_back_2x"
+            ></ImageView>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_weight="65"
+            android:layout_height="match_parent"></LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="4"></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="16"
         android:gravity="center"
-        android:layout_marginTop="70dip"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="90dip"
-            android:layout_height="90dip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
             android:src="@mipmap/logo" />
     </LinearLayout>
-    <EditText
-        android:id="@+id/regist_edit_phone"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:maxLength="11"
-        android:lines="1"
-        android:layout_height="40dip"
-        android:background="@null"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="80dip"
-        android:layout_marginRight="80dip"
-        android:layout_marginTop="60dip"
-        android:hint="@string/print_phone_num" />
-    <View
+        android:layout_height="0dip"
+        android:layout_weight="15"></LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_marginLeft="60dip"
-        android:layout_marginRight="60dip"
-        android:background="@color/black"></View>
-    <Button
-        android:id="@+id/regist_btn_next"
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="6">
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="14"></LinearLayout>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="47">
+            <EditText
+                android:id="@+id/regist_edit_phone"
+                android:layout_width="match_parent"
+                android:maxLength="11"
+                android:lines="1"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center_vertical"
+
+                android:hint="@string/print_phone_num" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black"></View>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="14"></LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dip"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="60dip"
-        android:layout_marginRight="60dip"
-        android:layout_marginTop="40dip"
-        android:background="@drawable/login_btn_shape"
-        android:text="下一步"
-        android:textColor="#ffffff"
-        android:textSize="24sp" />
+        android:layout_height="0dip"
+        android:layout_weight="10"></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="8">
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="14"></LinearLayout>
+        <Button
+            android:id="@+id/regist_btn_next"
+            android:layout_width="0dip"
+            android:layout_weight="47"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/login_btn_shape"
+            android:text="下一步"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="14"></LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="58"></LinearLayout>
+
+
+
+
 
 </LinearLayout>

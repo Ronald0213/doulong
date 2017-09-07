@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +31,7 @@ import java.util.HashMap;
 
 public class RegistNextActivity extends MyBaseActivity implements OnDataListener, View.OnClickListener {
 
-    private ImageButton imgbtn_back;
+    private ImageView imgbtn_back;
     private EditText edtbtn_code;
     private TextView txt_getCode;
     private Button btn_next;
@@ -61,7 +62,7 @@ public class RegistNextActivity extends MyBaseActivity implements OnDataListener
     }
 
     public void initView(){
-        imgbtn_back = (ImageButton)findViewById(R.id.regist_next_imgbtn_back);
+        imgbtn_back = (ImageView)findViewById(R.id.regist_next_imgbtn_back);
         edtbtn_code = (EditText)findViewById(R.id.regist_next_edt_code);
         txt_getCode = (TextView)findViewById(R.id.regist_next_txt_getcode);
         btn_next = (Button)findViewById(R.id.regist_next_btn_next);

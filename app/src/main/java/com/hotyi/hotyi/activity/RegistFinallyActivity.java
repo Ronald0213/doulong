@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.hotyi.hotyi.R;
@@ -30,7 +31,7 @@ import java.util.HashMap;
 
 public class RegistFinallyActivity extends MyBaseActivity implements View.OnClickListener, View.OnFocusChangeListener {
 
-    private ImageButton imageButton_back;
+    private ImageView imageButton_back;
     private EditText edt_name, edt_sex, edt_password;
     private Button btn_next,btn_nan,btn_nv;
     private AsyncTaskManager asyncTaskManager;
@@ -60,7 +61,7 @@ public class RegistFinallyActivity extends MyBaseActivity implements View.OnClic
     }
 
     public void initView() {
-        imageButton_back = (ImageButton) findViewById(R.id.regist_finally_imgbtn_back);
+        imageButton_back = (ImageView) findViewById(R.id.regist_finally_imgbtn_back);
         edt_name = (EditText) findViewById(R.id.regist_finally_edt_name);
         edt_sex = (EditText) findViewById(R.id.regist_finally_edt_sex);
         edt_password = (EditText) findViewById(R.id.regist_finally_edt_password);

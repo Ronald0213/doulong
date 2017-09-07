@@ -1,146 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_show"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical">
 
-    <ImageButton
-        android:layout_gravity="left|top"
-        android:id="@+id/regist_finally_imgbtn_back"
-        android:layout_width="60dip"
-        android:layout_height="60dip"
-        android:layout_marginLeft="30dip"
-        android:layout_marginTop="30dip"
-        android:background="@mipmap/login_back_2x"></ImageButton>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="8"></LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dip"
+        android:layout_height="0dip"
+        android:layout_weight="8"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="5"></LinearLayout>
+
+        <ImageView
+            android:id="@+id/regist_finally_imgbtn_back"            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/login_back_2x"></ImageView>
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="65"></LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="4"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="16"
         android:gravity="center"
-        android:layout_marginTop="70dip"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="90dip"
-            android:layout_height="90dip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
             android:src="@mipmap/logo" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="60dip"
-        android:layout_marginRight="60dip"
-        android:layout_marginTop="40dip"
-        android:orientation="vertical">
+        android:layout_height="0dip"
+        android:layout_weight="11"></LinearLayout>
 
-        <EditText
-            android:id="@+id/regist_finally_edt_name"
-            android:layout_width="match_parent"
-            android:layout_height="40dip"
-            android:layout_weight="19"
-            android:textColor="@color/black"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:hint="请输入用户名"
-            android:lines="1"
-            android:maxLines="1" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/black">
-
-        </View>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="25">
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dip"
-            android:layout_marginTop="5dip"
-            android:layout_weight="19">
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="14"></LinearLayout>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:layout_weight="47">
+            <EditText
+                android:id="@+id/regist_finally_edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入用户名"
+                android:lines="1"
+                android:maxLines="1" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black">
+            </View>
+
+            <LinearLayout
+                android:layout_marginTop="5dip"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/regist_finally_edt_sex"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:enabled="false"
+                    android:textColor="@color/black"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请选择性别"
+                    android:maxLines="1" />
+
+                <Button
+                    android:id="@+id/regist_finally_nan"
+                    android:layout_width="30dip"
+                    android:layout_height="30dip"
+                    android:layout_marginBottom="2dip"
+                    android:background="@drawable/gray_corners_btn"
+                    android:gravity="center"
+                    android:textColor="@color/gray"
+                    android:textSize="18sp"
+                    android:text="男"/>
+                <Button
+                    android:id="@+id/regist_finally_nv"
+                    android:layout_marginLeft="10dip"
+                    android:layout_width="30dip"
+                    android:layout_height="30dip"
+                    android:layout_marginBottom="2dip"
+                    android:background="@drawable/gray_corners_btn"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="@color/gray"
+                    android:text="女"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black">
+
+            </View>
 
             <EditText
-                android:id="@+id/regist_finally_edt_sex"
-                android:layout_width="0dip"
-                android:layout_height="40dip"
-                android:enabled="false"
+                android:layout_marginTop="5dip"
+                android:id="@+id/regist_finally_edt_password"
                 android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
                 android:layout_weight="1"
                 android:background="@null"
                 android:gravity="center_vertical"
-                android:hint="请选择性别"
+                android:hint="请输入密码"
+                android:inputType="numberPassword"
+                android:lines="1"
                 android:maxLines="1" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black">
 
-            <Button
-                android:id="@+id/regist_finally_nan"
-                android:layout_width="35dip"
-                android:layout_height="35dip"
-                android:layout_marginBottom="2dip"
-                android:background="@drawable/gray_corners_btn"
-                android:gravity="center"
-                android:textColor="@color/gray"
-                android:textSize="18sp"
-                android:text="男"/>
-            <Button
-                android:id="@+id/regist_finally_nv"
-                android:layout_marginLeft="10dip"
-                android:layout_width="35dip"
-                android:layout_height="35dip"
-                android:layout_marginBottom="2dip"
-                android:background="@drawable/gray_corners_btn"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:textColor="@color/gray"
-                android:text="女"/>
+            </View>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="14"></LinearLayout>
+    </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/black">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="13"></LinearLayout>
 
-        </View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="4"
+        android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/regist_finally_edt_password"
-            android:textColor="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="40dip"
-            android:layout_marginTop="5dip"
-            android:layout_weight="19"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:hint="请输入密码"
-            android:inputType="numberPassword"
-            android:lines="1"
-            android:maxLines="1" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/black">
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="14"></LinearLayout>
 
-        </View>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="61"
+            android:orientation="horizontal">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/black">
+            <ImageView
+                android:id="@+id/login_choose"
+                android:layout_width="@dimen/login_choose_btn_width"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:scaleType="fitStart"
+                android:src="@mipmap/home_choosefriends_yes_3x" />
 
-        </View>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dip"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:text="我同意"
+                android:textColor="@color/dark_gray_more" />
+
+            <TextView
+                android:id="@+id/login_agree"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="12sp"
+                android:gravity="center_vertical"
+                android:text="逗龙软件许可及服务条款"
+                android:textColor="@color/darkblue" />
+        </LinearLayout>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/regist_finally_btn_next"
-        android:layout_width="match_parent"
-        android:layout_height="50dip"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="60dip"
-        android:layout_marginRight="60dip"
-        android:layout_marginTop="40dip"
-        android:background="@drawable/login_btn_shape"
-        android:text="下一步"
-        android:textColor="#ffffff"
-        android:textSize="24sp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="2"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="8">
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="14"></LinearLayout>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="47">
+            <Button
+                android:id="@+id/regist_finally_btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/login_btn_shape"
+                android:text="下一步"
+                android:textColor="#ffffff"
+                android:textSize="24sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="14"></LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="34"></LinearLayout>
 </LinearLayout>

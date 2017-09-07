@@ -5,6 +5,8 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.hotyi.hotyi.utils.async.OKHttpUtil;
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -307,6 +309,41 @@ public class HotyiHttpConnection {
 //    }
 
 //
+    public String getInfo(URL url) throws Exception{
+        Log.e("okhttp get","  done 1");
+//        final StringBuffer result = new StringBuffer();
+        OkHttpClient client = OKHttpUtil.getInstancec().getOkHttpClient();
+        Log.e("okhttp get","  done 2");
+        final Request request = new Request.Builder()
+                .url(url)
+                .build();
+        Log.e("okhttp get","  done 3");
+        Response response = client.newCall(request).execute();
+        return response.body().string();
+//        new call
+//        Call call = client.newCall(request);
+//        //请求加入调度
+//        call.enqueue(new Callback()
+//        {
+//            @Override
+//            public void onFailure(Request request, IOException e)
+//            {
+//                Log.e("okhttp get","  done 4");
+//            }
+//
+//            @Override
+//            public void onResponse(final Response response) throws IOException
+//            {
+//                Log.e("okhttp get","  done 5");
+//                    String str = response.body().toString();
+//                result.append(str);
+//            }
+//        });
+//        Log.e("okhttp get"," done 6");
+//        if (result != null)
+//            return result.toString();
+//        return  null;
+    }
 
     public String post(HashMap<String, String> map, URL url) throws Exception {
         OkHttpClient client = OKHttpUtil.getInstancec().getOkHttpClient();
