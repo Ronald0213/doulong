@@ -139,6 +139,7 @@ public class MyAsynctask {
     public static final String AddPointByShareGameCircle = "AppGameCircle/AddPointByShareGameCircle";
     public static final String SetAppConfig = "AppLoginReg/SetAppConfig";
     public static final String GetToken = "AppLoginReg/GetToken";
+    public static final String ValidateToken = "AppLoginReg/ValidateToken";
 
 
 }

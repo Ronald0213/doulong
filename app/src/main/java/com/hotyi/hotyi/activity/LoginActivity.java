@@ -4,10 +4,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -62,11 +65,13 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
     private MyUserInfo myUserInfo;
     private AlertDialog dialog;
     private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     private static final int MAX_ENCRYPT_BLOCK = 1024;
-    private StringBuffer stringBuffer;
+    private StringBuffer stringBuffer,autoText;
     public static final int LOGIN = 20;
-    public static final int GET_TOKEN = 21;
-    public static final int THIRD_LOGIN = 22;
+    public static final int AUTO_LOGIN = 21;
+    public static final int GET_TOKEN = 22;
+    public static final int THIRD_LOGIN = 23;
     //    public static final int qq_LOGIN = 22;
 //    public static final int WEIBO_LOGIN = 22;
     private String password;
@@ -89,12 +94,12 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
     private int flag = 0;
 
     private boolean isChoose = true;
-    //    BitmapFactory.Options options = new BitmapFactory.Options();
-//    Bitmap bitmap_non_choose = BitmapFactory.decodeResource(getResources(),R.drawable.blue_coners_btn,options);
-//    Bitmap bitmap_choose = BitmapFactory.decodeResource(getResources(),R.mipmap.home_choosefriends_yes_3x,options);
     private Bitmap bitmap_choose, bitmap_non_choose;
+//    private HashMap <String,String> autoMap =  new HashMap<>();
 
-
+    String device_model = Build.MODEL; // 设备型号
+    String deviceBrand= android.os.Build.MANUFACTURER;
+    String app_code ;
     /**
      * RSA加密
      */
@@ -125,6 +130,13 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         android_id = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        try {
+            PackageManager packageManager = this.getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(this.getPackageName(), 0);
+            app_code = String.valueOf(packageInfo.versionCode);
+        }catch (Exception e){
+
+        }
         regToWx();
         myUserInfo = MyUserInfo.getInstance();
         BitmapDrawable bitmap_choose_drawable = (BitmapDrawable) getResources().getDrawable(R.mipmap.home_choosefriends_yes_3x);
@@ -132,14 +144,55 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
         BitmapDrawable bitmap_non_choose_drawable = (BitmapDrawable) getResources().getDrawable(R.mipmap.home_choosefriends_no3x);
         bitmap_non_choose = bitmap_non_choose_drawable.getBitmap();
         sharedPreferences = getSharedPreferences("config", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor = sharedPreferences.edit();
         editor.putString("AccountInformation", null);
         editor.apply();
-        String userID = sharedPreferences.getString("userID", null);
-        String loginToken = sharedPreferences.getString("loginToken", null);
+
         mAsyncTaskManager = AsyncTaskManager.getInstance(getApplicationContext());
         initView();
+        autoLogin();
 
+    }
+    private void autoLogin(){
+        Log.e("auto done", "    1  ");
+        String autoUserID = sharedPreferences.getString("userId", null);
+        Log.e("auto done", "    1  " +autoUserID);
+        String autoName = sharedPreferences.getString("name",null);
+        Log.e("auto done", "    1  "+autoName);
+        String autoRongAccount = sharedPreferences.getString("ryAccount",null);
+        Log.e("auto done", "    1  "+autoRongAccount);
+        String autoHeadImage = sharedPreferences.getString("headImage",null);
+        Log.e("auto done", "    1  "+autoHeadImage);
+        Log.e("auto done", "    2 ");
+        if (autoUserID != null  && autoName != null  && autoRongAccount != null &&autoHeadImage != null ){
+            Log.e("auto done", "    3 ");
+//            autoText.append("DeviceBrand=").append(deviceBrand).append("&")
+//                    .append("DeviceId=").append(android_id).append("&")
+//                    .append("DeviceModel=").append(device_model).append("&")
+//                    .append("OS=").append("Android").append("&")
+//                    .append("Platform=").append("APP").append("&")
+//                    .append("UserId=").append(autoUserID).append("&")
+//                    .append("Version=").append(app_code);
+//            autoMap.put("DeviceBrand",deviceBrand);
+//            autoMap.put("DeviceId",android_id);
+//            autoMap.put("DeviceModel",device_model);
+//            autoMap.put("OS","Android");
+//            autoMap.put("Platform","APP");
+//            autoMap.put("UserId",autoUserID);
+//            autoMap.put("Version",app_code);
+            myUserInfo.setNickName(autoName);
+            myUserInfo.setHeadImage(autoHeadImage);
+            myUserInfo.setRyAccount(autoRongAccount);
+            myUserInfo.setUserId(autoUserID);
+            Log.e("auto done", "    4  ");
+            mAsyncTaskManager.request(AUTO_LOGIN,true,this);
+        }
+        Log.e("auto done", "    5  ");
+//        editor.putString("userId",myUserInfo.getUserId());
+//        editor.putString("ryAccount",myUserInfo.getRyAccount());
+//        editor.putString("name",myUserInfo.getNickName());
+//        editor.putString("ryToken",ryToken);
+//        editor.putString("loginToken",loginData.getToken());
     }
 
     public void initView() {
@@ -249,6 +302,34 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
     public Object doInBackground(int requestCode, String parameter) throws HttpException {
 //        Log.e("LOGIN", "CLICK text run  do in background");
         switch (requestCode) {
+            case AUTO_LOGIN:
+
+                try {
+                    Log.e("auto done", "    6  ");
+                    String login_url = MyAsynctask.HOST + MyAsynctask.ValidateToken;
+                    String userId = myUserInfo.getUserId();
+                    String loginToken = sharedPreferences.getString("loginToken",null);
+                    if (loginToken == null)
+                        return null;
+//                    String autoRSAtext = RSAUtil.encryptByPrivateKey(userId);
+                    URL url = new URL(login_url);
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put("UserId", userId);
+                    map.put("Token",loginToken);
+//                    if (key_str == null) {
+//                        Log.e("RSA", ".......");
+//                    } else
+//                        Log.e("RSA", "----   " + stringBuffer.toString());
+//                    Log.e("RSA", "++++   " + key_str);
+                    Log.e("auto done", "    7  ");
+                    return HotyiHttpConnection.getInstance(getApplicationContext()).post(map, url);
+//                    return HotyiHttpConnection.getInstance(getApplicationContext()).post();
+                } catch (Exception e) {
+
+                }
+
+
+                break;
             case LOGIN:
 
                 try {
@@ -280,6 +361,53 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
         Log.e("LOGIN", "CLICK text run onSuccess    ------" + result.toString());
         if (result != null) {
             switch (requestCode) {
+
+                case AUTO_LOGIN:
+
+                    if (result != null){
+                        try{
+                            Log.e("auto done", "    8  ");
+                            String rongToken = sharedPreferences.getString("ryToken",null);
+                            String autoResult = result.toString();
+                            JSONObject autoJson = new JSONObject(autoResult);
+                            if (autoJson.getInt("code") == 1){
+                                Log.e("auto done", "    9  ");
+//                                String autoInfo = RSAUtil.decryptByPrivateKey(autoJson.getJSONObject("data").getString("RSAText"));
+//                                Log.e("auto done", "    9  " + autoInfo);
+//                                JSONObject auto = new JSONObject(autoInfo);
+//                                editor.putString("loginToken",auto.getString("Token"));
+                                String autoToken = autoJson.getString("data");
+                                editor.putString("loginToken",autoToken);
+                                editor.commit();
+                                Log.e("auto done", "    10  ");
+                                RongIM.connect(rongToken, new RongIMClient.ConnectCallback() {
+                                    @Override
+                                    public void onTokenIncorrect() {
+
+                                    }
+
+                                    @Override
+                                    public void onSuccess(String s) {
+                                        Toast.makeText(LoginActivity.this,"自动登录成功",Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    @Override
+                                    public void onError(RongIMClient.ErrorCode errorCode) {
+
+                                    }
+                                });
+                                RongIM.getInstance().refreshUserInfoCache(new UserInfo(myUserInfo.getRyAccount(), myUserInfo.getNickName(), Uri.parse(myUserInfo.getHeadImage())));
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                finish();
+
+                            }
+                        }catch (Exception e){
+
+                        }
+                    }
+
+                    break;
+
                 case LOGIN:
                     try {
                         Log.e("LOGIN", "CLICK text run onSuccess" + "-------------");
@@ -298,7 +426,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                             Toast.makeText(LoginActivity.this, "Test", Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        LoginData loginData = new LoginData();
+                        final LoginData loginData = new LoginData();
                         loginData.setRYToken(logindataJson.getString("RYToken").toString());
                         loginData.setNickName(logindataJson.get("NickName").toString());
                         myUserInfo.setNickName(loginData.getNickName());
@@ -307,19 +435,26 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                         loginData.setAccountInfo(logindataJson.get("AccountInformation").toString());
                         loginData.setToken(logindataJson.get("Token").toString());
                         myLoginInfo.setLoginData(loginData);
-
                         if (myLoginInfo.getCode() == 1) {
                             Log.e("LOGIN", "   " + "login done");
                             String userInfo = RSAUtil.decryptByPrivateKey(logindataJson.get("AccountInformation").toString());
                             JSONObject userJson = new JSONObject(userInfo);
+                            Log.e("userAccountInfo   :", userInfo);
                             myUserInfo.setUserId(userJson.getString("UserId"));
                             myUserInfo.setRyAccount(userJson.getString("RYAccount"));
-                            String token = myLoginInfo.getLoginData().getRYToken();
+                            final String ryToken = myLoginInfo.getLoginData().getRYToken();
                             Log.e("LOGIN   ", myUserInfo.getUserId());
-                            RongIM.connect(token, new RongIMClient.ConnectCallback() {
+                            RongIM.connect(ryToken, new RongIMClient.ConnectCallback() {
 
                                 @Override
                                 public void onSuccess(String s) {
+                                    editor.putString("userId",myUserInfo.getUserId());
+                                    editor.putString("ryAccount",myUserInfo.getRyAccount());
+                                    editor.putString("name",myUserInfo.getNickName());
+                                    editor.putString("ryToken",ryToken);
+                                    editor.putString("loginToken",loginData.getToken());
+                                    editor.putString("headImage",myUserInfo.getHeadImage());
+                                    editor.commit();
                                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                                 }
 
@@ -336,6 +471,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                             });
                             RongIM.getInstance().refreshUserInfoCache(new UserInfo(myUserInfo.getRyAccount(), myUserInfo.getNickName(), Uri.parse(myUserInfo.getHeadImage())));
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finish();
                         }
                     } catch (Exception e) {
                         Log.e("LOGIN", "  " + e.toString());
@@ -391,7 +527,6 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                         URL url = new URL(login_url);
                         HashMap<String, String> map = new HashMap<>();
                         map.put("UnionNo", token);
-                        Log.e("LOGIN", "  111  " + token);
                         if (flag == 0)
                             return null;
                         else
@@ -423,13 +558,8 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                         JSONObject jsonObject = new JSONObject(str);
                         if (jsonObject.getInt("code") == 1 && jsonObject.getString("retrun_msg").equals("HasBind")) {
                             JSONObject logindataJson = new JSONObject(jsonObject.get("data").toString());
-//                        Log.e("LOGIN", "CLICK text run onSuccess"+"3333334");
-//                            if (myLoginInfo.getCode() == -1){
-//                                Toast.makeText(LoginActivity.this,"Test",Toast.LENGTH_SHORT).show();
-//                                return;
-//                            }
                             final LoginInfo myLoginInfo = new LoginInfo();
-                            LoginData loginData = new LoginData();
+                            final LoginData loginData = new LoginData();
                             loginData.setRYToken(logindataJson.getString("RYToken").toString());
                             loginData.setNickName(logindataJson.get("NickName").toString());
                             myUserInfo.setNickName(loginData.getNickName());
@@ -438,17 +568,23 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                             loginData.setAccountInfo(logindataJson.get("AccountInformation").toString());
                             loginData.setToken(logindataJson.get("Token").toString());
                             myLoginInfo.setLoginData(loginData);
-                            Log.e("LOGIN", "   " + "login done");
                             String userInfo = RSAUtil.decryptByPrivateKey(logindataJson.get("AccountInformation").toString());
                             JSONObject userJson = new JSONObject(userInfo);
+                            Log.e("userAccountInfo   :", userInfo);
                             myUserInfo.setUserId(userJson.getString("UserId"));
                             myUserInfo.setRyAccount(userJson.getString("RYAccount"));
-                            String token = myLoginInfo.getLoginData().getRYToken();
-                            Log.e("LOGIN   ", myUserInfo.getUserId());
-                            RongIM.connect(token, new RongIMClient.ConnectCallback() {
+                            final String ryToken = myLoginInfo.getLoginData().getRYToken();
+                            RongIM.connect(ryToken, new RongIMClient.ConnectCallback() {
 
                                 @Override
                                 public void onSuccess(String s) {
+                                    editor.putString("userId",myUserInfo.getUserId());
+                                    editor.putString("ryAccount",myUserInfo.getRyAccount());
+                                    editor.putString("name",myUserInfo.getNickName());
+                                    editor.putString("ryToken",ryToken);
+                                    editor.putString("loginToken",loginData.getToken());
+                                    editor.putString("headImage",myUserInfo.getHeadImage());
+                                    editor.commit();
                                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                                 }
 
@@ -465,11 +601,10 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                             });
                             RongIM.getInstance().refreshUserInfoCache(new UserInfo(myUserInfo.getRyAccount(), myUserInfo.getNickName(), Uri.parse(myUserInfo.getHeadImage())));
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finish();
 
 
                         } else if (jsonObject.getInt("code") == 1 && jsonObject.getString("retrun_msg").equals("NoBind")) {
-
-//                            startActivity(new Intent(LoginActivity.this,ThirdLoginBindActivity.class));
                             Intent intent = new Intent(LoginActivity.this, ThirdLoginBindActivity.class);
                             intent.putExtra("UnionNo", token);
                             intent.putExtra("Type", String.valueOf(flag));
@@ -503,13 +638,9 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                     switch (msg.arg1) {
                         case 1:
                             Platform pf = ShareSDK.getPlatform(SinaWeibo.NAME);
-                            Log.e("LOGIN", "   " + "weibo login done  1");
                             String id = pf.getDb().getUserId();
-                            Log.e("LOGIN", "   " + "weibo login  name done  1  " + id);
                             Log.e("sharesdk use_id", pf.getDb().getUserId()); //获取用户id
-                            Log.e("LOGIN", "   " + "weibo login done  2  " + pf.getDb().getUserId());
                             myUserInfo.setHeadImage(pf.getDb().getUserIcon());
-                            Log.e("LOGIN", "   " + "weibo login done  3  " + pf.getDb().getUserIcon());
                             myUserInfo.setNickName(pf.getDb().getUserName());
                             Log.e("LOGIN", "   " + "weibo login done  4  " + pf.getDb().getUserName());
                             String sex = pf.getDb().getUserGender();
@@ -521,7 +652,6 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                                 myUserInfo.setSex("2");
                             Log.e("sharesdk use_name", pf.getDb().getUserName());//获取用户名称
                             Log.e("sharesdk use_icon", pf.getDb().getUserIcon());//获取用户头像
-//                            Log.e("sharesdk use_icon", pf.getDb().getUserGender());
                             Log.e("third 1", msg.obj.toString());
                             token = pf.getDb().get("unionid");
                             myUserInfo.setUnionNo(token);

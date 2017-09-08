@@ -27,6 +27,7 @@ import com.hotyi.hotyi.broadcast.BroadcastManager;
 import com.hotyi.hotyi.fragment.ContactsFragment;
 import com.hotyi.hotyi.fragment.FindFragment;
 import com.hotyi.hotyi.fragment.GameFragment;
+import com.hotyi.hotyi.fragment.MyConversationFragment;
 import com.hotyi.hotyi.fragment.MySelfInfoFragment;
 import com.hotyi.hotyi.utils.HotyiHttpConnection;
 import com.hotyi.hotyi.utils.HttpException;
@@ -105,7 +106,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         main_contect.setOnClickListener(this);
         main_find.setOnClickListener(this);
 
-        Fragment conversationList = initConversationList();
+//        Fragment conversationList = initConversationList();
+        Fragment conversationList = new MyConversationFragment();
         mFragmentList.add(conversationList);
         mFragmentList.add(new ContactsFragment());
         mFragmentList.add(new GameFragment());
