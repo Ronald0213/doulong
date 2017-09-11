@@ -65,7 +65,7 @@
         android:text=" 积分明细"
         android:textColor="@color/white"
         android:gravity="left|center_vertical"
-        android:background="@color/darkblue_light"
+        android:background="@color/darkblue"
         android:textSize="14sp"/>
     <TextView
         android:layout_width="match_parent"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="40dip"
+    android:layout_height="30dip"
     android:clickable="false"
     android:background="@color/gray"
     android:orientation="vertical">
@@ -9,7 +9,7 @@
     <TextView
         android:clickable="false"
         android:layout_width="match_parent"
-        android:layout_height="40dip"
+        android:layout_height="30dip"
         android:layout_marginLeft="15dip"
         android:gravity="center_vertical"
         android:text="逗友"

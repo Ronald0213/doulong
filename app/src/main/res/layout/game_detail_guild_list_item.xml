@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:orientation="horizontal">
+        <com.hotyi.hotyi.utils.ui.HeadImageView
+            android:id="@+id/guild_detail_item_name"
+            android:layout_marginTop="10dip"
+            android:background="@mipmap/head00"
+            android:layout_width="80dip"
+            android:layout_height="80dip" />
+        <LinearLayout
+            android:layout_marginTop="10dip"
+            android:layout_marginBottom="10dip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dip">
+            <TextView
+                android:id="@+id/game_detail_guild_name"
+                android:text="最长的电影"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="5"/>
+            <TextView
+                android:id="@+id/game_detail_guild_num_leader"
+                android:text="21354"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="4"/>
+            <TextView
+                android:id="@+id/game_detail_guild_introduce"
+                android:text="我们的开始是很长的电影，放映了三年我票都还留着"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:maxLines="2"
+                android:layout_weight="8"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

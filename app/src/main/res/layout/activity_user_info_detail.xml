@@ -37,7 +37,6 @@
             android:layout_marginTop="10dip"
             android:layout_marginRight="10dip"
             android:layout_marginLeft="20dip"
-            android:background="@mipmap/actionbar_picture_icon"
             />
 
         <LinearLayout

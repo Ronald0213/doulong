@@ -6,13 +6,16 @@
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="gray">#cccccc</color>
+    <color name="red">#f54646</color>
     <color name="bright_gray">#e4e1e1</color>
     <color name="bright_gray_more">#f2f2f2</color>
     <color name="dark_gray">#b3b2b2</color>
     <color name="dark_gray_more">#9c9c9c</color>
     <color name="darkblue">#426b9f</color>
-    <color name="darkblue_light">#3d62a7</color>
+    <color name="blue_light">#6690c3</color>
     <color name="blue">#52bfed</color>
+    <color name="bright_blue">#94daf7</color>
     <color name="line_color"> #c6d2e2</color>
+    <color name="guild_head_lines">#f7df89</color>
     <color name="btn_inside_color">#426b9f</color>
 </resources>

@@ -150,22 +150,15 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
 
         mAsyncTaskManager = AsyncTaskManager.getInstance(getApplicationContext());
         initView();
-        autoLogin();
+//        autoLogin();
 
     }
     private void autoLogin(){
-        Log.e("auto done", "    1  ");
         String autoUserID = sharedPreferences.getString("userId", null);
-        Log.e("auto done", "    1  " +autoUserID);
         String autoName = sharedPreferences.getString("name",null);
-        Log.e("auto done", "    1  "+autoName);
         String autoRongAccount = sharedPreferences.getString("ryAccount",null);
-        Log.e("auto done", "    1  "+autoRongAccount);
         String autoHeadImage = sharedPreferences.getString("headImage",null);
-        Log.e("auto done", "    1  "+autoHeadImage);
-        Log.e("auto done", "    2 ");
         if (autoUserID != null  && autoName != null  && autoRongAccount != null &&autoHeadImage != null ){
-            Log.e("auto done", "    3 ");
 //            autoText.append("DeviceBrand=").append(deviceBrand).append("&")
 //                    .append("DeviceId=").append(android_id).append("&")
 //                    .append("DeviceModel=").append(device_model).append("&")
@@ -184,10 +177,8 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
             myUserInfo.setHeadImage(autoHeadImage);
             myUserInfo.setRyAccount(autoRongAccount);
             myUserInfo.setUserId(autoUserID);
-            Log.e("auto done", "    4  ");
             mAsyncTaskManager.request(AUTO_LOGIN,true,this);
         }
-        Log.e("auto done", "    5  ");
 //        editor.putString("userId",myUserInfo.getUserId());
 //        editor.putString("ryAccount",myUserInfo.getRyAccount());
 //        editor.putString("name",myUserInfo.getNickName());
@@ -252,16 +243,12 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                 try {
                     stringBuffer = new StringBuffer();
                     key_str = RSAUtil.encryptByPublicKey(stringBuffer.append(android_id).append("&").append(phone_num).append("&").append(password).append("&").append(System.currentTimeMillis()).toString());
-//                    Log.e("aaaaaaaaaaaaaaaaaaaa","   "+ stringBuffer.toString());
-//                    String str = RSAUtil.decryptByPrivateKey(key_str);
-//                    Log.e("aaaaaaaaaaaaaaaaaaaa","ssssssss"   +str);
                 } catch (Exception e) {
                     Toast.makeText(LoginActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-//                    Log.e("RSA0",e.toString());
                     break;
                 }
                 mAsyncTaskManager.request(LOGIN, true, this);
-//                Log.e("LOGIN", "CLICK text run");
+                Log.e("LOGIN", "CLICK text run");
                 break;
             case R.id.text_forget_password:
                 //  startActivity(new Intent(LoginActivity.this,Forg));
@@ -277,12 +264,6 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
                 break;
             case R.id.imgbtn_weixin:
                 getCode();
-                //******微信登录
-//                final SendAuth.Req req = new SendAuth.Req();
-//                req.scope = "snsapi_userinfo";
-//                req.state = "diandi_wx_login";
-//                api.sendReq(req);
-//                startActivityForResult(new Intent(LoginActivity.this, WXEntryActivity.class), 20);
                 break;
         }
     }

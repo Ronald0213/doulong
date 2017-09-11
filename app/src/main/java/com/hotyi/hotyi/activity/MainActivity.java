@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -62,10 +64,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private Conversation.ConversationType[] mConversationsTypes = null;
     private LinearLayout main_msg,main_contect,main_game,main_find,main_mine;
     private String key_str = null;
-    private TextView main_msg_text,main_contect_text,main_game_text,main_mine_text,main_find_text;
+    private TextView main_msg_text,main_contect_text,main_game_text,main_mine_text,main_find_text,main_title;
     private ImageView main_msg_img,main_contect_img,main_game_img,main_find_img,main_mine_img;
 //    private Resources gray = getResources().getColor(R.color.gray);
 //    private ColorStateList blue = ColorStateList.valueOf(getResources().getColor(R.color.darkblue));
+    private Bitmap main_msg_choose,main_msg_non_choose,main_contacts_choose,main_contacts_non_choose,
+                    main_gameHub_choose,main_gameHub_non_choose,main_daren_choose,main_daren_non_choose,
+                    main_myself_choose,main_myself_non_choose;
+
+
 
 
     @Override
@@ -75,9 +82,26 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         mContext = this;
         mAsyncTaskManager = AsyncTaskManager.getInstance(mContext);
-
+        initBitmap();
         initView();
     }
+
+    void initBitmap(){
+        main_msg_choose = BitmapFactory.decodeResource(getResources(),R.mipmap.tab_message_sele_2x);
+        main_msg_non_choose = BitmapFactory.decodeResource(getResources(),R.mipmap.tab_message_nor_3x);
+        main_contacts_choose = BitmapFactory.decodeResource(getResources(),R.mipmap.tab_contact_sele_2x);
+        main_contacts_non_choose = BitmapFactory.decodeResource(getResources(),R.mipmap.tab_contact_nor_3x);
+        main_gameHub_choose = BitmapFactory.decodeResource(getResources(),R.mipmap.tab_game_sele_2x);
+        main_gameHub_non_choose = BitmapFactory.decodeResource(getResources(),R.mipmap.tab_game_nor_3x);
+        main_myself_choose = BitmapFactory.decodeResource(getResources(),R.mipmap.tab_myself_sele_2x);
+        main_myself_non_choose = BitmapFactory.decodeResource(getResources(),R.mipmap.tab_myself_nor_3x);
+
+
+
+
+
+    }
+
     void initView(){
         myViewPager = (ViewPager)findViewById(R.id.main_viewpager);
         main_msg = (LinearLayout)findViewById(R.id.main_msg);
@@ -85,6 +109,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         main_contect = (LinearLayout)findViewById(R.id.main_contect);
         main_find = (LinearLayout)findViewById(R.id.main_find);
         main_mine = (LinearLayout)findViewById(R.id.main_mine);
+        main_title = (TextView)findViewById(R.id.main_title);
 
         main_msg_text = (TextView)findViewById(R.id.main_msg_text);
         main_contect_text = (TextView)findViewById(R.id.main_contect_text);
@@ -190,27 +215,38 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         switch (view.getId()){
             case R.id.main_msg:
                 initColor();
-                main_msg_img.setBackgroundResource(R.mipmap.tab_message_sele_2x);
+                main_title.setText("消息");
+                myViewPager.setCurrentItem(0);
+                main_msg_img.setImageBitmap(main_msg_choose);
+//                main_msg_img.setBackgroundResource(R.mipmap.tab_message_sele_2x);
                 main_msg_text.setTextColor(getResources().getColor(R.color.darkblue));
                 break;
             case R.id.main_contect:
                 initColor();
-                main_contect_img.setBackgroundResource(R.mipmap.tab_contact_sele_2x);
+                myViewPager.setCurrentItem(1);
+                main_title.setText("联系人");
+                main_contect_img.setImageBitmap(main_contacts_choose);
                 main_contect_text.setTextColor(getResources().getColor(R.color.darkblue));
                 break;
             case R.id.main_game:
                 initColor();
-                main_game_img.setBackgroundResource(R.mipmap.tab_game_sele_2x);
+                myViewPager.setCurrentItem(2);
+                main_title.setText("游戏圈");
+                main_game_img.setImageBitmap(main_gameHub_choose);
                 main_game_text.setTextColor(getResources().getColor(R.color.darkblue));
                 break;
             case R.id.main_find:
                 initColor();
-                main_find_img.setBackgroundResource(R.mipmap.tab_find_sele_2x);
+                myViewPager.setCurrentItem(3);
+                main_title.setText("达人");
+//                main_find_img.setBackgroundResource(R.mipmap.tab_find_sele_2x);
                 main_find_text.setTextColor(getResources().getColor(R.color.darkblue));
                 break;
             case R.id.main_mine:
                 initColor();
-                main_mine_img.setBackgroundResource(R.mipmap.tab_myself_sele_2x);
+                myViewPager.setCurrentItem(4);
+                main_title.setText("我的");
+                main_mine_img.setImageBitmap(main_myself_choose);
                 main_mine_text.setTextColor(getResources().getColor(R.color.darkblue));
                 break;
         }
@@ -223,11 +259,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             main_find_text.setTextColor(getResources().getColor(R.color.gray));
             main_game_text.setTextColor(getResources().getColor(R.color.gray));
             main_mine_text.setTextColor(getResources().getColor(R.color.gray));
-            main_msg_img.setBackgroundResource(R.mipmap.tab_message_nor_3x);
-            main_contect_img.setBackgroundResource(R.mipmap.tab_contact_nor_3x);
-            main_game_img.setBackgroundResource(R.mipmap.tab_game_nor_3x);
-            main_find_img.setBackgroundResource(R.mipmap.tab_message_nor_3x);
-            main_mine_img.setBackgroundResource(R.mipmap.tab_myself_nor_3x);
+//            main_msg_img.setBackgroundResource(R.mipmap.tab_message_nor_3x);
+//            main_contect_img.setBackgroundResource(R.mipmap.tab_contact_nor_3x);
+//            main_game_img.setBackgroundResource(R.mipmap.tab_game_nor_3x);
+//            main_find_img.setBackgroundResource(R.mipmap.tab_message_nor_3x);
+//            main_mine_img.setBackgroundResource(R.mipmap.tab_myself_nor_3x);
+            main_msg_img.setImageBitmap(main_msg_non_choose);
+            main_contect_img.setImageBitmap(main_contacts_non_choose);
+            main_game_img.setImageBitmap(main_gameHub_non_choose);
+            main_mine_img.setImageBitmap(main_myself_non_choose);
         }catch (Exception e){
 
         }
@@ -241,7 +281,38 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     @Override
     public void onPageSelected(int position) {
-
+            switch (position){
+                case 0:
+                    initColor();
+                    main_msg_img.setImageBitmap(main_msg_choose);
+                    main_title.setText("消息");
+                    main_msg_text.setTextColor(getResources().getColor(R.color.darkblue));
+                    break;
+                case 1:
+                    main_title.setText("联系人");
+                    initColor();
+                    main_contect_img.setImageBitmap(main_contacts_choose);
+                    main_contect_text.setTextColor(getResources().getColor(R.color.darkblue));
+                    break;
+                case 2:
+                    main_title.setText("游戏圈");
+                    initColor();
+                    main_game_img.setImageBitmap(main_gameHub_choose);
+                    main_game_text.setTextColor(getResources().getColor(R.color.darkblue));
+                    break;
+                case 3:
+                    initColor();
+                    main_title.setText("达人");
+//                main_find_img.setBackgroundResource(R.mipmap.tab_find_sele_2x);
+                    main_find_text.setTextColor(getResources().getColor(R.color.darkblue));
+                    break;
+                case 4:
+                    initColor();
+                    main_title.setText("我的");
+                    main_mine_img.setImageBitmap(main_myself_choose);
+                    main_mine_text.setTextColor(getResources().getColor(R.color.darkblue));
+                    break;
+            }
     }
 
     @Override

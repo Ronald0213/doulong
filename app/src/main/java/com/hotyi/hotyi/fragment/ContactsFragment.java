@@ -367,62 +367,62 @@ public class ContactsFragment extends Fragment implements OnDataListener {
         asyncTaskManager.request(GET_FRIEND_INFO, true, this);
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
-
-    private void saveStateToArguments() {
-        savedState = saveState();
-        if (savedState != null) {
-            Bundle b = getArguments();
-            b.putBundle("internalSavedViewState8954201239547",
-                    savedState);
-        }
-    }
-
-    private Bundle saveState() {
-        Bundle state = new Bundle();
-        return state;
-    }
-
-
-    private void restoreState() {
-        if (savedState != null) {
-            //tv1.setText(savedState.getString(“text”));
-        }
-
-    }
-
-
-    @Override
-
-    public void onDestroyView() {
-        super.onDestroyView();
-        saveStateToArguments();
-    }
-
-
-    private boolean restoreStateFromArguments() {
-
-        Bundle b = getArguments();
-        savedState = b.getBundle("internalSavedViewState8954201239547");
-        if (savedState != null) {
-            restoreState();
-            return true;
-        }
-        return false;
-
-    }
-
-
+//    @Override
+//    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//    }
+//
+//    private void saveStateToArguments() {
+//        savedState = saveState();
+//        if (savedState != null) {
+//            Bundle b = getArguments();
+//            b.putBundle("internalSavedViewState8954201239547",
+//                    savedState);
+//        }
+//    }
 //
 //    private Bundle saveState() {
-//
 //        Bundle state = new Bundle();
-//
 //        return state;
+//    }
+//
+//
+//    private void restoreState() {
+//        if (savedState != null) {
+//            //tv1.setText(savedState.getString(“text”));
+//        }
 //
 //    }
+//
+//
+//    @Override
+//
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        saveStateToArguments();
+//    }
+//
+//
+//    private boolean restoreStateFromArguments() {
+//
+//        Bundle b = getArguments();
+//        savedState = b.getBundle("internalSavedViewState8954201239547");
+//        if (savedState != null) {
+//            restoreState();
+//            return true;
+//        }
+//        return false;
+//
+//    }
+//
+//
+////
+////    private Bundle saveState() {
+////
+////        Bundle state = new Bundle();
+////
+////        return state;
+////
+////    }
 }
 

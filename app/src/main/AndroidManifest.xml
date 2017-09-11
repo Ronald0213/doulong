@@ -307,16 +307,26 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="cn.rongcloud.im"
                     android:path="/subconversationlist"
                     android:scheme="rong" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.GuildDetailActivity"
+            android:label="@string/title_activity_guild_detail" />
+        <activity
+            android:name=".activity.GameListActivity"
+            android:label="@string/title_activity_game_list" />
+        <activity
+            android:name=".activity.GameDetailInfoActivity"
+            android:label="@string/title_activity_game_detail_info"></activity>
     </application>
 
 </manifest>

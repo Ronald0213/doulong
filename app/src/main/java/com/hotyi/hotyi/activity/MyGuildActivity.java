@@ -1,5 +1,6 @@
 package com.hotyi.hotyi.activity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,6 +19,7 @@ import com.hotyi.hotyi.other.hotyiClass.MyGroupInfo;
 import com.hotyi.hotyi.other.hotyiClass.MyUserInfo;
 import com.hotyi.hotyi.utils.HotyiHttpConnection;
 import com.hotyi.hotyi.utils.HttpException;
+import com.hotyi.hotyi.utils.ListViewUtil;
 import com.hotyi.hotyi.utils.MyAsynctask;
 import com.hotyi.hotyi.utils.RSAUtil;
 import com.hotyi.hotyi.utils.async.AsyncTaskManager;
@@ -43,6 +46,7 @@ public class MyGuildActivity extends Activity implements OnDataListener{
     private MyUserInfo myUserInfo = MyUserInfo.getInstance();
     private ImageLoader imageLoader = ImageLoader.getInstance();
     private List<MyGroupInfo> list = new ArrayList<>();
+    private LinearLayout moreGuild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,14 @@ public class MyGuildActivity extends Activity implements OnDataListener{
 //                String id = myGroupInfo.getRongId();
 //                RongIM.getInstance().refreshUserInfoCache(new UserInfo(myGroupInfo.getRongId(),myGroupInfo.getName(), Uri.parse(myGroupInfo.getImgUrl())));
                 RongIM.getInstance().startGroupChat(MyGuildActivity.this,myGroupInfo.getRongId(),myGroupInfo.getName());
+            }
+        });
+
+        moreGuild = (LinearLayout)findViewById(R.id.find_more_guild);
+        moreGuild.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity( new Intent(MyGuildActivity.this,GameListActivity.class));
             }
         });
 
@@ -117,6 +129,7 @@ public class MyGuildActivity extends Activity implements OnDataListener{
                                 list.add(myGroupInfo);
                             }
                             groupListView.setAdapter(new GuildListAdpter());
+                            ListViewUtil.setListViewHeightBasedOnChildren(groupListView);
                         }
 
                     }

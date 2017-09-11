@@ -34,5 +34,8 @@
 
     <dimen name="login_imgbtn_width">40dip</dimen>
     <dimen name="login_choose_btn_width">20dip</dimen>
+    <string name="title_activity_guild_detail">GuildDetailActivity</string>
+    <string name="title_activity_game_list">GameListActivity</string>
+    <string name="title_activity_game_detail_info">GameDetailInfoActivity</string>
 
 </resources>

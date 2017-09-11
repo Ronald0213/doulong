@@ -13,9 +13,9 @@
             android:id="@+id/group_item_head_image"
             android:layout_width="40dip"
             android:layout_height="40dip"
-            android:layout_marginLeft="15dip"
+            android:layout_marginLeft="5dip"
             android:layout_marginTop="10dip"
-            android:background="@mipmap/head03" />
+             />
 
         <TextView
             android:id="@+id/group_item_name"
@@ -23,7 +23,6 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="15dip"
             android:gravity="center_vertical"
-            android:text="最长的电影"
             android:textColor="@color/black"
             android:textSize="20sp" />
 

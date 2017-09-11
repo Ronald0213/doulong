@@ -608,12 +608,12 @@
         "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\default\\res\\drawable-xhdpi-v4\\rc_unread_remind_list_count.png"
     },
     {
-        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\CallKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_cs_unresolved.png",
-        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\default\\res\\drawable-xhdpi-v4\\rc_cs_unresolved.png"
-    },
-    {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\CallKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_btn_voice_hover.png",
         "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\default\\res\\drawable-xhdpi-v4\\rc_btn_voice_hover.png"
+    },
+    {
+        "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\CallKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_cs_unresolved.png",
+        "source": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\IMKit\\build\\intermediates\\bundles\\default\\res\\drawable-xhdpi-v4\\rc_cs_unresolved.png"
     },
     {
         "merged": "C:\\Users\\HOTYI\\Desktop\\Hotyi\\doulong\\CallKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_volume_8.png",
