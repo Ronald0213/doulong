@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="260dip"
+    android:layout_height="260dip"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="65"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="34">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.hotyi.hotyi.utils.ui.GuildSimpleImageView
+                    android:id="@+id/guild_simple_info_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="26"
+                    android:scaleType="fitXY"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="12"
+                    android:background="@color/white"></LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="18"
+                    android:orientation="horizontal"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_marginLeft="20dip"
+                    android:layout_weight="18"
+                    android:orientation="horizontal">
+
+                    <com.hotyi.hotyi.utils.ui.HeadImageView
+                        android:id="@+id/guild_simple_info_head"
+                        android:layout_width="60dip"
+                        android:layout_height="60dip"
+                        android:padding="20dip"
+                        android:src="@mipmap/head00"
+                        android:scaleType="fitStart"
+                        />
+
+                    <TextView
+                        android:id="@+id/guild_simple_info_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dip"
+                        android:layout_marginLeft="10dip"
+                        android:gravity="bottom"
+                        android:text="最长的电影"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="11"
+            android:orientation="horizontal"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/guild_simple_info_introduce"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="7"
+            android:orientation="horizontal"
+            android:background="@color/white">
+
+            <Button
+                android:id="@+id/guild_simple_info_sure"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:layout_weight="7"
+                android:background="@drawable/login_btn_shape"
+                android:text="查看公会"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="0dip"
+            android:layout_weight="2"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:orientation="horizontal"
+            android:layout_weight="7"
+            android:background="@color/white">
+
+            <Button
+                android:id="@+id/guild_simple_info_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:layout_weight="7"
+                android:background="@drawable/black_coners_btn"
+                android:text="取消"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:background="@drawable/bottom_coners_shape"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="2"></LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
+
+

@@ -33,7 +33,6 @@ public class MyDialogActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.realy_dialog);
-
         dialog_text = (TextView)findViewById(R.id.dialog_text);
         left_btn = (Button)findViewById(R.id.dialog_left_btn);
         right_btn = (Button)findViewById(R.id.dialog_right_btn);

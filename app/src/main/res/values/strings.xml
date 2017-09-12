@@ -37,5 +37,6 @@
     <string name="title_activity_guild_detail">GuildDetailActivity</string>
     <string name="title_activity_game_list">GameListActivity</string>
     <string name="title_activity_game_detail_info">GameDetailInfoActivity</string>
+    <string name="title_activity_guild_simple_info">GuildSimpleInfoActivity</string>
 
 </resources>

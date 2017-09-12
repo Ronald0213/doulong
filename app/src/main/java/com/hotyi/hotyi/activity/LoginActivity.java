@@ -18,6 +18,7 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -129,6 +130,8 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         android_id = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         try {
             PackageManager packageManager = this.getPackageManager();
@@ -150,7 +153,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
 
         mAsyncTaskManager = AsyncTaskManager.getInstance(getApplicationContext());
         initView();
-//        autoLogin();
+        autoLogin();
 
     }
     private void autoLogin(){

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -59,6 +60,22 @@ public class GameDetailInfoActivity extends Activity implements OnDataListener {
                 finish();
             }
         });
+        guildListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                int num = i - guildListView.getHeaderViewsCount();
+                GuildInfo guildInfo = guildInfos.get(num);
+                Intent intent = new Intent(GameDetailInfoActivity.this,GuildSimpleInfoActivity.class);
+                intent.putExtra("ryGuildId",guildInfo.getRyGuildId());
+                intent.putExtra("guildId",guildInfo.getGuildId());
+                intent.putExtra("head",guildInfo.getLogo());
+                intent.putExtra("background",guildInfo.getBackground());
+                intent.putExtra("introduce",guildInfo.getIntroduce());
+                intent.putExtra("name",guildInfo.getName());
+                intent.putExtra("status",guildInfo.getStatus());
+                startActivity(intent);
+            }
+        });
         asyncTaskManager.request(GET_GAME_DETAIL_INFO, true, this);
 
     }
@@ -107,7 +124,7 @@ public class GameDetailInfoActivity extends Activity implements OnDataListener {
                                 guildInfos.add(new GuildInfo(guildJson.getString("GuildId"),guildJson.getString("RYGuildId"),
                                         guildJson.getString("Logo"),guildJson.getString("GuildName"),
                                         guildJson.getString("Introduce"),guildJson.getString("LeaderName"),
-                                        guildJson.getString("PeopleNum")));
+                                        guildJson.getString("PeopleNum"),guildJson.getString("Status"),guildJson.getString("Cover")));
                             }
                             guildListView.setAdapter(new GuildAdapter());
                             ListViewUtil.setListViewHeightBasedOnChildren(guildListView);

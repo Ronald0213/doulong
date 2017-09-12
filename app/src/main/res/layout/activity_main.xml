@@ -16,12 +16,11 @@
             android:id="@+id/main_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="10dip"
+            android:layout_marginBottom="7dip"
             android:gravity="center_horizontal|bottom"
             android:text="游戏"
             android:textColor="#ffffff"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="20sp" />
     </LinearLayout>
 
 
@@ -62,7 +61,8 @@
                 android:id="@+id/main_msg_img"
                 android:layout_width="match_parent"
                 android:layout_height="0dip"
-                android:layout_weight="5"
+                android:layout_margin="3dip"
+                android:layout_weight="4"
                 android:scaleType="fitCenter"
                 android:src="@mipmap/tab_message_nor_3x" />
 
@@ -70,9 +70,8 @@
                 android:id="@+id/main_msg_text"
                 android:layout_width="50dip"
                 android:layout_height="0dip"
-                android:layout_marginLeft="3dip"
                 android:layout_weight="3"
-                android:textSize="10sp"
+                android:textSize="8sp"
                 android:gravity="center"
                 android:text="消息"
                 android:textColor="@color/gray" />
@@ -94,17 +93,19 @@
                 android:id="@+id/main_contect_img"
                 android:layout_width="match_parent"
                 android:layout_height="0dip"
-                android:layout_weight="5"
+                android:layout_weight="4"
+                android:layout_margin="3dip"
+
+                android:scaleType="fitCenter"
                 android:src="@mipmap/tab_contact_nor_3x" />
 
             <TextView
                 android:id="@+id/main_contect_text"
                 android:layout_width="50dip"
                 android:layout_height="0dip"
-                android:layout_marginLeft="3dip"
                 android:layout_weight="3"
                 android:gravity="center"
-                android:textSize="10sp"
+                android:textSize="8sp"
                 android:text="联系人"
                 android:textColor="@color/gray" />
         </LinearLayout>
@@ -125,17 +126,19 @@
                 android:id="@+id/main_game_img"
                 android:layout_width="match_parent"
                 android:layout_height="0dip"
-                android:layout_weight="5"
+                android:layout_weight="4"
+                android:layout_margin="3dip"
+
+                android:scaleType="fitCenter"
                 android:src="@mipmap/tab_game_nor_3x" />
 
             <TextView
                 android:id="@+id/main_game_text"
                 android:layout_width="50dip"
                 android:layout_height="0dip"
-                android:layout_marginLeft="3dip"
                 android:layout_weight="3"
                 android:gravity="center"
-                android:textSize="10sp"
+                android:textSize="8sp"
                 android:text="游戏圈"
                 android:textColor="@color/gray" />
         </LinearLayout>
@@ -156,7 +159,9 @@
                 android:id="@+id/main_find_img"
                 android:layout_width="match_parent"
                 android:layout_height="0dip"
-                android:layout_weight="5"
+                android:layout_weight="4"
+                android:layout_margin="3dip"
+
                 android:scaleType="fitCenter"
                 android:src="@mipmap/tab_find_sele_2x" />
 
@@ -164,10 +169,9 @@
                 android:id="@+id/main_find_text"
                 android:layout_width="50dip"
                 android:layout_height="0dip"
-                android:layout_marginLeft="3dip"
                 android:layout_weight="3"
                 android:gravity="center"
-                android:textSize="10sp"
+                android:textSize="8sp"
                 android:text="达人"
                 android:textColor="@color/gray" />
         </LinearLayout>
@@ -190,18 +194,20 @@
                 android:id="@+id/main_mine_img"
                 android:layout_width="match_parent"
                 android:layout_height="0dip"
-                android:layout_weight="5"
+                android:layout_margin="3dip"
+
+                android:layout_weight="4"
+                android:scaleType="fitCenter"
                 android:src="@mipmap/tab_myself_nor_3x" />
 
             <TextView
                 android:id="@+id/main_mine_text"
                 android:layout_width="50dip"
                 android:layout_height="0dip"
-                android:layout_marginLeft="3dip"
                 android:layout_weight="3"
                 android:gravity="center"
                 android:text="我的"
-                android:textSize="10sp"
+                android:textSize="8sp"
                 android:textColor="@color/gray" />
         </LinearLayout>
     </LinearLayout>

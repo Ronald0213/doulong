@@ -12,8 +12,10 @@ public class GuildInfo {
     String introduce;
     String leaderName;
     String membersNum;
+    String status;
+    String background;
 
-    public GuildInfo(String guildId, String ryGuildId, String logo, String name, String introduce, String leaderName, String membersNum) {
+    public GuildInfo(String guildId, String ryGuildId, String logo, String name, String introduce, String leaderName, String membersNum, String status, String background) {
         this.guildId = guildId;
         this.ryGuildId = ryGuildId;
         this.logo = logo;
@@ -21,6 +23,24 @@ public class GuildInfo {
         this.introduce = introduce;
         this.leaderName = leaderName;
         this.membersNum = membersNum;
+        this.status = status;
+        this.background = background;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
     }
 
     public String getGuildId() {

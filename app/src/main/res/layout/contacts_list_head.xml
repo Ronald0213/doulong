@@ -35,14 +35,14 @@
         </FrameLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dip"
+            android:layout_height="50dip"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="30dip"
                 android:layout_height="30dip"
                 android:layout_marginLeft="15dip"
-                android:layout_marginTop="5dip"
+                android:layout_marginTop="10dip"
                 android:background="@mipmap/system_message" />
 
             <TextView
@@ -52,7 +52,7 @@
                 android:gravity="center_vertical"
                 android:text="系统消息"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -62,7 +62,7 @@
                 android:text="0"
 
                 android:textColor="@color/gray"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <View
@@ -72,14 +72,14 @@
             android:background="@color/gray"></View>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dip"
+            android:layout_height="50dip"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="30dip"
                 android:layout_height="30dip"
                 android:layout_marginLeft="15dip"
-                android:layout_marginTop="5dip"
+                android:layout_gravity="center_vertical"
                 android:background="@mipmap/contact_daren" />
 
             <TextView
@@ -89,7 +89,7 @@
                 android:gravity="center_vertical"
                 android:text="达人"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -99,7 +99,7 @@
                 android:text="0"
 
                 android:textColor="@color/gray"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <View
@@ -111,14 +111,14 @@
         <LinearLayout
             android:id="@+id/contacts_guild"
             android:layout_width="match_parent"
-            android:layout_height="40dip"
+            android:layout_height="50dip"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="30dip"
                 android:layout_height="30dip"
                 android:layout_marginLeft="15dip"
-                android:layout_marginTop="5dip"
+                android:layout_marginTop="10dip"
                 android:background="@mipmap/contact_gonghui_3x" />
 
             <TextView
@@ -128,7 +128,7 @@
                 android:gravity="center_vertical"
                 android:text="公会"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/contacts_guild_num"
@@ -139,7 +139,7 @@
                 android:text="0"
 
                 android:textColor="@color/gray"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <View
@@ -151,14 +151,14 @@
         <LinearLayout
             android:id="@+id/contacts_group"
             android:layout_width="match_parent"
-            android:layout_height="40dip"
+            android:layout_height="50dip"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="30dip"
                 android:layout_height="30dip"
                 android:layout_marginLeft="15dip"
-                android:layout_marginTop="5dip"
+                android:layout_marginTop="10dip"
                 android:background="@mipmap/contact_qunliao_3x" />
 
             <TextView
@@ -168,7 +168,7 @@
                 android:gravity="center_vertical"
                 android:text="群聊"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/contacts_group_numm"
@@ -179,7 +179,7 @@
                 android:text="0"
 
                 android:textColor="@color/gray"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <!--<ScrollView-->
@@ -205,7 +205,7 @@
                     android:gravity="center_vertical"
                     android:text="官方"
                     android:textColor="@color/dark_gray"
-                    android:textSize="16sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
 

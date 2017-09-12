@@ -68,7 +68,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/MyTheme">
+        android:theme="@android:style/Theme.NoTitleBar">
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
@@ -218,18 +218,6 @@
             android:label="@string/title_activity_regist_finally"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:screenOrientation="portrait">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity
             android:name=".activity.GroupListActivity"
             android:label="@string/title_activity_group_list" />
         <activity
@@ -326,7 +314,11 @@
             android:label="@string/title_activity_game_list" />
         <activity
             android:name=".activity.GameDetailInfoActivity"
-            android:label="@string/title_activity_game_detail_info"></activity>
+            android:label="@string/title_activity_game_detail_info" />
+        <activity
+            android:name=".activity.GuildSimpleInfoActivity"
+            android:theme="@style/guildTeme"
+            android:label="@string/title_activity_guild_simple_info"></activity>
     </application>
 
 </manifest>

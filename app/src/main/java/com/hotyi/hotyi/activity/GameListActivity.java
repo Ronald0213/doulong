@@ -40,13 +40,21 @@ public class GameListActivity extends Activity implements OnDataListener {
     private List<GameInfo> hotGameList = new ArrayList<>();
     private List<GameInfo> otherGameList = new ArrayList<>();
     private ImageLoader imageLoader = ImageLoader.getInstance();
+    private TextView myGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_list);
         hotGameListView = (ListView) findViewById(R.id.hot_game_list);
+        myGame = (TextView) findViewById(R.id.game_list_my_game);
         otherGameListView = (ListView) findViewById(R.id.other_game_list);
+        myGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GameListActivity.this,MyGameActivity.class));
+            }
+        });
         hotGameListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

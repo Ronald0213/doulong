@@ -8,6 +8,7 @@
     <ListView
         android:id="@+id/contacts_list"
         android:layout_width="match_parent"
+        android:divider="@null"
         android:layout_height="wrap_content"
         android:scrollbars="none"></ListView>
 

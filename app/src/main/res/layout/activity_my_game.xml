@@ -1,9 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hotyi.hotyi.activity.MyGameActivity">
+    android:background="@color/bright_gray"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="13">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/darkblue"
+            android:orientation="horizontal"></LinearLayout>
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:id="@+id/my_game_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/back_bai_3x" />
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:id="@+id/main_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="关注的游戏"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="120">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:background="@color/blue_light"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dip"
+                        android:layout_marginLeft="15dip"
+                        android:textColor="@color/white"
+                        android:gravity="center_vertical"
+                        android:text="已关注游戏" />
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/my_game_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></ListView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:background="@color/blue_light"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dip"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="15dip"
+                        android:gravity="center_vertical"
+                        android:text="未关注游戏" />
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/my_game_other_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></ListView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

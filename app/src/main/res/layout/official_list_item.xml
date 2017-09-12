@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dip"
+    android:layout_height="50dip"
     android:background="@color/white"
     android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dip"
+        android:layout_height="50dip"
         android:orientation="horizontal">
 
         <com.hotyi.hotyi.utils.ui.HeadImageView
             android:id="@+id/official_item_head_image"
-            android:layout_width="40dip"
-            android:layout_height="40dip"
+            android:layout_width="36dip"
+            android:layout_height="36dip"
             android:layout_marginLeft="15dip"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="7dip"
             android:background="@mipmap/head03" />
 
         <TextView
@@ -25,24 +24,23 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="15dip"
             android:gravity="center_vertical"
-            android:layout_marginTop="10dip"
             android:text="最长的电影"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
         <ImageView
+            android:layout_gravity="center_vertical"
             android:id="@+id/official_item_sex"
-            android:layout_width="20dip"
-            android:layout_height="20dip"
+            android:layout_width="16dip"
+            android:layout_height="16dip"
             android:layout_marginLeft="5dip"
-            android:layout_marginTop="20dip"
             android:background="@mipmap/nan_2x" />
 
         <ImageView
-            android:layout_width="50dip"
-            android:layout_height="20dip"
+            android:layout_gravity="center_vertical"
+            android:layout_width="40dip"
+            android:layout_height="16dip"
             android:layout_marginLeft="10dip"
-            android:layout_marginTop="20dip"
             android:background="@mipmap/contact_guanfang_3x" />
     </LinearLayout>
 </LinearLayout>
