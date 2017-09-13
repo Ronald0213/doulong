@@ -19,6 +19,7 @@ import com.hotyi.hotyi.other.hotyiClass.MyUserInfo;
 import com.hotyi.hotyi.other.hotyiClass.UserInfoDetailClass;
 import com.hotyi.hotyi.utils.HotyiHttpConnection;
 import com.hotyi.hotyi.utils.HttpException;
+import com.hotyi.hotyi.utils.InfoUtils;
 import com.hotyi.hotyi.utils.MyAsynctask;
 import com.hotyi.hotyi.utils.RSAUtil;
 import com.hotyi.hotyi.utils.ui.HeadImageView;
@@ -41,15 +42,15 @@ import static android.view.View.GONE;
  * Created by HOTYI on 2017/8/31.
  */
 
-public class UserInfoDetailActivity extends MyBaseActivity implements View.OnClickListener{
+public class UserInfoDetailActivity extends MyBaseActivity implements View.OnClickListener {
 
-    private ImageView sexImageView,officialImageView;
-    private HeadImageView headImageView,gameImageViewOne,gameImageViewTwo,gameImageViewThree,
-                            guildImageViewOne,guildImageViewTwo,guildImageViewThree,
-                            gameCircleImageViewOne,gameCircleImageViewTwo,gameCircleImageViewThree;
-    private TextView userName,userId;
+    private ImageView sexImageView, officialImageView;
+    private HeadImageView headImageView, gameImageViewOne, gameImageViewTwo, gameImageViewThree,
+            guildImageViewOne, guildImageViewTwo, guildImageViewThree,
+            gameCircleImageViewOne, gameCircleImageViewTwo, gameCircleImageViewThree;
+    private TextView userName, userId;
     private Button chatBtn;
-    private LinearLayout game,guild,gameCircle;
+    private LinearLayout game, guild, gameCircle;
     private String userIdStr;
     private static final int GET_USER_INFO_DETAIL = 50;
     private MyUserInfo myUserInfo = MyUserInfo.getInstance();
@@ -57,34 +58,34 @@ public class UserInfoDetailActivity extends MyBaseActivity implements View.OnCli
     private ImageLoader imageLoader = ImageLoader.getInstance();
 
     @Override
-    public void onCreate( Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info_detail);
         initView();
         Intent intent = getIntent();
         userIdStr = intent.getStringExtra("UserID");
-        Log.e("UserInfo",userIdStr);
-        mAsyncTaskManager.request(GET_USER_INFO_DETAIL,true,this);
+        Log.e("UserInfo", userIdStr);
+        mAsyncTaskManager.request(GET_USER_INFO_DETAIL, true, this);
     }
 
 
-    private void initView(){
+    private void initView() {
 
         sexImageView = (ImageView) findViewById(R.id.user_info_detail_sex);
         officialImageView = (ImageView) findViewById(R.id.user_info_detail_isofficial);
-        headImageView = (HeadImageView)findViewById(R.id.user_info_detail_head_img);
-        gameImageViewOne = (HeadImageView)findViewById(R.id.usere_info_detail_game_one);
-        gameImageViewTwo = (HeadImageView)findViewById(R.id.usere_info_detail_game_two);
-        gameImageViewThree = (HeadImageView)findViewById(R.id.usere_info_detail_game_three);
-        guildImageViewOne = (HeadImageView)findViewById(R.id.usere_info_detail_guild_one);
-        guildImageViewTwo = (HeadImageView)findViewById(R.id.usere_info_detail_guild_two);
-        guildImageViewThree = (HeadImageView)findViewById(R.id.usere_info_detail_guild_three);
-        gameCircleImageViewOne = (HeadImageView)findViewById(R.id.usere_info_detail_game_circle_one);
-        gameCircleImageViewTwo = (HeadImageView)findViewById(R.id.usere_info_detail_game_circle_two);
-        gameCircleImageViewThree = (HeadImageView)findViewById(R.id.usere_info_detail_game_circle_three);
-        userName = (TextView)findViewById(R.id.user_info_detail_name);
-        userId = (TextView)findViewById(R.id.user_info_detail_hotyi_id);
-        chatBtn = (Button)findViewById(R.id.user_info_detail_chat);
+        headImageView = (HeadImageView) findViewById(R.id.user_info_detail_head_img);
+        gameImageViewOne = (HeadImageView) findViewById(R.id.usere_info_detail_game_one);
+        gameImageViewTwo = (HeadImageView) findViewById(R.id.usere_info_detail_game_two);
+        gameImageViewThree = (HeadImageView) findViewById(R.id.usere_info_detail_game_three);
+        guildImageViewOne = (HeadImageView) findViewById(R.id.usere_info_detail_guild_one);
+        guildImageViewTwo = (HeadImageView) findViewById(R.id.usere_info_detail_guild_two);
+        guildImageViewThree = (HeadImageView) findViewById(R.id.usere_info_detail_guild_three);
+        gameCircleImageViewOne = (HeadImageView) findViewById(R.id.usere_info_detail_game_circle_one);
+        gameCircleImageViewTwo = (HeadImageView) findViewById(R.id.usere_info_detail_game_circle_two);
+        gameCircleImageViewThree = (HeadImageView) findViewById(R.id.usere_info_detail_game_circle_three);
+        userName = (TextView) findViewById(R.id.user_info_detail_name);
+        userId = (TextView) findViewById(R.id.user_info_detail_hotyi_id);
+        chatBtn = (Button) findViewById(R.id.user_info_detail_chat);
         chatBtn.setOnClickListener(this);
 
     }
@@ -105,26 +106,32 @@ public class UserInfoDetailActivity extends MyBaseActivity implements View.OnCli
     @Override
     public Object doInBackground(int requestCode, String parameter) throws HttpException {
 
-        switch (requestCode){
+        switch (requestCode) {
             case GET_USER_INFO_DETAIL:
 
                 try {
                     String myUserId = myUserInfo.getUserId();
-                    Log.e("contacts","              2   " );
-                    String signText = RSAUtil.encryptByPrivateKey("FriendUserId="+userIdStr+"&"+"UserId="+myUserId);
-                    Log.e("contacts","              sign   " +signText);
+                    Log.e("contacts", "              2   ");
+                    if (String.valueOf(userIdStr.charAt(0)).equals("R")) {
+                        userIdStr = InfoUtils.getInstance().getInfoHashMap().get(userIdStr);
+                        Log.e("user ", userIdStr);
+                    }
+                    String signText = RSAUtil.encryptByPrivateKey("FriendUserId=" + userIdStr + "&" + "UserId=" + myUserId);
+                    Log.e("user", "   done ");
                     String login_url = MyAsynctask.HOST + MyAsynctask.MyFriendInfo;
                     URL url = new URL(login_url);
-                    Log.e("contacts","              3   "+ login_url.toString());
+                    Log.e("contacts", "              3   " + login_url.toString());
                     HashMap<String, String> map = new HashMap<>();
-                    map.put("FriendUserId",userIdStr);
+                    map.put("FriendUserId", userIdStr);
                     map.put("UserId", myUserId);
-                    map.put("SignText",signText);
-                    if(userIdStr == null){
-                        Log.e("RSA",".......");
+                    map.put("SignText", signText);
+                    if (userIdStr == null) {
+                        Log.e("RSA", ".......");
                     }
-                    Log.e("RSA","++++   "+signText);
+                    Log.e("RSA", "++++   " + signText);
                     return HotyiHttpConnection.getInstance(UserInfoDetailActivity.this).post(map, url);
+
+
 //                    return HotyiHttpConnection.getInstance(getApplicationContext()).post();
                 } catch (Exception e) {
 
@@ -137,30 +144,30 @@ public class UserInfoDetailActivity extends MyBaseActivity implements View.OnCli
 
     @Override
     public void onSuccess(int requestCode, Object result) {
-        switch (requestCode){
+        switch (requestCode) {
             case GET_USER_INFO_DETAIL:
                 try {
                     String result_str = result.toString();
                     JSONObject jsonObject = new JSONObject(result_str);
-                    if (jsonObject.getInt("code") == 1){
+                    if (jsonObject.getInt("code") == 1) {
                         deJsonAndDisPlay(jsonObject);
-                        Log.e("userinfo","  done " + userInfoDetailClass.getGameCircleThree());
+                        Log.e("userinfo", "  done " + userInfoDetailClass.getGameCircleThree());
                     }
 
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
                 break;
         }
     }
 
-    private void deJsonAndDisPlay(JSONObject jsonObject){
+    private void deJsonAndDisPlay(JSONObject jsonObject) {
         try {
             JSONObject infoJson = jsonObject.getJSONObject("data");
             userInfoDetailClass.setName(infoJson.getString("UserName"));
             userInfoDetailClass.setId(infoJson.getString("UserId"));
             userInfoDetailClass.setRongId(infoJson.getString("RYAccount"));
-            Log.e("rongyunID",userInfoDetailClass.getRongId());
+            Log.e("rongyunID", userInfoDetailClass.getRongId());
             userInfoDetailClass.setHeadImage(infoJson.getString("HeadImage"));
             userInfoDetailClass.setIsMyFrfiend(infoJson.getInt("IsMyFrfiend"));
             userInfoDetailClass.setGender(infoJson.getInt("Gender"));
@@ -168,7 +175,7 @@ public class UserInfoDetailActivity extends MyBaseActivity implements View.OnCli
             userInfoDetailClass.setIsOfficial(infoJson.getInt("IsOfficial"));
             JSONArray gameJsonArray = infoJson.getJSONObject("UserGameInfo").getJSONArray("UserGameInfoList");
             int length_game = gameJsonArray.length();
-            switch (length_game){
+            switch (length_game) {
                 case 0:
                     gameImageViewOne.setVisibility(GONE);
                     gameImageViewTwo.setVisibility(GONE);
@@ -193,7 +200,7 @@ public class UserInfoDetailActivity extends MyBaseActivity implements View.OnCli
 
             JSONArray guildJsonArray = infoJson.getJSONObject("UserGuildInfo").getJSONArray("UserGuildInfoList");
             int length_guild = guildJsonArray.length();
-            switch (length_guild){
+            switch (length_guild) {
                 case 0:
                     guildImageViewOne.setVisibility(GONE);
                     guildImageViewTwo.setVisibility(GONE);
@@ -218,7 +225,7 @@ public class UserInfoDetailActivity extends MyBaseActivity implements View.OnCli
 
             JSONArray gameCircleJsonArray = infoJson.getJSONObject("UserCircleInfo").getJSONArray("CircleImages");
             int length_gameCircle = gameCircleJsonArray.length();
-            switch (length_gameCircle){
+            switch (length_gameCircle) {
                 case 0:
                     gameCircleImageViewOne.setVisibility(GONE);
                     gameCircleImageViewTwo.setVisibility(GONE);
@@ -240,82 +247,82 @@ public class UserInfoDetailActivity extends MyBaseActivity implements View.OnCli
                     userInfoDetailClass.setGameCircleThree(gameCircleJsonArray.getString(2));
                     break;
             }
-            displayImg(length_game,length_guild,length_gameCircle);
-        }catch (Exception e){
+            displayImg(length_game, length_guild, length_gameCircle);
+        } catch (Exception e) {
 
         }
     }
 
-    public void displayImg(int length_game,int length_guild,int length_gameCircle){
-        imageLoader.displayImage(userInfoDetailClass.getHeadImage(),headImageView);
-        if (userInfoDetailClass.getGender() == 1){
+    public void displayImg(int length_game, int length_guild, int length_gameCircle) {
+        imageLoader.displayImage(userInfoDetailClass.getHeadImage(), headImageView);
+        if (userInfoDetailClass.getGender() == 1) {
             sexImageView.setBackgroundResource(R.mipmap.nan_3x);
-        }else {
+        } else {
             sexImageView.setBackgroundResource(R.mipmap.nv_3x);
         }
         if (userInfoDetailClass.getIsOfficial() == 0)
             officialImageView.setVisibility(GONE);
         userName.setText(userInfoDetailClass.getName());
-        userId.setText("逗龙号："+userInfoDetailClass.getId());
-        switch (length_game){
+        userId.setText("逗龙号：" + userInfoDetailClass.getId());
+        switch (length_game) {
             case 0:
                 break;
             case 1:
-                imageLoader.displayImage(userInfoDetailClass.getGameOne(),gameImageViewOne);
+                imageLoader.displayImage(userInfoDetailClass.getGameOne(), gameImageViewOne);
                 break;
             case 2:
-                imageLoader.displayImage(userInfoDetailClass.getGameOne(),gameImageViewOne);
-                imageLoader.displayImage(userInfoDetailClass.getGameTwo(),gameImageViewTwo);
+                imageLoader.displayImage(userInfoDetailClass.getGameOne(), gameImageViewOne);
+                imageLoader.displayImage(userInfoDetailClass.getGameTwo(), gameImageViewTwo);
                 break;
             default:
-                imageLoader.displayImage(userInfoDetailClass.getGameOne(),gameImageViewOne);
-                imageLoader.displayImage(userInfoDetailClass.getGameTwo(),gameImageViewTwo);
-                imageLoader.displayImage(userInfoDetailClass.getGameThree(),gameImageViewThree);
+                imageLoader.displayImage(userInfoDetailClass.getGameOne(), gameImageViewOne);
+                imageLoader.displayImage(userInfoDetailClass.getGameTwo(), gameImageViewTwo);
+                imageLoader.displayImage(userInfoDetailClass.getGameThree(), gameImageViewThree);
                 break;
         }
-        switch (length_guild){
+        switch (length_guild) {
             case 0:
                 break;
             case 1:
-                imageLoader.displayImage(userInfoDetailClass.getGuildOne(),guildImageViewOne);
+                imageLoader.displayImage(userInfoDetailClass.getGuildOne(), guildImageViewOne);
                 break;
             case 2:
-                imageLoader.displayImage(userInfoDetailClass.getGuildOne(),guildImageViewOne);
-                imageLoader.displayImage(userInfoDetailClass.getGuildTwo(),guildImageViewTwo);
+                imageLoader.displayImage(userInfoDetailClass.getGuildOne(), guildImageViewOne);
+                imageLoader.displayImage(userInfoDetailClass.getGuildTwo(), guildImageViewTwo);
                 break;
             default:
-                imageLoader.displayImage(userInfoDetailClass.getGuildOne(),guildImageViewOne);
-                imageLoader.displayImage(userInfoDetailClass.getGuildTwo(),guildImageViewTwo);
-                imageLoader.displayImage(userInfoDetailClass.getGuildThree(),guildImageViewThree);
+                imageLoader.displayImage(userInfoDetailClass.getGuildOne(), guildImageViewOne);
+                imageLoader.displayImage(userInfoDetailClass.getGuildTwo(), guildImageViewTwo);
+                imageLoader.displayImage(userInfoDetailClass.getGuildThree(), guildImageViewThree);
                 break;
         }
-        switch (length_gameCircle){
+        switch (length_gameCircle) {
             case 0:
                 break;
             case 1:
-                imageLoader.displayImage(userInfoDetailClass.getGameCircleOne(),gameCircleImageViewOne);
+                imageLoader.displayImage(userInfoDetailClass.getGameCircleOne(), gameCircleImageViewOne);
                 break;
             case 2:
-                imageLoader.displayImage(userInfoDetailClass.getGameCircleOne(),gameCircleImageViewOne);
-                imageLoader.displayImage(userInfoDetailClass.getGameCircleTwo(),gameCircleImageViewTwo);
+                imageLoader.displayImage(userInfoDetailClass.getGameCircleOne(), gameCircleImageViewOne);
+                imageLoader.displayImage(userInfoDetailClass.getGameCircleTwo(), gameCircleImageViewTwo);
                 break;
             default:
-                imageLoader.displayImage(userInfoDetailClass.getGameCircleOne(),gameCircleImageViewOne);
-                imageLoader.displayImage(userInfoDetailClass.getGameCircleTwo(),gameCircleImageViewTwo);
-                imageLoader.displayImage(userInfoDetailClass.getGameCircleThree(),gameCircleImageViewThree);
+                imageLoader.displayImage(userInfoDetailClass.getGameCircleOne(), gameCircleImageViewOne);
+                imageLoader.displayImage(userInfoDetailClass.getGameCircleTwo(), gameCircleImageViewTwo);
+                imageLoader.displayImage(userInfoDetailClass.getGameCircleThree(), gameCircleImageViewThree);
                 break;
         }
     }
 
     @Override
     public void onClick(View view) {
-            switch (view.getId()){
-                case R.id.user_info_detail_chat:
-                    Log.e("rongyunID  11   ",userInfoDetailClass.getRongId());
-                    RongIM.getInstance().refreshUserInfoCache(new UserInfo(userInfoDetailClass.getRongId(),userInfoDetailClass.getName(),Uri.parse(userInfoDetailClass.getHeadImage())));
-                    RongIM.getInstance().startPrivateChat(UserInfoDetailActivity.this,userInfoDetailClass.getRongId(),userInfoDetailClass.getName());
-                    break;
-            }
+        switch (view.getId()) {
+            case R.id.user_info_detail_chat:
+                Log.e("rongyunID  11   ", userInfoDetailClass.getRongId());
+                RongIM.getInstance().refreshUserInfoCache(new UserInfo(userInfoDetailClass.getRongId(), userInfoDetailClass.getName(), Uri.parse(userInfoDetailClass.getHeadImage())));
+                RongIM.getInstance().startPrivateChat(UserInfoDetailActivity.this, userInfoDetailClass.getRongId(), userInfoDetailClass.getName());
+                break;
+        }
     }
 }
 

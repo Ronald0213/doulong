@@ -35,7 +35,7 @@ import java.util.List;
 
 import io.rong.imageloader.core.ImageLoader;
 
-public class GameDetailInfoActivity extends Activity implements OnDataListener {
+public class GameDetailInfoActivity extends BaseUiActivity implements OnDataListener {
 
     private static final int GET_GAME_DETAIL_INFO = 71;
     private AsyncTaskManager asyncTaskManager = AsyncTaskManager.getInstance(this);

@@ -10,96 +10,105 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dip"
+        android:layout_height="0dip"
+        android:layout_weight="13"
         android:background="@color/darkblue"
         android:orientation="vertical">
 
         <TextView
+            android:layout_marginTop="10dip"
             android:id="@+id/main_title"
             android:layout_width="match_parent"
-            android:layout_height="53dip"
-            android:gravity="center_horizontal|bottom"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:text="我的公会"
             android:textColor="#ffffff"
             android:textSize="20sp" />
     </LinearLayout>
 
-    <ScrollView
-        android:scrollbars="none"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dip"
+        android:layout_weight="120"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:scrollbars="none">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dip"
-                android:background="@color/bright_gray"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="15dip"
-                    android:gravity="center_vertical"
-                    android:text="官方"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/find_more_guild"
-                android:layout_width="match_parent"
-                android:layout_height="50dip"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="35dip"
-                    android:layout_height="35dip"
-                    android:layout_marginLeft="15dip"
-                    android:layout_gravity="center_vertical"
-                    android:background="@mipmap/contact_gonghui_3x" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dip"
-                    android:gravity="center_vertical"
-                    android:text="发现更多公会"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dip"
-                android:background="@color/bright_gray"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="15dip"
-                    android:gravity="center_vertical"
-                    android:text="公会"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <ListView
-                android:id="@+id/guild_list"
-                android:layout_marginLeft="10dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:divider="@color/gray"
-                android:dividerHeight="2px"
-                android:scrollbars="none"></ListView>
-        </LinearLayout>
-    </ScrollView>
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:background="@color/bright_gray"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dip"
+                        android:gravity="center_vertical"
+                        android:text="官方"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/find_more_guild"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dip"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="15dip"
+                        android:background="@mipmap/contact_gonghui_3x" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dip"
+                        android:gravity="center_vertical"
+                        android:text="发现更多公会"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:background="@color/bright_gray"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dip"
+                        android:gravity="center_vertical"
+                        android:text="公会"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/guild_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:divider="@color/gray"
+                    android:dividerHeight="2px"
+                    android:scrollbars="none"></ListView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 
 </LinearLayout>

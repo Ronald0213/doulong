@@ -38,5 +38,8 @@
     <string name="title_activity_game_list">GameListActivity</string>
     <string name="title_activity_game_detail_info">GameDetailInfoActivity</string>
     <string name="title_activity_guild_simple_info">GuildSimpleInfoActivity</string>
+    <string name="title_activity_sign">SignActivity</string>
+    <string name="title_activity_base_ui">BaseUiActivity</string>
+    <string name="title_activity_guild_members">GuildMembersActivity</string>
 
 </resources>

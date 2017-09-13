@@ -61,7 +61,7 @@ import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.UserInfo;
 
-public class LoginActivity extends MyBaseActivity implements View.OnClickListener, OnDataListener {
+public class LoginActivity extends BaseUiActivity implements View.OnClickListener, OnDataListener {
 
     private MyUserInfo myUserInfo;
     private AlertDialog dialog;
@@ -153,7 +153,7 @@ public class LoginActivity extends MyBaseActivity implements View.OnClickListene
 
         mAsyncTaskManager = AsyncTaskManager.getInstance(getApplicationContext());
         initView();
-        autoLogin();
+//        autoLogin();
 
     }
     private void autoLogin(){

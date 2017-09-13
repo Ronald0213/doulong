@@ -28,6 +28,7 @@ import com.hotyi.hotyi.other.hotyiClass.MyUserInfo;
 import com.hotyi.hotyi.other.hotyiClass.OfficialInfo;
 import com.hotyi.hotyi.utils.HotyiHttpConnection;
 import com.hotyi.hotyi.utils.HttpException;
+import com.hotyi.hotyi.utils.InfoUtils;
 import com.hotyi.hotyi.utils.MyAsynctask;
 import com.hotyi.hotyi.utils.RSAUtil;
 import com.hotyi.hotyi.utils.async.AsyncTaskManager;
@@ -104,7 +105,7 @@ public class ContactsFragment extends Fragment implements OnDataListener {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 int num = i - friendListView.getHeaderViewsCount();
                 Log.e("list", num +"");
-                if (num > 0) {
+                if (num >= 0) {
                     String id = friendList.get(num).getUserId();
                     Intent intent = new Intent(getContext().getApplicationContext(), UserInfoDetailActivity.class);
                     intent.putExtra("UserID", id);
@@ -243,6 +244,7 @@ public class ContactsFragment extends Fragment implements OnDataListener {
                     String userName = jsonArray.getJSONObject(i).getString("NickName");
                     String headImange = jsonArray.getJSONObject(i).getString("HeadImage");
                     String rongID = jsonArray.getJSONObject(i).getString("RYAccount");
+                    InfoUtils.getInstance().addInfo(rongID,userId);
                     int sex = jsonArray.getJSONObject(i).getInt("Gender");
                     Log.e("friend", "     3+   ");
                     //******刷新用户信息缓存
@@ -255,6 +257,7 @@ public class ContactsFragment extends Fragment implements OnDataListener {
                     String headImange = jsonArray.getJSONObject(i).getString("HeadImage");
                     int sex = jsonArray.getJSONObject(i).getInt("Gender");
                     String rongID = jsonArray.getJSONObject(i).getString("RYAccount");
+                    InfoUtils.getInstance().addInfo(rongID,userId);
                     RongIM.getInstance().refreshUserInfoCache(new UserInfo(rongID, userName, Uri.parse(headImange)));
                     officialList.add(new OfficialInfo(userId, userName, headImange, sex));
                 }

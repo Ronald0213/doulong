@@ -317,8 +317,17 @@
             android:label="@string/title_activity_game_detail_info" />
         <activity
             android:name=".activity.GuildSimpleInfoActivity"
-            android:theme="@style/guildTeme"
-            android:label="@string/title_activity_guild_simple_info"></activity>
+            android:label="@string/title_activity_guild_simple_info"
+            android:theme="@style/guildTeme" />
+        <activity
+            android:name=".activity.SignActivity"
+            android:label="@string/title_activity_sign" />
+        <activity
+            android:name=".activity.BaseUiActivity"
+            android:label="@string/title_activity_base_ui" />
+        <activity
+            android:name=".activity.GuildMembersActivity"
+            android:label="@string/title_activity_guild_members"></activity>
     </application>
 
 </manifest>

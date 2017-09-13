@@ -17,11 +17,11 @@
             android:orientation="horizontal"></LinearLayout>
 
         <ImageView
+            android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dip"
-            android:layout_marginTop="5dip"
             android:scaleType="fitCenter"
+            android:layout_margin="8dip"
             android:src="@mipmap/back_bai_3x" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:gravity="center"
             android:text="工会主页"
             android:textColor="#ffffff"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
     </FrameLayout>
 
     <FrameLayout
@@ -52,6 +52,7 @@
         <ImageView
             android:id="@+id/guild_detail_game_background"
             android:layout_width="match_parent"
+            android:scaleType="fitXY"
             android:layout_height="match_parent" />
 
         <LinearLayout
@@ -226,6 +227,10 @@
             <com.hotyi.hotyi.utils.ui.HeadImageView
                 android:id="@+id/guild_detail_game_head"
                 android:layout_width="0dip"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dip"
+                android:background="@null"
                 android:layout_height="match_parent"
                 android:layout_weight="7"></com.hotyi.hotyi.utils.ui.HeadImageView>
 
@@ -235,6 +240,7 @@
                 android:layout_weight="2"></LinearLayout>
 
             <TextView
+                android:id="@+id/guild_detail_game_name"
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="46"
@@ -500,6 +506,7 @@
             android:textColor="@color/blue"></TextView>
 
         <TextView
+            android:id="@+id/guild_detail_members_num"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="4"

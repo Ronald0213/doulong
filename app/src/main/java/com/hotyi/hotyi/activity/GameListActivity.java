@@ -32,7 +32,7 @@ import java.util.List;
 
 import io.rong.imageloader.core.ImageLoader;
 
-public class GameListActivity extends Activity implements OnDataListener {
+public class GameListActivity extends BaseUiActivity implements OnDataListener {
 
     private ListView hotGameListView, otherGameListView;
     private AsyncTaskManager asyncTaskManager = AsyncTaskManager.getInstance(GameListActivity.this);

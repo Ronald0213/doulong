@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dip"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:orientation="horizontal">
+
+        <com.hotyi.hotyi.utils.ui.HeadImageView
+            android:id="@+id/sign_list_item_head_image"
+            android:layout_width="36dip"
+            android:layout_height="36dip"
+            android:layout_marginLeft="15dip"
+            android:layout_marginTop="7dip"
+            />
+
+        <TextView
+            android:id="@+id/sign_rank_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dip"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/sign_list_item_days"
+            android:textColor="@color/guild_head_lines"
+            android:gravity="right|center_vertical"
+            android:textSize="16sp"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginRight="15dip"
+            android:layout_gravity="right"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/gray"></View>
+</LinearLayout>

@@ -498,10 +498,19 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
 
             Intent intent = null;
             if (mConversationType == Conversation.ConversationType.GROUP) {
-                intent = new Intent(this, GroupDetailActivity.class);
+                if (mTargetId.contains("group")) {
+                    intent = new Intent(this, GroupDetailActivity.class);
+
+                }
+                else if (mTargetId.contains("guild"))
+                    intent = new Intent(this, GuildDetailActivity.class);
+                else
+                    return;
+                intent.putExtra("id",mTargetId);
                 intent.putExtra("conversationType", Conversation.ConversationType.GROUP);
             } else if (mConversationType == Conversation.ConversationType.PRIVATE) {
-                intent = new Intent(this, PrivateChatDetailActivity.class);
+                intent = new Intent(this, UserInfoDetailActivity.class);
+                intent.putExtra("UserID",mTargetId);
                 intent.putExtra("conversationType", Conversation.ConversationType.PRIVATE);
             } else if (mConversationType == Conversation.ConversationType.DISCUSSION) {
                 intent = new Intent(this, DiscussionDetailActivity.class);

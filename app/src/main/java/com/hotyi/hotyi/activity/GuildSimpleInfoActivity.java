@@ -27,7 +27,7 @@ import java.util.HashMap;
 
 import io.rong.imageloader.core.ImageLoader;
 
-public class GuildSimpleInfoActivity extends Activity implements  View.OnClickListener,OnDataListener {
+public class GuildSimpleInfoActivity extends BaseUiActivity implements  View.OnClickListener,OnDataListener {
     private static final int JOIN_GUILD = 80;
     private AsyncTaskManager asyncTaskManager = AsyncTaskManager.getInstance(this);
     private String background, head, name, introduce, state, guildId,ryGuildId;
