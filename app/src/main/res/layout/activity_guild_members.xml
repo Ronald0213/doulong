@@ -1,9 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hotyi.hotyi.activity.GuildMembersActivity">
+    android:background="@color/bright_gray"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="13">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/darkblue"
+            android:orientation="horizontal"></LinearLayout>
+
+        <ImageView
+            android:id="@+id/guild_members_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="10dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="20dip"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/back_bai_3x" />
+
+        <TextView
+            android:id="@+id/main_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dip"
+            android:gravity="center"
+            android:text="公会成员"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="120"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/guild_members_search"
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dip"
+                    android:layout_marginLeft="10dip"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/search_hui_3x" />
+
+                <EditText
+                    android:id="@+id/guild_members_search_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dip"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="搜索"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/guild_members_leader_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:background="@color/gray"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dip"
+                        android:layout_marginLeft="15dip"
+                        android:gravity="center_vertical"
+                        android:text="会长"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/guild_members_leaders_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"></ListView>
+                <LinearLayout
+                    android:id="@+id/guild_members_manager_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:background="@color/gray"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dip"
+                        android:layout_marginLeft="15dip"
+                        android:gravity="center_vertical"
+                        android:text="管理员"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/guild_members_manager_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"></ListView>
+
+                <LinearLayout
+                    android:id="@+id/guild_members_member_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:background="@color/gray"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dip"
+                        android:layout_marginLeft="15dip"
+                        android:gravity="center_vertical"
+                        android:text="成员"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/guild_members_member_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"></ListView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

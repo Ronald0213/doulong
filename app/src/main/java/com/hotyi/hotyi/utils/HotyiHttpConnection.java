@@ -27,6 +27,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -357,6 +358,42 @@ public class HotyiHttpConnection {
             val = entry.getValue().toString();
             if (key!=null)
                  formEncodingBuilder.add(key,val);
+            Log.e("okhttp", key + "  "+ val);
+        }
+        if (key != null) {
+            String result = null;
+            RequestBody body = formEncodingBuilder
+                    .build();
+
+
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(body)
+                    .build();
+            Response response = client.newCall(request).execute();
+            if (response.isSuccessful()) {
+                result = response.body().string();
+                Log.e("OKHTTP", "   aaaa   " + result);
+                return result;
+            } else {
+                throw new IOException("Unexpected code " + response);
+            }
+        } else
+            return "异常";
+    }
+
+    public String post(HashMap<String, String> map, URL url, File file) throws Exception {
+        OkHttpClient client = OKHttpUtil.getInstancec().getOkHttpClient();
+        Iterator iter = map.entrySet().iterator();
+        String key = null;
+        String val = null;
+        FormEncodingBuilder formEncodingBuilder = new FormEncodingBuilder();
+        while (iter.hasNext()) {
+            Map.Entry entry = (Map.Entry) iter.next();
+            key = entry.getKey().toString();
+            val = entry.getValue().toString();
+            if (key!=null)
+                formEncodingBuilder.add(key,val);
             Log.e("okhttp", key + "  "+ val);
         }
         if (key != null) {

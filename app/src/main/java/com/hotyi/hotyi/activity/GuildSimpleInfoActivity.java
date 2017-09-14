@@ -88,9 +88,12 @@ public class GuildSimpleInfoActivity extends BaseUiActivity implements  View.OnC
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.guild_simple_info_sure:
+                Log.e("state", state);
                 if (state.equals("1")) {
-                    Intent intent = new Intent(GuildSimpleInfoActivity.this,GameDetailInfoActivity.class);
-                    intent.putExtra("guildId",guildId);
+                    Log.e("state", state+"  done");
+                    Intent intent = new Intent(GuildSimpleInfoActivity.this,GuildDetailActivity.class);
+                    intent.putExtra("id",ryGuildId);
+                    startActivity(intent);
                     finish();
                 }
                 else

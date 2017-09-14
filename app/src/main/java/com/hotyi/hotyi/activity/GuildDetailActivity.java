@@ -36,6 +36,7 @@ public class GuildDetailActivity extends BaseUiActivity implements OnDataListene
     private ImageLoader imageLoader = ImageLoader.getInstance();
     private ImageView background,signImg;
     private TextView activityNum,gameName,guildId,guildLevel,membersNum,guildName,guildIntroduce;
+    private LinearLayout guildMembers;
     private ImageView headImageView ;
     private Button chatBtn,cancelBtn;
     private AsyncTaskManager asyncTaskManager = AsyncTaskManager.getInstance(this);
@@ -49,6 +50,7 @@ public class GuildDetailActivity extends BaseUiActivity implements OnDataListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("guild detail", " done");
         setContentView(R.layout.activity_guild_detail);
         id = getIntent().getStringExtra("id");
         if (id != null){
@@ -74,7 +76,18 @@ public class GuildDetailActivity extends BaseUiActivity implements OnDataListene
         chatBtn = (Button)findViewById(R.id.guild_detail_chat_btn);
         cancelBtn = (Button)findViewById(R.id.guild_detail_cancel_btn);
         gameHead = (HeadImageView)findViewById(R.id.guild_detail_game_head);
+        guildMembers = (LinearLayout)findViewById(R.id.guild_detail_guild_members);
         signLayout = (LinearLayout)findViewById(R.id.guild_detail_sign_click);
+
+        guildMembers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GuildDetailActivity.this,GuildMembersActivity.class);
+                intent.putExtra("guildId",guildIdAStr);
+                startActivity(intent);
+            }
+        });
+
         signLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

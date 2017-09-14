@@ -1,9 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hotyi.hotyi.activity.SubConversationListActivity">
+    android:background="@color/gray"
+    android:orientation="vertical"
+    tools:context="com.hotyi.hotyi.activity.MyGroupActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="13"
+        android:background="@color/darkblue"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/main_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dip"
+            android:gravity="center"
+            android:text="申请信息"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <ListView
+        android:id="@+id/system_msg_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:dividerHeight="5dip"
+        android:divider="@color/gray"
+        android:layout_weight="120"></ListView>
+
+</LinearLayout>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_coners_btn"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/guild_leader_click"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dip"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="转让公会"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="@color/gray"></View>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/guild_leader_manager_click"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/guild_manager_control_text"
+                android:layout_width="match_parent"
+                android:layout_height="40dip"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="任命管理员"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="@color/gray"></View>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/guild_members_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dip"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="移出公会"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="@color/gray"></View>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/guild_members_info_watch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/guild_member_info_ismyself"
+                android:layout_width="match_parent"
+                android:layout_height="40dip"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="查看资料"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/guild_control_cancel_action"
+        android:layout_marginTop="8dip"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginBottom="10dip"
+        android:orientation="vertical"
+        android:background="@drawable/white_coners_btn">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="取消"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+</LinearLayout>

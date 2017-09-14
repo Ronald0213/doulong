@@ -301,7 +301,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="cn.rongcloud.im"
+                    android:host="com.hotyi.hotyi"
                     android:path="/subconversationlist"
                     android:scheme="rong" />
             </intent-filter>
@@ -327,6 +327,7 @@
             android:label="@string/title_activity_base_ui" />
         <activity
             android:name=".activity.GuildMembersActivity"
+            android:windowSoftInputMode="stateHidden|stateUnchanged"
             android:label="@string/title_activity_guild_members"></activity>
     </application>
 

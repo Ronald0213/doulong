@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/system_msg_list_item_msg_type"
+        android:layout_width="match_parent"
+        android:layout_height="25dip"
+        android:layout_marginLeft="15dip"
+        android:gravity="center_vertical"
+        android:text="工会请求"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:orientation="horizontal">
+
+        <com.hotyi.hotyi.utils.ui.HeadImageView
+            android:id="@+id/system_msg_list_item_head"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dip"
+            android:background="@mipmap/logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="5dip"
+            android:layout_height="40dip"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="3">
+                <TextView
+                    android:id="@+id/system_msg_list_item_name"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:text="最长的电影"
+                    android:textSize="14sp"
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/system_msg_list_item_time"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray"
+                    android:layout_marginRight="15dip"
+                    android:text="1小时前"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/system_msg_list_item_content"
+                android:textSize="12sp"
+                android:text="我们的开始，是很长的电影"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/gray"></View>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dip">
+        <LinearLayout
+            android:id="@+id/system_msg_list_item_click"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/system_msg_list_item_cancel"
+                android:text="拒绝"
+                android:gravity="center"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <View
+                android:layout_width="2px"
+                android:layout_height="match_parent"
+                android:background="@color/gray"></View>
+            <TextView
+                android:id="@+id/system_msg_list_item_sure"
+                android:text="同意"
+                android:textColor="@color/darkblue"
+                android:gravity="center"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/system_msg_list_item_done"
+            android:textColor="@color/gray"
+            android:text="你已通过他的加入公会请求"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+</LinearLayout>

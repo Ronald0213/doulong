@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.hotyi.hotyi.R;
 import com.hotyi.hotyi.activity.MyGroupActivity;
 import com.hotyi.hotyi.activity.MyGuildActivity;
+import com.hotyi.hotyi.activity.SubConversationListActivity;
 import com.hotyi.hotyi.activity.UserInfoDetailActivity;
 import com.hotyi.hotyi.other.hotyiClass.MyFriendInfo;
 import com.hotyi.hotyi.other.hotyiClass.MyUserInfo;
@@ -67,7 +68,7 @@ public class ContactsFragment extends Fragment implements OnDataListener {
     private Bundle savedState;
     //    private ListView officialListView;
 //    private LinearLayout officialLine;
-    private LinearLayout contactsGroup, contactsGuild;
+    private LinearLayout contactsGroup, contactsGuild,contactsSystemMsg;
 
 
     @Nullable
@@ -85,6 +86,13 @@ public class ContactsFragment extends Fragment implements OnDataListener {
 //        officialLine.setOrientation(LinearLayout.VERTICAL);
         contactsGroup = (LinearLayout) contactsListHead.findViewById(R.id.contacts_group);
         contactsGuild = (LinearLayout) contactsListHead.findViewById(R.id.contacts_guild);
+        contactsSystemMsg = (LinearLayout)contactsListHead.findViewById(R.id.contacts_system_msg);
+        contactsSystemMsg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext().getApplicationContext(), SubConversationListActivity.class));
+            }
+        });
         contactsGuild.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
