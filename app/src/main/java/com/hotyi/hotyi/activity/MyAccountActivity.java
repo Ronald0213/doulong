@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.hotyi.hotyi.R;
 
-public class MyAccountActivity extends Activity {
+public class MyAccountActivity extends BaseUiActivity {
 
     private TextView myAccountPhone ,myAccountSex,myAccountName,myAccountId;
     private LinearLayout myAccountSexClick,myAccountPassword;

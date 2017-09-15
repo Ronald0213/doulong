@@ -44,6 +44,7 @@ public class SignActivity extends BaseUiActivity implements OnDataListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_sign);
         daysNum = (TextView)findViewById(R.id.sign_days_num);
         signRankListView = (ListView)findViewById(R.id.sign_rank_list);

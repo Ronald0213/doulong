@@ -17,35 +17,49 @@
             android:orientation="horizontal"></LinearLayout>
 
         <ImageView
-            android:layout_gravity="center_vertical"
             android:id="@+id/game_detail_guild_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dip"
-            android:layout_marginTop="5dip"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="10dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="20dip"
             android:scaleType="fitCenter"
             android:src="@mipmap/back_bai_3x" />
 
-        <ImageView
-            android:id="@+id/guild_detail_edit_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginBottom="10dip"
-            android:layout_marginRight="13dip"
-            android:layout_marginTop="10dip"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/contact_tianjialianxiren" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/game_list_my_game"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="18dip"
+                android:layout_marginTop="15dip"
+                android:gravity="center_vertical|right"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/main_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="15dip"
             android:gravity="center"
             android:text="游戏"
             android:textColor="#ffffff"
             android:textSize="20sp" />
     </FrameLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"

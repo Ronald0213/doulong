@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.net.URL;
 import java.util.HashMap;
 
-public class ThirdLoginBindActivity extends Activity implements OnDataListener, View.OnClickListener{
+public class ThirdLoginBindActivity extends BaseUiActivity implements OnDataListener, View.OnClickListener{
 
     private ImageButton backImgBtn;
     private EditText phoneEdit,codeEdit;

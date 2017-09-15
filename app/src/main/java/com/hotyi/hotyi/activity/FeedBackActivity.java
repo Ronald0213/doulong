@@ -5,7 +5,7 @@ import android.app.Activity;
 
 import com.hotyi.hotyi.R;
 
-public class FeedBackActivity extends Activity {
+public class FeedBackActivity extends BaseUiActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

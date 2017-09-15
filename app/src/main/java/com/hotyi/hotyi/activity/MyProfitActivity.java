@@ -5,7 +5,7 @@ import android.app.Activity;
 
 import com.hotyi.hotyi.R;
 
-public class MyProfitActivity extends Activity {
+public class MyProfitActivity extends BaseUiActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="@color/bright_gray"
     android:orientation="vertical">
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
@@ -17,32 +16,48 @@
             android:orientation="horizontal"></LinearLayout>
 
         <ImageView
-            android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="10dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="20dip"
             android:scaleType="fitCenter"
-            android:layout_margin="8dip"
             android:src="@mipmap/back_bai_3x" />
 
-        <TextView
-            android:id="@+id/guild_detail_edit_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginRight="18dip"
-            android:text="编辑"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/game_list_my_game"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="18dip"
+                android:layout_marginTop="15dip"
+                android:gravity="center_vertical|right"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/main_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="15dip"
             android:gravity="center"
-            android:text="工会主页"
+            android:text="公会详情"
             android:textColor="#ffffff"
             android:textSize="20sp" />
     </FrameLayout>
+
 
     <FrameLayout
         android:layout_width="match_parent"

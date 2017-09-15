@@ -41,5 +41,7 @@
     <string name="title_activity_sign">SignActivity</string>
     <string name="title_activity_base_ui">BaseUiActivity</string>
     <string name="title_activity_guild_members">GuildMembersActivity</string>
+    <string name="title_activity_group_members">GroupMembersActivity</string>
+    <string name="title_activity_search_acriviry">SearchAcriviry</string>
 
 </resources>

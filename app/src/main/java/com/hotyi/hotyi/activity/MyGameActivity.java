@@ -34,7 +34,7 @@ import java.util.List;
 
 import io.rong.imageloader.core.ImageLoader;
 
-public class MyGameActivity extends Activity implements OnDataListener {
+public class MyGameActivity extends BaseUiActivity implements OnDataListener {
 
     private static final int GET_MY_GAME = 77;
     private static final int FOCUS_GAME = 78;

@@ -5,7 +5,7 @@ import android.app.Activity;
 
 import com.hotyi.hotyi.R;
 
-public class SelfInfoActivity extends Activity {
+public class SelfInfoActivity extends BaseUiActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

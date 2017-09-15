@@ -38,7 +38,7 @@ import io.rong.imageloader.core.ImageLoader;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.model.Group;
 
-public class MyGuildActivity extends Activity implements OnDataListener{
+public class MyGuildActivity extends BaseUiActivity implements OnDataListener{
 
     private static final int GET_GROUP = 60;
     private ListView groupListView;

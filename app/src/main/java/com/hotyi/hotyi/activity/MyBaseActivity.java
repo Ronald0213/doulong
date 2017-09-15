@@ -8,7 +8,7 @@ import com.hotyi.hotyi.utils.HttpException;
 import com.hotyi.hotyi.utils.async.AsyncTaskManager;
 import com.hotyi.hotyi.utils.async.OnDataListener;
 
-public class MyBaseActivity extends Activity  implements OnDataListener {
+public class MyBaseActivity extends BaseUiActivity  implements OnDataListener {
 
     public AsyncTaskManager mAsyncTaskManager;
 

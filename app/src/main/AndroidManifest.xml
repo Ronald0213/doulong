@@ -327,8 +327,14 @@
             android:label="@string/title_activity_base_ui" />
         <activity
             android:name=".activity.GuildMembersActivity"
-            android:windowSoftInputMode="stateHidden|stateUnchanged"
-            android:label="@string/title_activity_guild_members"></activity>
+            android:label="@string/title_activity_guild_members"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity
+            android:name=".activity.GroupMembersActivity"
+            android:label="@string/title_activity_group_members" />
+        <activity
+            android:name=".activity.SearchAcriviry"
+            android:label="@string/title_activity_search_acriviry"></activity>
     </application>
 
 </manifest>

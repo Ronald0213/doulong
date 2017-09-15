@@ -63,8 +63,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="20dip"
                 android:gravity="right|center_vertical"
-                android:text="0"
-
                 android:textColor="@color/gray"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -101,8 +99,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="20dip"
                 android:gravity="right|center_vertical"
-                android:text="0"
-
                 android:textColor="@color/gray"
                 android:textSize="14sp" />
         </LinearLayout>

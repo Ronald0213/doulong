@@ -1,5 +1,6 @@
 package com.hotyi.hotyi.activity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
@@ -39,7 +40,7 @@ import io.rong.imkit.model.GroupUserInfo;
 import io.rong.imlib.model.Group;
 import io.rong.imlib.model.UserInfo;
 
-public class MyGroupActivity extends Activity implements OnDataListener {
+public class MyGroupActivity extends BaseUiActivity implements OnDataListener {
 
     private static final int GET_GROUP = 60;
     private ListView groupListView;
@@ -59,6 +60,7 @@ public class MyGroupActivity extends Activity implements OnDataListener {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 int num = groupListView.getHeaderViewsCount();
                 MyGroupInfo myGroupInfo = list.get(i-num);
+
 //                String id = myGroupInfo.getRongId();
 //                RongIM.getInstance().refreshUserInfoCache(new UserInfo(myGroupInfo.getRongId(),myGroupInfo.getName(), Uri.parse(myGroupInfo.getImgUrl())));
                 RongIM.getInstance().startGroupChat(MyGroupActivity.this,myGroupInfo.getRongId(),myGroupInfo.getName());

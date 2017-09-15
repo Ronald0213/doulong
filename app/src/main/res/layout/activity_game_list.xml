@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bright_gray"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <FrameLayout
@@ -27,16 +27,28 @@
             android:scaleType="fitCenter"
             android:src="@mipmap/back_bai_3x" />
 
-        <TextView
-            android:id="@+id/game_list_my_game"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="15dip"
-            android:gravity="center_vertical|right"
-            android:layout_marginRight="18dip"
-            android:text="关注游戏"
-            android:textColor="#ffffff"
-            android:textSize="14sp"  />
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/game_list_my_game"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="18dip"
+                android:layout_marginTop="15dip"
+                android:gravity="center_vertical|right"
+                android:text="关注游戏"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/main_title"

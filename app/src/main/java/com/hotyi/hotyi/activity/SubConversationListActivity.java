@@ -33,7 +33,7 @@ import java.util.List;
 import io.rong.imageloader.core.ImageLoader;
 import io.rong.imageloader.utils.L;
 
-public class SubConversationListActivity extends Activity {
+public class SubConversationListActivity extends BaseUiActivity {
     private AsyncTaskManager asyncTaskManager = AsyncTaskManager.getInstance(this);
     private static final int SYSTEM_MSG = 120;
     private ListView systemListView;

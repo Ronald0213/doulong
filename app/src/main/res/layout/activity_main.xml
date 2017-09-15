@@ -28,7 +28,7 @@
         android:id="@+id/main_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="101"
+        android:layout_weight="110"
         android:background="@color/bright_gray_more">
 
     </android.support.v4.view.ViewPager>

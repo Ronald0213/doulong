@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.hotyi.hotyi.R;
 import com.hotyi.hotyi.activity.MyGameActivity;
+import com.hotyi.hotyi.activity.SearchAcriviry;
 import com.hotyi.hotyi.utils.adpter.ConversationListAdapterEx;
 
 import io.rong.imkit.RongContext;
@@ -25,6 +27,7 @@ import io.rong.imlib.model.Conversation;
 public class MyConversationFragment extends Fragment {
     public ConversationListFragment mConversationListFragment = null;
     public Conversation.ConversationType[] mConversationsTypes = null;
+    private FrameLayout search;
 
     public MyConversationFragment() {
     }
@@ -35,6 +38,13 @@ public class MyConversationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_conversation, container, false);
+        search = (FrameLayout)view.findViewById(R.id.conversation_search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext().getApplicationContext(), SearchAcriviry.class));
+            }
+        });
         Fragment fragment = initConversationList();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.add(R.id.fragment_conversation, fragment).commit();

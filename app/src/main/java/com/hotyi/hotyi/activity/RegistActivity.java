@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.hotyi.hotyi.R;
 import com.hotyi.hotyi.utils.async.AsyncTaskManager;
 
-public class RegistActivity extends Activity implements View.OnClickListener{
+public class RegistActivity extends BaseUiActivity implements View.OnClickListener{
 
     private ImageView imageButton_back;
     private EditText editText_phone;
